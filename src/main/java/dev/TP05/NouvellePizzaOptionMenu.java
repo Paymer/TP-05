@@ -4,10 +4,14 @@ import java.util.Scanner;
 
 
 
-public class Add extends OptionMenu {
+public class NouvellePizzaOptionMenu extends OptionMenu {
+	
+	public String getLibelle (){
+		return ( "2. Ajouter une nouvelle pizza"); 
+	}
 
-
-	 static int addPizza(Pizza[] pizzas, int j) {
+	 public void execute(PizzaDao dao) {
+		Pizza[] pizzas = dao.findAllPizzas();
 		String code;
 		String nom;
 		Double prix;
@@ -18,9 +22,12 @@ public class Add extends OptionMenu {
 		nom = scann.next();
 		System.out.println("Veuillez saisir le prix");
 		prix = scann.nextDouble();
-		pizzas[j] = new Pizza(j, code, nom, prix);
-		j++;
-		return j;
+		
+		dao.saveNewPizza(new Pizza(code, nom, prix));
+		
+		
+		
+		
 	}
 
 	

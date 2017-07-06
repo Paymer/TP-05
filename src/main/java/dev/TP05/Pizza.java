@@ -15,9 +15,18 @@ public class Pizza {
 		this.nom = nom;
 		this.prix = prix;
 	}
+	public Pizza (String code, String nom, double prix){
+		
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+	}
+	
+
 	
 	//Metodos Get y Set
 	
+
 	public int getId() {
 		return id;
 	}
