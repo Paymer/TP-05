@@ -1,6 +1,10 @@
-package dev.TP05;
+package dev.optionMenu;
 
 import java.util.Scanner;
+
+import dev.TP05.Pizza;
+import dev.TP05.PizzaDao;
+import dev.tpException.DeletePizzaException;
 
 
 
@@ -22,9 +26,16 @@ public class Delete extends OptionMenu {
 
 		if (!codePizza.equals("99")) {
 			
-			dao.deletePizza(codePizza);}
+			try {
+				dao.deletePizza(codePizza);
+			} catch (DeletePizzaException e) {
+				// in case the code does not exist it throws an exception
+				System.out.println(e.getMessage());
+				
+				
+			}}
 		
-		else{System.out.println("Code not found");} //In case the code is not found
+		
 		
 		}
 

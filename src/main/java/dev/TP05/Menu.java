@@ -2,6 +2,11 @@ package dev.TP05;
 
 import java.util.Scanner;
 
+import dev.optionMenu.Delete;
+import dev.optionMenu.ListerPizzasOptionMenu;
+import dev.optionMenu.Modify;
+import dev.optionMenu.NouvellePizzaOptionMenu;
+
 public class Menu {
 
 	ListerPizzasOptionMenu A = new ListerPizzasOptionMenu();
@@ -40,7 +45,8 @@ public class Menu {
 				break;
 
 			case (4):// Delete a Pizza from the list
-				D.execute(dao);
+				
+					D.execute(dao);
 
 				break;
 			case (99):

@@ -1,6 +1,10 @@
-package dev.TP05;
+package dev.optionMenu;
 
 import java.util.Scanner;
+
+import dev.TP05.Pizza;
+import dev.TP05.PizzaDao;
+import dev.tpException.UpdatePizzaException;
 
 
 
@@ -30,11 +34,27 @@ public class Modify extends OptionMenu {
 			System.out.println("Introduisez le noveau nom (sans espace)");
 			String nom = scann.next();
 			System.out.println("Introduisez le noveau prix");
-			double prix = scann.nextDouble();
+			
+			
+			
+			while (!scann.hasNextDouble()) {
+				//* THE FIRST TIME IT PRINTS IT TWO TIMES! NOT CORRECT! SCANNER BUG!!!*//
+				System.out.println("Sorry, couldn't understand you! Try it again!");
+
+				scann.nextLine();
+			}
+	
+				double prix = scann.nextDouble();
+			
 			Pizza pizza = new Pizza (code, nom, prix);
 			
 			// call the method dao.update
-			dao.updatePizza(oldCode, pizza);}
+			try {
+				dao.updatePizza(oldCode, pizza);
+			} catch (UpdatePizzaException e) {
+				// in case the code does not exist it throws an exception
+				System.out.println(e.getMessage());
+			}}
 			
 
 		else{}

@@ -15,6 +15,9 @@ public class Main
     	
     	Menu M = new Menu();
         M.manage();
-    
+        
+        
+        Scanner scann = new Scanner(System.in);
+  
     }}
 

@@ -1,9 +1,14 @@
 package dev.TP05;
 
+import dev.tpException.CodeRepeteException;
+import dev.tpException.DeletePizzaException;
+import dev.tpException.SavePizzaException;
+import dev.tpException.UpdatePizzaException;
+
 public class PizzaDao implements IPizzaDao {
 
 	Pizza[] pizzas = new Pizza[20];
-	static int numPizzas = 8;
+	public static int numPizzas = 8;
 
 	public PizzaDao() {
 		pizzas[0] = new Pizza(0, "PEP", "Peperoni", 12.5);
@@ -29,17 +34,27 @@ public class PizzaDao implements IPizzaDao {
 		return pizzas;
 	}
 
-	public boolean saveNewPizza(Pizza pizza) {
-		pizza.setId(numPizzas);
-		pizzas[numPizzas] = pizza;
-		numPizzas++;
-		return false;
+	// Adds a new Pizza to the menu
+	public boolean saveNewPizza(Pizza pizza) throws SavePizzaException {
+		if (numPizzas < 19) {
+			int a = checkList(pizza.code);
+			if (a < numPizzas) {
+				throw new SavePizzaException("This code: "+ pizza.code +" already exists.");
+			} else {
+				pizza.setId(numPizzas);
+				pizzas[numPizzas] = pizza;
+				numPizzas++;
+			}
+			return false;
+		} else {
+			throw new SavePizzaException("There is not enough space, redefine the table");
+		}
 	}
 
-	public boolean updatePizza(String codePizza, Pizza pizza) {
-
-		int a = checkList(codePizza); // It returns the position of the code
-										// searched
+	// It modifies a pizza that already exists
+	public boolean updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException {
+		// It returns the position of the code searched
+		int a = checkList(codePizza);
 
 		if (a < numPizzas) {
 
@@ -47,31 +62,32 @@ public class PizzaDao implements IPizzaDao {
 		}
 
 		else {
-			System.out.println("Code not found");}
+			throw new UpdatePizzaException("The code : "+ pizza.code + "has been not found");
+		}
 
 		return false;
 
 	}
 
-	public boolean deletePizza(String codePizza) {
+	// It deletes a pizza
+	public boolean deletePizza(String codePizza) throws DeletePizzaException {
 		// It returns the position of the code searched
-		int a = checkList(codePizza); 
-		
-										
+		int a = checkList(codePizza);
 
 		if (a < numPizzas) {
 			reestructure(a);
 			pizzas[numPizzas] = null;
-			numPizzas--;}
-		else {
-			System.out.println("Code not found");}
+			numPizzas--;
+		} else {
+			throw new DeletePizzaException( "The code : "+ codePizza + "has been not found" );
+		}
 		return false;
 	}
 
 	// It returns the position of the code searched
 	protected int checkList(String Q) {
 
-		/* Busqueda en la matriz a ver si encuentra el codigo */
+		/* It searches in the table the position of the code */
 		int a = 0;
 		boolean c = false;
 		do {
