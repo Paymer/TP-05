@@ -1,4 +1,4 @@
-package dev.optionMenu;
+package dev.optionmenu;
 
 import java.util.List;
 import java.util.Scanner;
@@ -6,7 +6,7 @@ import java.util.Scanner;
 import dev.TP05.CategoriePizza;
 import dev.TP05.Pizza;
 import dev.TP05.PizzaDao;
-import dev.tpException.SavePizzaException;
+import dev.tpexception.SavePizzaException;
 
 public class NouvellePizzaOptionMenu extends OptionMenu {
 

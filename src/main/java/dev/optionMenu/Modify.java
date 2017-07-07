@@ -1,11 +1,11 @@
-package dev.optionMenu;
+package dev.optionmenu;
 
 import java.util.Scanner;
 
 import dev.TP05.CategoriePizza;
 import dev.TP05.Pizza;
 import dev.TP05.PizzaDao;
-import dev.tpException.UpdatePizzaException;
+import dev.tpexception.UpdatePizzaException;
 
 
 

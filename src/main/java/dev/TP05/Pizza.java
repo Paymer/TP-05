@@ -1,11 +1,17 @@
 package dev.TP05;
 
-public class Pizza {
+import java.lang.reflect.Field;
 
+public class Pizza {
+	@ToString(toUppercase = false)
 	int id;
-	String code;
+	@ToString(toUppercase = false)
+	String code;	
+	@ToString(toUppercase = true)
 	String nom;
+	@ToString(toUppercase = true)
 	double prix;
+	@ToString(toUppercase = true)
 	CategoriePizza categ;
 	
 	/* Inicializacion del metodo*/
@@ -78,13 +84,7 @@ public class Pizza {
 		this.prix = prix;
 	}
 
-	
-	//Metodo To String
-	
-	@Override
-	public String toString() {
-		return  code + " --> " + nom + " ( " + prix + " €) " + categ;
-	}
+
 	
 	public void setPizza(String code, String nom, double prix, CategoriePizza categ) {
 		this.nom = nom;
@@ -92,6 +92,26 @@ public class Pizza {
 		this.prix=prix;
 		this.categ = categ;
 	}
+	
+	//Metodo To String
+	@Override
+	public String toString() {
+	        String chaine = "";
+	        try {
+	            for (Field field : this.getClass().getDeclaredFields()) {
+	                ToString annotation = field.getAnnotation(ToString.class);
+	                if (annotation != null) {
+	                	
+	                    chaine += " " + field.get(this).toString();
+	                }
+	            }
+	        } catch (Exception e) {
+	            System.out.println("Une erreur s'est produite "+e.getMessage());
+	            return "";
+	        }
+	        return chaine;
+	    }
+	
 	
 	
 }

@@ -1,4 +1,4 @@
-package dev.optionMenu;
+package dev.optionmenu;
 
 import dev.TP05.PizzaDao;
 

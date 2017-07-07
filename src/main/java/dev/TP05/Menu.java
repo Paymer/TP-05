@@ -2,10 +2,10 @@ package dev.TP05;
 
 import java.util.Scanner;
 
-import dev.optionMenu.Delete;
-import dev.optionMenu.ListerPizzasOptionMenu;
-import dev.optionMenu.Modify;
-import dev.optionMenu.NouvellePizzaOptionMenu;
+import dev.optionmenu.Delete;
+import dev.optionmenu.ListerPizzasOptionMenu;
+import dev.optionmenu.Modify;
+import dev.optionmenu.NouvellePizzaOptionMenu;
 
 public class Menu {
 

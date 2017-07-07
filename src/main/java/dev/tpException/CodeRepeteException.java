@@ -1,4 +1,4 @@
-package dev.tpException;
+package dev.tpexception;
 
 public class CodeRepeteException extends SavePizzaException {
 

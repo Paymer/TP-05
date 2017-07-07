@@ -1,4 +1,4 @@
-package dev.optionMenu;
+package dev.optionmenu;
 
 import java.util.List;
 
