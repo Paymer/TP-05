@@ -3,15 +3,15 @@ package dev.TP05;
 import java.lang.reflect.Field;
 
 public class Pizza {
-	@ToString(toUppercase = false)
+	@ToString
 	int id;
-	@ToString(toUppercase = false)
+	@ToString
 	String code;	
-	@ToString(toUppercase = true)
+	@ToString
 	String nom;
-	@ToString(toUppercase = true)
+	@ToString
 	double prix;
-	@ToString(toUppercase = true)
+	@ToString
 	CategoriePizza categ;
 	
 	/* Inicializacion del metodo*/
