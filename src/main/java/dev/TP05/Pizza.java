@@ -6,20 +6,23 @@ public class Pizza {
 	String code;
 	String nom;
 	double prix;
+	CategoriePizza categ;
 	
 	/* Inicializacion del metodo*/
 	
-	public Pizza (int id, String code, String nom, double prix){
+	public Pizza (int id, String code, String nom, double prix, CategoriePizza categ){
 		this.id = id;
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
+		this.categ = categ;
 	}
-	public Pizza (String code, String nom, double prix){
+	public Pizza (String code, String nom, double prix, CategoriePizza categ){
 		
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
+		this.categ = categ;
 	}
 	
 
@@ -27,6 +30,29 @@ public class Pizza {
 	//Metodos Get y Set
 	
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((code == null) ? 0 : code.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pizza other = (Pizza) obj;
+		if (code == null) {
+			if (other.code != null)
+				return false;
+		} else if (!code.equals(other.code))
+			return false;
+		return true;
+	}
 	public int getId() {
 		return id;
 	}
@@ -57,13 +83,14 @@ public class Pizza {
 	
 	@Override
 	public String toString() {
-		return  code + " --> " + nom + " ( " + prix + " €)";
+		return  code + " --> " + nom + " ( " + prix + " €) " + categ;
 	}
 	
-	public void setPizza(String code, String nom, double prix) {
+	public void setPizza(String code, String nom, double prix, CategoriePizza categ) {
 		this.nom = nom;
 		this.code=code;
 		this.prix=prix;
+		this.categ = categ;
 	}
 	
 	

@@ -2,6 +2,7 @@ package dev.optionMenu;
 
 import java.util.Scanner;
 
+import dev.TP05.CategoriePizza;
 import dev.TP05.Pizza;
 import dev.TP05.PizzaDao;
 import dev.tpException.UpdatePizzaException;
@@ -33,6 +34,9 @@ public class Modify extends OptionMenu {
 			String code = scann.next();
 			System.out.println("Introduisez le noveau nom (sans espace)");
 			String nom = scann.next();
+			System.out.println("Veuillez saisir la categorie");
+			String cat = scann.next();
+			CategoriePizza categ= CategoriePizza.valueOf(cat);
 			System.out.println("Introduisez le noveau prix");
 			
 			
@@ -46,7 +50,7 @@ public class Modify extends OptionMenu {
 	
 				double prix = scann.nextDouble();
 			
-			Pizza pizza = new Pizza (code, nom, prix);
+			Pizza pizza = new Pizza (code, nom, prix, categ);
 			
 			// call the method dao.update
 			try {
