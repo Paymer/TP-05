@@ -52,7 +52,7 @@ public class Modify extends OptionMenu {
 			// call the method dao.update
 			try {
 				dao.updatePizza(oldCode, pizza);
-				co.console(" Modification done ");
+				co.app(" Modification done ");
 			} catch (UpdatePizzaException e) {
 				// in case the code does not exist it throws an exception
 				co.console(e.getMessage());

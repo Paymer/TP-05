@@ -21,11 +21,9 @@
 		</encoder>
 	</appender>
 
-	<!-- politique de log pour les classes du package dev.dao -->
 
-	<logger name="dev.dao" level="INFO">
-		<appender-ref ref="STDOUT" />
-	</logger>
+
+
 
 
 <!-- politique de log pour les classes du package dev.ihm -->

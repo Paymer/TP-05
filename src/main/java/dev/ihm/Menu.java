@@ -2,8 +2,6 @@ package dev.ihm;
 
 import java.util.Scanner;
 
-import org.slf4j.LoggerFactory;
-
 import dev.dao.PizzaDao;
 
 public class Menu {
@@ -30,33 +28,33 @@ public class Menu {
 
 			case (1): // ListerPizzasOptionMenu of Pizzas
 
-				co.console(" Choose to List ");
+				co.app(" Choose to List ");
 				list.execute(dao);
 
 				break;
 
 			case (2):// NouvellePizzaOptionMenu a new Pizza
 
-				co.console(" Choose to Add ");
+				co.app(" Choose to Add ");
 				add.execute(dao);
 
 				break;
 
 			case (3): // Correct the information of one pizza
 
-				co.console(" Choose to Modify ");
+				co.app(" Choose to Modify ");
 				modify.execute(dao);
 
 				break;
 
 			case (4):// Delete a Pizza from the list
 
-				co.console(" Choose to Delete ");
+				co.app(" Choose to Delete ");
 				delete.execute(dao);
 
 				break;
 			case (99):
-				LoggerFactory.getLogger("dev.ihm").info("System Finalized");
+				co.app("System Finalized");
 				break;
 			default:
 				co.console("Code not found");

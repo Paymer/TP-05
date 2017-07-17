@@ -104,20 +104,20 @@ public class Pizza {
 	// Metodo To String
 	@Override
 	public String toString() {
-		String chaine = "";
+		StringBuilder chaine = new StringBuilder();
 		try {
 			for (Field field : this.getClass().getDeclaredFields()) {
 				ToString annotation = field.getAnnotation(ToString.class);
 				if (annotation != null) {
 
-					chaine += " " + field.get(this).toString();
+					chaine.append(" ").append(field.get(this).toString());
 				}
 			}
 		} catch (Exception e) {
 			co.console("Une erreur s'est produite " + e.getMessage());
 			return "";
 		}
-		return chaine;
+		return chaine.toString();
 	}
 
 }
