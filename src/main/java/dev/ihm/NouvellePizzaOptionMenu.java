@@ -8,6 +8,7 @@ import dev.dao.PizzaDao;
 import dev.tpexception.SavePizzaException;
 
 public class NouvellePizzaOptionMenu extends OptionMenu {
+	Console co = new Console();
 
 	@Override
 	public String getLibelle() {
@@ -43,6 +44,8 @@ public class NouvellePizzaOptionMenu extends OptionMenu {
 				dao.saveNewPizza(new Pizza(code, nom, prix, categ));
 				co.app("Added new Pizza");
 			} catch (SavePizzaException e) {
+				// in the file the e.message will appear twice
+				co.app(e.getMessage(), e);
 				co.console(e.getMessage());
 			}
 

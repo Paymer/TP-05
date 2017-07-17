@@ -6,6 +6,7 @@ import dev.dao.Pizza;
 import dev.dao.PizzaDao;
 
 public class ListerPizzasOptionMenu extends OptionMenu {
+	Console co = new Console();
 
 	@Override
 	public String getLibelle() {

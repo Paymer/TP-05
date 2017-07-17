@@ -30,4 +30,10 @@ public class Console {
 		LoggerFactory.getLogger("dev.dao").info(message);
 
 	}
+
+	public void app(String message, Object e) {
+
+		LoggerFactory.getLogger("dev.dao").error(message, e);
+
+	}
 }

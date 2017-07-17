@@ -17,7 +17,7 @@ public class Modify extends OptionMenu {
 	@Override
 	public void execute(PizzaDao dao) {
 		Scanner scann = new Scanner(System.in);
-
+		Console co = new Console();
 		// ask the code of the pizza to modify
 
 		co.console("Veuillez saisir le code de la pizza a modifier:");
@@ -25,7 +25,7 @@ public class Modify extends OptionMenu {
 		String oldCode = scann.next();
 
 		// Checking if the user wants to exit
-		if (!oldCode.equals("99")) {
+		if (!"99".equals(oldCode)) {
 			// The user has chosen a code, now it is necessary to demand the
 			// rest of the information
 			co.console("Introduisez le noveau code");
@@ -55,7 +55,10 @@ public class Modify extends OptionMenu {
 				co.app(" Modification done ");
 			} catch (UpdatePizzaException e) {
 				// in case the code does not exist it throws an exception
+				// in the file the e.message will appear twice
+				co.app(e.getMessage(), e);
 				co.console(e.getMessage());
+
 			}
 		}
 

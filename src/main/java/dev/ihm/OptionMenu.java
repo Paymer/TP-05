@@ -8,5 +8,4 @@ public abstract class OptionMenu {
 
 	public abstract String getLibelle();
 
-	Console co = new Console();
 }
