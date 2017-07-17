@@ -1,8 +1,8 @@
-package dev.optionmenu;
+package dev.ihm;
 
 import java.util.Scanner;
 
-import dev.TP05.PizzaDao;
+import dev.dao.PizzaDao;
 import dev.tpexception.DeletePizzaException;
 
 public class Delete extends OptionMenu {
@@ -15,8 +15,8 @@ public class Delete extends OptionMenu {
 	@Override
 	public void execute(PizzaDao dao) {
 
-		System.out.println("Veuillez saisir le code de la pizza a eliminer:");
-		System.out.println("99 pour abandonner");
+		co.console("Veuillez saisir le code de la pizza a eliminer:");
+		co.console("99 pour abandonner");
 
 		Scanner scann = new Scanner(System.in);
 		String codePizza = scann.next();
@@ -27,7 +27,7 @@ public class Delete extends OptionMenu {
 				dao.deletePizza(codePizza);
 			} catch (DeletePizzaException e) {
 				// in case the code does not exist it throws an exception
-				System.out.println(e.getMessage());
+				co.console(e.getMessage());
 
 			}
 		}

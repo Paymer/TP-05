@@ -1,13 +1,12 @@
-package dev.TP05;
+package dev.ihm;
 
 import java.util.Scanner;
 
-import dev.optionmenu.Delete;
-import dev.optionmenu.ListerPizzasOptionMenu;
-import dev.optionmenu.Modify;
-import dev.optionmenu.NouvellePizzaOptionMenu;
+import dev.dao.PizzaDao;
 
 public class Menu {
+
+	Console co = new Console();
 
 	ListerPizzasOptionMenu A = new ListerPizzasOptionMenu();
 	NouvellePizzaOptionMenu B = new NouvellePizzaOptionMenu();
@@ -19,8 +18,6 @@ public class Menu {
 		PizzaDao dao = new PizzaDao();
 
 		afficher();
-
-
 
 		Scanner scann = new Scanner(System.in);
 		int a = scann.nextInt();
@@ -45,14 +42,14 @@ public class Menu {
 				break;
 
 			case (4):// Delete a Pizza from the list
-				
-					D.execute(dao);
+
+				D.execute(dao);
 
 				break;
 			case (99):
 				break;
 			default:
-				System.out.println("Code not found");
+				co.console("Code not found");
 			}
 
 			afficher();
@@ -64,15 +61,14 @@ public class Menu {
 
 	private void afficher() {
 
-		System.out.println("***** Pizzeria Administration *****");
-		
+		co.console("***** Pizzeria Administration *****");
 
-		System.out.println(A.getLibelle());
-		System.out.println(B.getLibelle());
-		System.out.println(C.getLibelle());
-		System.out.println(D.getLibelle());
-		System.out.println("99. Sortir");
-		
+		co.console(A.getLibelle());
+		co.console(B.getLibelle());
+		co.console(C.getLibelle());
+		co.console(D.getLibelle());
+		co.console("99. Sortir");
+
 	}
 
 }

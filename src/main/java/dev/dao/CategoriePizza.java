@@ -1,4 +1,4 @@
-package dev.TP05;
+package dev.dao;
 
 public enum CategoriePizza {
 	VIANDE("Viande"), POISSON("Poisson"), SANS_VIANDE("Sans Viande");
