@@ -7,7 +7,7 @@ import dev.dao.Pizza;
 import dev.dao.PizzaDao;
 import dev.tpexception.SavePizzaException;
 
-public class NouvellePizzaOptionMenu extends OptionMenu {
+public class NouvellePizzaOptionMenu implements OptionMenu {
 	Console co = new Console();
 
 	@Override

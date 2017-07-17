@@ -1,123 +1,94 @@
 
-15:43:30.525 [main] INFO  dev.dao - System Initialized
-15:43:30.531 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
-15:43:30.531 [main] INFO  dev.ihm - 1. Lister les pizzas
-15:43:30.531 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
-15:43:30.531 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
-15:43:30.531 [main] INFO  dev.ihm - 4. Supprimer une pizza
-15:43:30.531 [main] INFO  dev.ihm - 99. Sortir
-15:43:32.637 [main] INFO  dev.dao -  Choose to List 
-15:43:32.649 [main] INFO  dev.ihm -  0 PEP Peperoni 12.5 VIANDE
-15:43:32.649 [main] INFO  dev.ihm -  1 MAR Margherita 14.0 VIANDE
-15:43:32.649 [main] INFO  dev.ihm -  2 REI La Reine 11.5 VIANDE
-15:43:32.649 [main] INFO  dev.ihm -  3 FRO La 4 fromages 12.0 SANS_VIANDE
-15:43:32.649 [main] INFO  dev.ihm -  4 CAN La Cannibale 12.5 VIANDE
-15:43:32.649 [main] INFO  dev.ihm -  5 SAV La savoyarde 13.0 POISSON
-15:43:32.649 [main] INFO  dev.ihm -  6 ORI L'orientale 13.5 SANS_VIANDE
-15:43:32.649 [main] INFO  dev.ihm -  7 IND L'indienne 14.0 SANS_VIANDE
-15:43:32.649 [main] INFO  dev.dao -  List done 
-15:43:32.649 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
-15:43:32.650 [main] INFO  dev.ihm - 1. Lister les pizzas
-15:43:32.650 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
-15:43:32.650 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
-15:43:32.650 [main] INFO  dev.ihm - 4. Supprimer une pizza
-15:43:32.650 [main] INFO  dev.ihm - 99. Sortir
-15:43:36.677 [main] INFO  dev.dao -  Choose to Add 
-15:43:36.677 [main] INFO  dev.ihm - Veuillez saisir le code
-15:43:40.141 [main] INFO  dev.ihm - Veuillez saisir le nom (sans espace)
-15:43:41.205 [main] INFO  dev.ihm - Veuillez saisir la categorie
-15:43:44.510 [main] INFO  dev.ihm - Veuillez saisir le prix
-15:43:45.549 [main] INFO  dev.dao - Added new Pizza
-15:43:45.549 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
-15:43:45.550 [main] INFO  dev.ihm - 1. Lister les pizzas
-15:43:45.550 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
-15:43:45.550 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
-15:43:45.550 [main] INFO  dev.ihm - 4. Supprimer une pizza
-15:43:45.550 [main] INFO  dev.ihm - 99. Sortir
-15:43:50.357 [main] INFO  dev.dao -  Choose to List 
-15:43:50.357 [main] INFO  dev.ihm -  0 PEP Peperoni 12.5 VIANDE
-15:43:50.357 [main] INFO  dev.ihm -  1 MAR Margherita 14.0 VIANDE
-15:43:50.357 [main] INFO  dev.ihm -  2 REI La Reine 11.5 VIANDE
-15:43:50.357 [main] INFO  dev.ihm -  3 FRO La 4 fromages 12.0 SANS_VIANDE
-15:43:50.357 [main] INFO  dev.ihm -  4 CAN La Cannibale 12.5 VIANDE
-15:43:50.357 [main] INFO  dev.ihm -  5 SAV La savoyarde 13.0 POISSON
-15:43:50.357 [main] INFO  dev.ihm -  6 ORI L'orientale 13.5 SANS_VIANDE
-15:43:50.358 [main] INFO  dev.ihm -  7 IND L'indienne 14.0 SANS_VIANDE
-15:43:50.358 [main] INFO  dev.ihm -  0 ACA kdjfhq 15.0 VIANDE
-15:43:50.358 [main] INFO  dev.dao -  List done 
-15:43:50.358 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
-15:43:50.358 [main] INFO  dev.ihm - 1. Lister les pizzas
-15:43:50.358 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
-15:43:50.358 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
-15:43:50.358 [main] INFO  dev.ihm - 4. Supprimer une pizza
-15:43:50.358 [main] INFO  dev.ihm - 99. Sortir
-15:43:54.974 [main] INFO  dev.dao -  Choose to Modify 
-15:43:54.974 [main] INFO  dev.ihm - Veuillez saisir le code de la pizza a modifier:
-15:43:54.974 [main] INFO  dev.ihm - 99 pour abandonner
-15:43:56.213 [main] INFO  dev.ihm - Introduisez le noveau code
-15:43:58.885 [main] INFO  dev.ihm - Introduisez le noveau nom (sans espace)
-15:43:59.909 [main] INFO  dev.ihm - Veuillez saisir la categorie
-15:44:02.493 [main] INFO  dev.ihm - Introduisez le noveau prix
-15:44:03.981 [main] INFO  dev.dao -  Modification done 
-15:44:03.981 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
-15:44:03.981 [main] INFO  dev.ihm - 1. Lister les pizzas
-15:44:03.981 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
-15:44:03.981 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
-15:44:03.981 [main] INFO  dev.ihm - 4. Supprimer une pizza
-15:44:03.982 [main] INFO  dev.ihm - 99. Sortir
-15:44:07.429 [main] INFO  dev.dao -  Choose to Delete 
-15:44:07.429 [main] INFO  dev.ihm - Veuillez saisir le code de la pizza a eliminer:
-15:44:07.429 [main] INFO  dev.ihm - 99 pour abandonner
-15:44:09.965 [main] INFO  dev.dao -  Deletion done 
-15:44:09.966 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
-15:44:09.966 [main] INFO  dev.ihm - 1. Lister les pizzas
-15:44:09.966 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
-15:44:09.966 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
-15:44:09.966 [main] INFO  dev.ihm - 4. Supprimer une pizza
-15:44:09.966 [main] INFO  dev.ihm - 99. Sortir
-16:02:49.982 [main] INFO  dev.dao - System Initialized
-16:02:50.000 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
-16:02:50.000 [main] INFO  dev.ihm - 1. Lister les pizzas
-16:02:50.000 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
-16:02:50.000 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
-16:02:50.000 [main] INFO  dev.ihm - 4. Supprimer une pizza
-16:02:50.000 [main] INFO  dev.ihm - 99. Sortir
-16:02:52.147 [main] INFO  dev.dao -  Choose to List 
-16:02:52.155 [main] INFO  dev.ihm -  VIANDE
-16:02:52.155 [main] INFO  dev.ihm -  VIANDE
-16:02:52.155 [main] INFO  dev.ihm -  VIANDE
-16:02:52.155 [main] INFO  dev.ihm -  SANS_VIANDE
-16:02:52.156 [main] INFO  dev.ihm -  VIANDE
-16:02:52.156 [main] INFO  dev.ihm -  POISSON
-16:02:52.156 [main] INFO  dev.ihm -  SANS_VIANDE
-16:02:52.156 [main] INFO  dev.ihm -  SANS_VIANDE
-16:02:52.156 [main] INFO  dev.dao -  List done 
-16:02:52.156 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
-16:02:52.156 [main] INFO  dev.ihm - 1. Lister les pizzas
-16:02:52.156 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
-16:02:52.156 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
-16:02:52.156 [main] INFO  dev.ihm - 4. Supprimer une pizza
-16:02:52.156 [main] INFO  dev.ihm - 99. Sortir
-16:05:03.695 [main] INFO  dev.dao - System Initialized
-16:05:03.702 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
-16:05:03.702 [main] INFO  dev.ihm - 1. Lister les pizzas
-16:05:03.702 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
-16:05:03.702 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
-16:05:03.702 [main] INFO  dev.ihm - 4. Supprimer une pizza
-16:05:03.702 [main] INFO  dev.ihm - 99. Sortir
-16:05:05.651 [main] INFO  dev.dao -  Choose to List 
-16:05:05.659 [main] INFO  dev.ihm -  0 PEP Peperoni 12.5 VIANDE
-16:05:05.659 [main] INFO  dev.ihm -  1 MAR Margherita 14.0 VIANDE
-16:05:05.660 [main] INFO  dev.ihm -  2 REI La Reine 11.5 VIANDE
-16:05:05.660 [main] INFO  dev.ihm -  3 FRO La 4 fromages 12.0 SANS_VIANDE
-16:05:05.660 [main] INFO  dev.ihm -  4 CAN La Cannibale 12.5 VIANDE
-16:05:05.660 [main] INFO  dev.ihm -  5 SAV La savoyarde 13.0 POISSON
-16:05:05.660 [main] INFO  dev.ihm -  6 ORI L'orientale 13.5 SANS_VIANDE
-16:05:05.660 [main] INFO  dev.ihm -  7 IND L'indienne 14.0 SANS_VIANDE
-16:05:05.660 [main] INFO  dev.dao -  List done 
-16:05:05.660 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
-16:05:05.660 [main] INFO  dev.ihm - 1. Lister les pizzas
-16:05:05.660 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
-16:05:05.660 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
-16:05:05.660 [main] INFO  dev.ihm - 4. Supprimer une pizza
-16:05:05.660 [main] INFO  dev.ihm - 99. Sortir
+
+16:43:46.630 [main] INFO  dev.dao - System Initialized
+16:43:46.713 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
+16:43:46.714 [main] INFO  dev.ihm - 1. Lister les pizzas
+16:43:46.714 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
+16:43:46.714 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
+16:43:46.714 [main] INFO  dev.ihm - 4. Supprimer une pizza
+16:43:46.714 [main] INFO  dev.ihm - 99. Sortir
+16:43:49.300 [main] INFO  dev.dao -  Choose to List 
+16:43:49.308 [main] INFO  dev.ihm -  0 PEP Peperoni 12.5 VIANDE
+16:43:49.309 [main] INFO  dev.ihm -  1 MAR Margherita 14.0 VIANDE
+16:43:49.309 [main] INFO  dev.ihm -  2 REI La Reine 11.5 VIANDE
+16:43:49.309 [main] INFO  dev.ihm -  3 FRO La 4 fromages 12.0 SANS_VIANDE
+16:43:49.309 [main] INFO  dev.ihm -  4 CAN La Cannibale 12.5 VIANDE
+16:43:49.309 [main] INFO  dev.ihm -  5 SAV La savoyarde 13.0 POISSON
+16:43:49.309 [main] INFO  dev.ihm -  6 ORI L'orientale 13.5 SANS_VIANDE
+16:43:49.309 [main] INFO  dev.ihm -  7 IND L'indienne 14.0 SANS_VIANDE
+16:43:49.309 [main] INFO  dev.dao -  List done 
+16:43:49.309 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
+16:43:49.309 [main] INFO  dev.ihm - 1. Lister les pizzas
+16:43:49.309 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
+16:43:49.309 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
+16:43:49.310 [main] INFO  dev.ihm - 4. Supprimer une pizza
+16:43:49.310 [main] INFO  dev.ihm - 99. Sortir
+16:43:56.476 [main] INFO  dev.dao -  Choose to Add 
+16:43:56.476 [main] INFO  dev.ihm - Veuillez saisir le code
+16:43:59.204 [main] INFO  dev.ihm - Veuillez saisir le nom (sans espace)
+16:44:01.476 [main] INFO  dev.ihm - Veuillez saisir la categorie
+16:44:04.540 [main] INFO  dev.ihm - Veuillez saisir le prix
+16:44:06.244 [main] INFO  dev.dao - Added new Pizza
+16:44:06.244 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
+16:44:06.244 [main] INFO  dev.ihm - 1. Lister les pizzas
+16:44:06.244 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
+16:44:06.244 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
+16:44:06.245 [main] INFO  dev.ihm - 4. Supprimer une pizza
+16:44:06.245 [main] INFO  dev.ihm - 99. Sortir
+16:44:14.915 [main] INFO  dev.dao -  Choose to Modify 
+16:44:14.916 [main] INFO  dev.ihm - Veuillez saisir le code de la pizza a modifier:
+16:44:14.916 [main] INFO  dev.ihm - 99 pour abandonner
+16:44:17.627 [main] INFO  dev.ihm - Introduisez le noveau code
+16:44:20.635 [main] INFO  dev.ihm - Introduisez le noveau nom (sans espace)
+16:44:21.891 [main] INFO  dev.ihm - Veuillez saisir la categorie
+16:44:26.444 [main] INFO  dev.ihm - Introduisez le noveau prix
+16:44:28.508 [main] INFO  dev.dao -  Modification done 
+16:44:28.508 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
+16:44:28.508 [main] INFO  dev.ihm - 1. Lister les pizzas
+16:44:28.509 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
+16:44:28.509 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
+16:44:28.509 [main] INFO  dev.ihm - 4. Supprimer une pizza
+16:44:28.509 [main] INFO  dev.ihm - 99. Sortir
+16:44:32.980 [main] INFO  dev.dao -  Choose to List 
+16:44:32.980 [main] INFO  dev.ihm -  0 PEP Peperoni 12.5 VIANDE
+16:44:32.980 [main] INFO  dev.ihm -  1 MAR Margherita 14.0 VIANDE
+16:44:32.980 [main] INFO  dev.ihm -  2 REI La Reine 11.5 VIANDE
+16:44:32.980 [main] INFO  dev.ihm -  3 FRO La 4 fromages 12.0 SANS_VIANDE
+16:44:32.980 [main] INFO  dev.ihm -  4 CON sdkhfl 20.0 VIANDE
+16:44:32.980 [main] INFO  dev.ihm -  5 SAV La savoyarde 13.0 POISSON
+16:44:32.980 [main] INFO  dev.ihm -  6 ORI L'orientale 13.5 SANS_VIANDE
+16:44:32.981 [main] INFO  dev.ihm -  7 IND L'indienne 14.0 SANS_VIANDE
+16:44:32.981 [main] INFO  dev.ihm -  0 ARA dsklfh 15.0 VIANDE
+16:44:32.981 [main] INFO  dev.dao -  List done 
+16:44:32.981 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
+16:44:32.981 [main] INFO  dev.ihm - 1. Lister les pizzas
+16:44:32.981 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
+16:44:32.981 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
+16:44:32.981 [main] INFO  dev.ihm - 4. Supprimer une pizza
+16:44:32.981 [main] INFO  dev.ihm - 99. Sortir
+16:44:40.900 [main] INFO  dev.dao -  Choose to Delete 
+16:44:40.900 [main] INFO  dev.ihm - Veuillez saisir le code de la pizza a eliminer:
+16:44:40.900 [main] INFO  dev.ihm - 99 pour abandonner
+16:44:42.612 [main] INFO  dev.dao -  Deletion done 
+16:44:42.612 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
+16:44:42.612 [main] INFO  dev.ihm - 1. Lister les pizzas
+16:44:42.612 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
+16:44:42.612 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
+16:44:42.612 [main] INFO  dev.ihm - 4. Supprimer une pizza
+16:44:42.612 [main] INFO  dev.ihm - 99. Sortir
+16:44:45.227 [main] INFO  dev.dao -  Choose to List 
+16:44:45.228 [main] INFO  dev.ihm -  0 PEP Peperoni 12.5 VIANDE
+16:44:45.228 [main] INFO  dev.ihm -  1 MAR Margherita 14.0 VIANDE
+16:44:45.228 [main] INFO  dev.ihm -  3 FRO La 4 fromages 12.0 SANS_VIANDE
+16:44:45.228 [main] INFO  dev.ihm -  4 CON sdkhfl 20.0 VIANDE
+16:44:45.228 [main] INFO  dev.ihm -  5 SAV La savoyarde 13.0 POISSON
+16:44:45.228 [main] INFO  dev.ihm -  6 ORI L'orientale 13.5 SANS_VIANDE
+16:44:45.228 [main] INFO  dev.ihm -  7 IND L'indienne 14.0 SANS_VIANDE
+16:44:45.228 [main] INFO  dev.ihm -  0 ARA dsklfh 15.0 VIANDE
+16:44:45.229 [main] INFO  dev.dao -  List done 
+16:44:45.229 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
+16:44:45.229 [main] INFO  dev.ihm - 1. Lister les pizzas
+16:44:45.229 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
+16:44:45.229 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
+16:44:45.229 [main] INFO  dev.ihm - 4. Supprimer une pizza
+16:44:45.229 [main] INFO  dev.ihm - 99. Sortir

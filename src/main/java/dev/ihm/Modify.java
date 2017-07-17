@@ -7,7 +7,7 @@ import dev.dao.Pizza;
 import dev.dao.PizzaDao;
 import dev.tpexception.UpdatePizzaException;
 
-public class Modify extends OptionMenu {
+public class Modify implements OptionMenu {
 
 	@Override
 	public String getLibelle() {

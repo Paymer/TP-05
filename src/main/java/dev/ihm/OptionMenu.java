@@ -2,10 +2,11 @@ package dev.ihm;
 
 import dev.dao.PizzaDao;
 
-public abstract class OptionMenu {
 
-	public abstract void execute(PizzaDao dao);
+public interface OptionMenu {
 
-	public abstract String getLibelle();
+	
+	public void execute(PizzaDao dao);
 
+	public String getLibelle();
 }

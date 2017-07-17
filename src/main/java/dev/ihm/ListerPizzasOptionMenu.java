@@ -5,7 +5,7 @@ import java.util.List;
 import dev.dao.Pizza;
 import dev.dao.PizzaDao;
 
-public class ListerPizzasOptionMenu extends OptionMenu {
+public class ListerPizzasOptionMenu implements OptionMenu {
 	Console co = new Console();
 
 	@Override

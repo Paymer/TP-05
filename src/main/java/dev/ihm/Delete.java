@@ -5,7 +5,7 @@ import java.util.Scanner;
 import dev.dao.PizzaDao;
 import dev.tpexception.DeletePizzaException;
 
-public class Delete extends OptionMenu {
+public class Delete implements OptionMenu {
 	Console co = new Console();
 
 	@Override
