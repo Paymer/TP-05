@@ -1,6 +1,6 @@
 package dev.optionmenu;
 
-import java.util.List;
+
 import java.util.Scanner;
 
 import dev.TP05.CategoriePizza;
@@ -15,7 +15,7 @@ public class NouvellePizzaOptionMenu extends OptionMenu {
 	}
 
 	public void execute(PizzaDao dao) {
-		List<Pizza> pizzas = dao.findAllPizzas();
+		
 
 		Scanner scann = new Scanner(System.in);
 		System.out.println("Veuillez saisir le code");

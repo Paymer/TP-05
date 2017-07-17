@@ -1,6 +1,6 @@
 package dev.TP05;
 
-import java.util.Scanner;
+
 
 
 
@@ -17,7 +17,7 @@ public class Main
         M.manage();
         
         
-        Scanner scann = new Scanner(System.in);
+  
   
     }}
 

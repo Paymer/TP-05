@@ -1,12 +1,11 @@
 package dev.TP05;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dev.tpexception.DeletePizzaException;
 import dev.tpexception.SavePizzaException;
 import dev.tpexception.UpdatePizzaException;
-
-import java.util.ArrayList;
 
 public class PizzaDao implements IPizzaDao {
 
@@ -61,7 +60,7 @@ public class PizzaDao implements IPizzaDao {
 
 			a.setPizza(pizza.code, pizza.nom, pizza.prix, pizza.categ);
 		}
-		else if (a!=null && b!=null) {
+		else if (a!=null) {
 			throw new UpdatePizzaException("The new code : " + pizza.code + " already exists");
 		}
 		else {

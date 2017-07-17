@@ -7,6 +7,5 @@ public enum CategoriePizza {
 			String name;
 	private CategoriePizza(String name) {
 		this.name = name;
-		// TODO Auto-generated constructor stub
 	}
 }
