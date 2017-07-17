@@ -20,6 +20,7 @@ public class ListerPizzasOptionMenu extends OptionMenu {
 			co.console(pizzas.get(i).toString());
 			i++;
 		}
+		co.console(" List done ");
 	}
 
 }

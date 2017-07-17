@@ -25,6 +25,7 @@ public class Delete extends OptionMenu {
 
 			try {
 				dao.deletePizza(codePizza);
+				co.console(" Deletion done ");
 			} catch (DeletePizzaException e) {
 				// in case the code does not exist it throws an exception
 				co.console(e.getMessage());

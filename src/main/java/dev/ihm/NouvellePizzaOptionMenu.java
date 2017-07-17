@@ -41,6 +41,7 @@ public class NouvellePizzaOptionMenu extends OptionMenu {
 
 			try {
 				dao.saveNewPizza(new Pizza(code, nom, prix, categ));
+				co.console("Added new Pizza");
 			} catch (SavePizzaException e) {
 				co.console(e.getMessage());
 			}

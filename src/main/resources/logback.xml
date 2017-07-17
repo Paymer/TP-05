@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+	<!-- redirection des logs vers la sortir Console Standard -->
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%msg%n</pattern>
+		</encoder>
+	</appender>
+
+
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>app.log</file>
+		<append>true</append>
+		<immediateFlush>true</immediateFlush>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<!-- politique de log pour les classes du package dev.dao -->
+
+	<logger name="dev.dao" level="INFO">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+
+<!-- politique de log pour les classes du package dev.ihm -->
+
+	<logger name="dev.ihm" level="INFO">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+
+	<!-- règle de logs par défaut. Ici : niveau INFO vers la sortie standard -->
+
+	<root level="DEBUG">
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>
+
+
+
+
+
+

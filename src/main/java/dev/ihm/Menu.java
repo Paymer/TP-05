@@ -2,16 +2,18 @@ package dev.ihm;
 
 import java.util.Scanner;
 
+import org.slf4j.LoggerFactory;
+
 import dev.dao.PizzaDao;
 
 public class Menu {
 
 	Console co = new Console();
 
-	ListerPizzasOptionMenu A = new ListerPizzasOptionMenu();
-	NouvellePizzaOptionMenu B = new NouvellePizzaOptionMenu();
-	Modify C = new Modify();
-	Delete D = new Delete();
+	ListerPizzasOptionMenu list = new ListerPizzasOptionMenu();
+	NouvellePizzaOptionMenu add = new NouvellePizzaOptionMenu();
+	Modify modify = new Modify();
+	Delete delete = new Delete();
 
 	public void manage() {
 
@@ -28,25 +30,33 @@ public class Menu {
 
 			case (1): // ListerPizzasOptionMenu of Pizzas
 
-				A.execute(dao);
+				co.console(" Choose to List ");
+				list.execute(dao);
+
 				break;
 
 			case (2):// NouvellePizzaOptionMenu a new Pizza
 
-				B.execute(dao);
+				co.console(" Choose to Add ");
+				add.execute(dao);
 
 				break;
 
 			case (3): // Correct the information of one pizza
-				C.execute(dao);
+
+				co.console(" Choose to Modify ");
+				modify.execute(dao);
+
 				break;
 
 			case (4):// Delete a Pizza from the list
 
-				D.execute(dao);
+				co.console(" Choose to Delete ");
+				delete.execute(dao);
 
 				break;
 			case (99):
+				LoggerFactory.getLogger("dev.ihm").info("System Finalized");
 				break;
 			default:
 				co.console("Code not found");
@@ -63,10 +73,10 @@ public class Menu {
 
 		co.console("***** Pizzeria Administration *****");
 
-		co.console(A.getLibelle());
-		co.console(B.getLibelle());
-		co.console(C.getLibelle());
-		co.console(D.getLibelle());
+		co.console(list.getLibelle());
+		co.console(add.getLibelle());
+		co.console(modify.getLibelle());
+		co.console(delete.getLibelle());
 		co.console("99. Sortir");
 
 	}
