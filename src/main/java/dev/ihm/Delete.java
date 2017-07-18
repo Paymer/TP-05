@@ -6,7 +6,7 @@ import dev.dao.PizzaDao;
 import dev.tpexception.DeletePizzaException;
 
 public class Delete implements OptionMenu {
-	Console co = new Console();
+	ConsoleLogger co = new ConsoleLogger();
 
 	@Override
 	public String getLibelle() {

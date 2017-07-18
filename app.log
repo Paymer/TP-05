@@ -92,3 +92,44 @@
 16:44:45.229 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
 16:44:45.229 [main] INFO  dev.ihm - 4. Supprimer une pizza
 16:44:45.229 [main] INFO  dev.ihm - 99. Sortir
+10:02:25.744 [main] INFO  dev.dao - System Initialized
+10:02:25.753 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
+10:02:25.753 [main] INFO  dev.ihm - 1. Lister les pizzas
+10:02:25.753 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
+10:02:25.753 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
+10:02:25.753 [main] INFO  dev.ihm - 4. Supprimer une pizza
+10:02:25.753 [main] INFO  dev.ihm - 99. Sortir
+10:02:28.822 [main] INFO  dev.dao -  Choose to Add 
+10:02:28.822 [main] INFO  dev.ihm - Veuillez saisir le code
+10:02:32.430 [main] INFO  dev.ihm - Veuillez saisir le nom (sans espace)
+10:02:34.126 [main] INFO  dev.ihm - Veuillez saisir la categorie
+10:02:37.718 [main] INFO  dev.ihm - Veuillez saisir le prix
+10:02:40.161 [main] ERROR dev.dao - This code: CAN already exists.
+dev.tpexception.SavePizzaException: This code: CAN already exists.
+	at dev.dao.PizzaDao.saveNewPizza(PizzaDao.java:45)
+	at dev.ihm.NouvellePizzaOptionMenu.execute(NouvellePizzaOptionMenu.java:44)
+	at dev.ihm.Menu.manage(Menu.java:39)
+	at dev.dao.Main.main(Main.java:16)
+10:02:40.163 [main] INFO  dev.ihm - This code: CAN already exists.
+10:02:40.163 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
+10:02:40.163 [main] INFO  dev.ihm - 1. Lister les pizzas
+10:02:40.163 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
+10:02:40.163 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
+10:02:40.163 [main] INFO  dev.ihm - 4. Supprimer une pizza
+10:02:40.163 [main] INFO  dev.ihm - 99. Sortir
+10:02:49.686 [main] INFO  dev.dao -  Choose to List 
+10:02:49.694 [main] INFO  dev.ihm -  0 PEP Peperoni 12.5 VIANDE
+10:02:49.694 [main] INFO  dev.ihm -  1 MAR Margherita 14.0 VIANDE
+10:02:49.694 [main] INFO  dev.ihm -  2 REI La Reine 11.5 VIANDE
+10:02:49.694 [main] INFO  dev.ihm -  3 FRO La 4 fromages 12.0 SANS_VIANDE
+10:02:49.694 [main] INFO  dev.ihm -  4 CAN La Cannibale 12.5 VIANDE
+10:02:49.694 [main] INFO  dev.ihm -  5 SAV La savoyarde 13.0 POISSON
+10:02:49.694 [main] INFO  dev.ihm -  6 ORI L'orientale 13.5 SANS_VIANDE
+10:02:49.694 [main] INFO  dev.ihm -  7 IND L'indienne 14.0 SANS_VIANDE
+10:02:49.694 [main] INFO  dev.dao -  List done 
+10:02:49.694 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
+10:02:49.694 [main] INFO  dev.ihm - 1. Lister les pizzas
+10:02:49.694 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
+10:02:49.695 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
+10:02:49.695 [main] INFO  dev.ihm - 4. Supprimer une pizza
+10:02:49.695 [main] INFO  dev.ihm - 99. Sortir

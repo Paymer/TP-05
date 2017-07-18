@@ -2,7 +2,7 @@ package dev.ihm;
 
 import org.slf4j.LoggerFactory;
 
-public class Console {
+public class ConsoleLogger {
 
 	public void console(String message) {
 

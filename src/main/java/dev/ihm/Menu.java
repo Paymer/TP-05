@@ -6,7 +6,7 @@ import dev.dao.PizzaDao;
 
 public class Menu {
 
-	Console co = new Console();
+	ConsoleLogger co = new ConsoleLogger();
 
 	ListerPizzasOptionMenu list = new ListerPizzasOptionMenu();
 	NouvellePizzaOptionMenu add = new NouvellePizzaOptionMenu();

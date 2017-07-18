@@ -8,7 +8,7 @@ import dev.dao.PizzaDao;
 import dev.tpexception.SavePizzaException;
 
 public class NouvellePizzaOptionMenu implements OptionMenu {
-	Console co = new Console();
+	ConsoleLogger co = new ConsoleLogger();
 
 	@Override
 	public String getLibelle() {

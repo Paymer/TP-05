@@ -2,7 +2,7 @@ package dev.dao;
 
 import java.lang.reflect.Field;
 
-import dev.ihm.Console;
+import dev.ihm.ConsoleLogger;
 
 public class Pizza {
 	@ToString
@@ -16,7 +16,7 @@ public class Pizza {
 	@ToString
 	CategoriePizza categ;
 
-	Console co = new Console();
+	ConsoleLogger co = new ConsoleLogger();
 	/* Inicializacion del metodo */
 
 	public Pizza(int id, String code, String nom, double prix, CategoriePizza categ) {

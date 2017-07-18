@@ -17,7 +17,7 @@ public class Modify implements OptionMenu {
 	@Override
 	public void execute(PizzaDao dao) {
 		Scanner scann = new Scanner(System.in);
-		Console co = new Console();
+		ConsoleLogger co = new ConsoleLogger();
 		// ask the code of the pizza to modify
 
 		co.console("Veuillez saisir le code de la pizza a modifier:");
