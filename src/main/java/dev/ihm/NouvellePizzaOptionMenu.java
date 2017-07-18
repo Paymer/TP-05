@@ -29,11 +29,10 @@ public class NouvellePizzaOptionMenu implements OptionMenu {
 		co.console("Veuillez saisir le prix");
 		double prix;
 
-		while (!scann.hasNextDouble()) {
-			// * THE FIRST TIME IT PRINTS IT TWO TIMES! NOT CORRECT! SCANNER
-			// BUG!!!*//
+		while (!scann.hasNextDouble()) {	
 			co.console("Sorry, couldn't understand you! Try it again!");
-
+			// * THE FIRST TIME IT PRINTS IT TWO TIMES! NOT CORRECT! SCANNER
+						// BUG!!!*//
 			scann.nextLine();
 		}
 
