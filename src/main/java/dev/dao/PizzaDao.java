@@ -3,15 +3,21 @@ package dev.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import dev.tpexception.DeletePizzaException;
-import dev.tpexception.SavePizzaException;
-import dev.tpexception.UpdatePizzaException;
+import dev.exception.DeletePizzaException;
+import dev.exception.SavePizzaException;
+import dev.exception.UpdatePizzaException;
 
 public class PizzaDao implements IPizzaDao {
+	
+	
 
-	List<Pizza> pizzas = new ArrayList<>();
-
-	public PizzaDao() {
+	private List<Pizza> pizzas = new ArrayList<>();
+	/**
+	 * Este metodo no deberia ser un constructor
+	 * Puede aue nos interese empezar desde otra lista
+	 * @return 
+	 */
+	public void init() {
 		pizzas.add(new Pizza(0, "PEP", "Peperoni", 12.5, CategoriePizza.VIANDE));
 		pizzas.add(new Pizza(1, "MAR", "Margherita", 14, CategoriePizza.VIANDE));
 		pizzas.add(new Pizza(2, "REI", "La Reine", 11.5, CategoriePizza.VIANDE));
@@ -22,22 +28,45 @@ public class PizzaDao implements IPizzaDao {
 		pizzas.add(new Pizza(7, "IND", "L'indienne", 14, CategoriePizza.SANS_VIANDE));
 	}
 
-	public List<Pizza> getPizzas() {
-		return pizzas;
-	}
+	/** Setters and Getters
+	 */
 
 	public void setPizzas(List<Pizza> pizzas) {
 		this.pizzas = pizzas;
 	}
 
 	@Override
-	public List<Pizza> findAllPizzas() {
-		return pizzas;
+	public List<Pizza> getPizzas() {
+		/** Se devuelve una nueva lista de manera
+		 * que aunque la moifiauen no va a variar nuestra lista
+		 */
+		return new ArrayList<>(pizzas);
 	}
 
-	// Adds a new Pizza to the menu
+
+	
+	
+	
+	
+	
+	/** Adds a new Pizza to the Menu
+	 * if it already exists throw an exception
+	 * 
+	 * 
+	 * Le find any return an optional
+	 * si il y a une pizza il return la pizza
+	 * sinon il throw an exception
+	 * 
+	 * pizzas.stream()
+			.filter(p -> p.getCode().equals(pizza.getCode()))
+			.findAny()
+			.orElseThrow(() -> new SavePizzaException("Erreur : Le code de la pizza existe déjà. Pizza non sauvée."));
+	 * 
+	 * 
+	 * 
+	 */
 	@Override
-	public boolean saveNewPizza(Pizza pizza) throws SavePizzaException {
+	public void saveNewPizza(Pizza pizza) throws SavePizzaException {
 
 		Pizza a = checkList(pizza.code);
 
@@ -47,18 +76,19 @@ public class PizzaDao implements IPizzaDao {
 			pizzas.add(pizza);
 
 		}
-		return false;
+		
 	}
 
-	// It modifies a pizza that already exists
+	/** It modifys a pizza that already exist
+	 * if it does not exist throw an exception
+	 */
 	@Override
-	public boolean updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException {
+	public void updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException {
 		// It returns the position of the code searched
 		Pizza a = checkList(codePizza);
 		Pizza b = checkList(pizza.code);
 
 		if (a != null && b == null) {
-
 			a.setPizza(pizza.code, pizza.nom, pizza.prix, pizza.categ);
 		} else if (a != null) {
 			throw new UpdatePizzaException("The new code : " + pizza.code + " already exists");
@@ -66,14 +96,17 @@ public class PizzaDao implements IPizzaDao {
 			throw new UpdatePizzaException("The code : " + pizza.code + " not found");
 		}
 
-		return false;
+	
 
 	}
 
-	// It deletes a pizza
+	/** It deletes a pizza
+	 * searching the code of the pizza
+	 *  It returns the position of the code searched
+	 */
 	@Override
-	public boolean deletePizza(String codePizza) throws DeletePizzaException {
-		// It returns the position of the code searched
+	public void deletePizza(String codePizza) throws DeletePizzaException {
+		
 		Pizza a = checkList(codePizza);
 
 		if (a != null) {
@@ -82,11 +115,16 @@ public class PizzaDao implements IPizzaDao {
 		} else {
 			throw new DeletePizzaException("The code : " + codePizza + " has been not found");
 		}
-		return false;
+	
 	}
 
-	// It returns the position of the code searched
-	/* It searches in the table the position of the code */
+
+	
+	/** It returns the position of the code searched
+	 * It searches in the table the position of the code
+	 *  Does it already exist?
+	 *  Does not exist?
+	 */
 	protected Pizza checkList(String code) {
 
 		/*
@@ -94,10 +132,10 @@ public class PizzaDao implements IPizzaDao {
 		 * la tabla hasta encontrar el codigo o llegar a la ultima posicion de
 		 * la lista.
 		 */
-		for (Pizza pizza : pizzas) {
+		for (Pizza p : pizzas) {
 
-			if (pizza.getCode().equals(code)) {
-				return pizza;
+			if (p.getCode().equals(code)) {
+				return p;
 			}
 		}
 

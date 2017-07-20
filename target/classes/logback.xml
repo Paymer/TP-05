@@ -11,8 +11,8 @@
 	</appender>
 
 
-	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
-		<file>app.log</file>
+	<appender name="FILE_IHM" class="ch.qos.logback.core.FileAppender">
+		<file>ihm.log</file>
 		<append>true</append>
 		<immediateFlush>true</immediateFlush>
 		<encoder>
@@ -24,21 +24,37 @@
 
 
 
+	<appender name="FILE_DAO" class="ch.qos.logback.core.FileAppender">
+		<file>dao.log</file>
+		<append>true</append>
+		<immediateFlush>true</immediateFlush>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
 
 
-<!-- politique de log pour les classes du package dev.ihm -->
+
+<!-- politique de log pour les classes du package dev.ihm  et dev.dao-->
 
 	<logger name="dev.ihm" level="INFO">
 		<appender-ref ref="STDOUT" />
 	</logger>
 
+	<logger name="dev.dao" level="INFO">
+		<appender-ref ref="FILE_DAO" />
+	</logger>
 
-	<!-- règle de logs par défaut. Ici : niveau INFO vers la sortie standard -->
+<!-- règle de logs par défaut. Ici : niveau INFO vers la sortie standard -->
 
-	<root level="DEBUG">
-		<appender-ref ref="FILE" />
+
+	
+	<root level="INFO">
+		<appender-ref ref="FILE_DAO" />
 	</root>
 </configuration>
+
 
 
 

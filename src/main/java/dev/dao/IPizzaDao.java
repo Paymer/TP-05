@@ -2,14 +2,23 @@ package dev.dao;
 
 import java.util.List;
 
-import dev.tpexception.DeletePizzaException;
-import dev.tpexception.SavePizzaException;
-import dev.tpexception.UpdatePizzaException;
+import dev.exception.DeletePizzaException;
+import dev.exception.SavePizzaException;
+import dev.exception.UpdatePizzaException;
 
 public interface IPizzaDao {
 
-	List<Pizza> findAllPizzas();
-	boolean saveNewPizza (Pizza pizza) throws SavePizzaException;
-	boolean updatePizza (String codePizza, Pizza pizza) throws UpdatePizzaException;
-	boolean deletePizza (String codePizza) throws DeletePizzaException;
+	List<Pizza> getPizzas();
+	void saveNewPizza (Pizza pizza) throws SavePizzaException;
+	void updatePizza (String codePizza, Pizza pizza) throws UpdatePizzaException;
+	void deletePizza (String codePizza) throws DeletePizzaException;
+	
+	/**crear metodo
+	 * 
+	 * 
+	 * default void init (){
+		throw new NotImplementedException();
+	}
+	*/
+	
 }

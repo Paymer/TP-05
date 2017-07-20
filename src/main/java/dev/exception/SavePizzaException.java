@@ -1,0 +1,8 @@
+package dev.exception;
+
+public class SavePizzaException extends StockageException {
+
+	public SavePizzaException(String msg){
+		super(msg);
+	}
+}

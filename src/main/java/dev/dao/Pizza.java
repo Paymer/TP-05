@@ -2,9 +2,17 @@ package dev.dao;
 
 import java.lang.reflect.Field;
 
-import dev.ihm.ConsoleLogger;
+import dev.ihm.utils.ConsoleLogger;
 
 public class Pizza {
+	public CategoriePizza getCateg() {
+		return categ;
+	}
+
+	public void setCateg(CategoriePizza categ) {
+		this.categ = categ;
+	}
+
 	@ToString
 	int id;
 	@ToString
