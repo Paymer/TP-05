@@ -29,7 +29,7 @@ public class TestModify {
  	private PizzaDaoMemo pizzaDao;
  	
 	private Pizza testPizza, mar;
-	List<Pizza> pizzas;
+	
 
 // This rule allows to define what is going to be introduced throw the console while the test
  @Rule	 
@@ -43,7 +43,7 @@ public class TestModify {
 		pizzaDao = new PizzaDaoMemo();
 		pizzaDao.init();
 		testPizza = new Pizza("ESP", "Espartana", 20.5, CategoriePizza.VIANDE);
-		pizzas = pizzaDao.getPizzas();
+		
 	}
  
 
@@ -60,8 +60,8 @@ public class TestModify {
 	
 		 menu.execute(pizzaDao, scanner);
 		
-		 assertThat(pizzas).contains(testPizza);
-		 assertThat(pizzas).doesNotContain(mar);
+		 assertThat(pizzaDao.getPizzas()).contains(testPizza);
+		 assertThat(pizzaDao.getPizzas()).doesNotContain(mar);
 
 	}
 

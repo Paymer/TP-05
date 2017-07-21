@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import dev.dao.CategoriePizza;
+import dev.dao.IPizzaDao;
 import dev.dao.Pizza;
 import dev.dao.PizzaDaoMemo;
 import dev.dao.PizzaDaoMemoTest;
@@ -26,48 +27,39 @@ import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
 
 import dev.dao.Pizza;
 
-
 public class TestDelete {
 
-	
 	Delete menu = new Delete();
- 	private PizzaDaoMemo pizzaDao;
+	private IPizzaDao pizzaDao;
 	private Pizza mar;
-	List<Pizza> pizzas;
 
-// This rule allows to define what is going to be introduced throw the console while the test
- @Rule	 
-  	public final TextFromStandardInputStream systemInMock = emptyStandardInputStream();
- 
- @Rule
+	// This rule allows to define what is going to be introduced throw the
+	// console while the test
+	@Rule
+	public final TextFromStandardInputStream systemInMock = emptyStandardInputStream();
+
+	@Rule
 	public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
 
-@Before
+	@Before
 	public void setUp() {
-		
-	
 		pizzaDao = new PizzaDaoMemo();
 		pizzaDao.init();
 		mar = new Pizza(1, "MAR", "Margherita", 14, CategoriePizza.VIANDE);
-		pizzas = pizzaDao.getPizzas();
 	}
-	
 
-	 @Test
-	 public void testExecute () {
-		 
-		 //It is necessary to define the console inputs before calling the method
+	@Test
+	public void testExecute() {
+
+		// It is necessary to define the console inputs before calling the
+		// method
 		systemInMock.provideLines(mar.getCode(), "99");
-		Scanner scanner = new Scanner (System.in);
-	
-		 menu.execute(pizzaDao, scanner);
-		
-		 assertThat(pizzas).doesNotContain(mar);
+		Scanner scanner = new Scanner(System.in);
+
+		menu.execute(pizzaDao, scanner);
+
+		assertThat(pizzaDao.getPizzas()).doesNotContain(mar);
 
 	}
-	
-	
-	
-	
-	
+
 }

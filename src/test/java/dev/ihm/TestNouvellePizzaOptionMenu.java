@@ -27,8 +27,8 @@ public class TestNouvellePizzaOptionMenu {
 	Scanner scanner = new Scanner (System.in);
 	NouvellePizzaOptionMenu menu = new NouvellePizzaOptionMenu();
  	private PizzaDaoMemo pizzaDao;
-	private Pizza testPizza, mar;
-	List<Pizza> pizzas;
+	private Pizza testPizza;
+
 
 // This rule allows to define what is going to be introduced throw the console while the test
  @Rule	 
@@ -42,7 +42,7 @@ public class TestNouvellePizzaOptionMenu {
 		pizzaDao = new PizzaDaoMemo();
 		pizzaDao.init();
 		testPizza = new Pizza("ESP", "Espartana", 20.5, CategoriePizza.VIANDE);
-		pizzas = pizzaDao.getPizzas();
+		
 	}
 	
 	
@@ -60,7 +60,7 @@ public class TestNouvellePizzaOptionMenu {
 		
 		
 		 String logConsole = systemOutRule.getLog();
-		 assertThat(pizzas).contains(testPizza);
+		 assertThat(pizzaDao.getPizzas()).contains(testPizza);
 		
 
 	}

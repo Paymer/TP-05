@@ -88,9 +88,8 @@ public class PizzaDaoMemoTest {
 
 	@Test
 	public void testCheckList() {
-
-		assertThat(!(pizzaDao.checkList(mar.code).equals(null)));
-		assertThat(pizzaDao.checkList(testPizza.code).equals(null));
+		assertThat(pizzaDao.checkList(mar.code)).isNotNull();	
+		assertThat(pizzaDao.checkList(testPizza.code)).isNull();
 
 	}
 	

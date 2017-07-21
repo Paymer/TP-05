@@ -35,7 +35,7 @@ public class TestMenu {
 	Scanner scanner = new Scanner (System.in);
 	 	private PizzaDaoMemo pizzaDao;
 	 	Menu menu = new Menu(pizzaDao, scanner);
-		List<Pizza> pizzas;
+	
 	
 	// This rule allows to define what is going to be introduced throw the console while the test
 	 @Rule	 
@@ -48,7 +48,7 @@ public class TestMenu {
 		public void setUp() {
 			pizzaDao = new PizzaDaoMemo();
 			pizzaDao.init();
-			pizzas = pizzaDao.getPizzas();
+			
 		}
 	 
 	
