@@ -16,6 +16,7 @@ import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 
 import dev.dao.CategoriePizza;
+import dev.dao.IPizzaDao;
 import dev.dao.Pizza;
 import dev.dao.PizzaDaoMemo;
 import dev.ihm.menu.option.Modify;
@@ -25,8 +26,8 @@ public class TestModify {
 	
 
 	Scanner scanner = new Scanner (System.in);
-	Modify menu = new Modify();
- 	private PizzaDaoMemo pizzaDao;
+	Modify mod = new Modify();
+ 	private IPizzaDao pizzaDao;
  	
 	private Pizza testPizza, mar;
 	
@@ -58,7 +59,7 @@ public class TestModify {
 		//It is necessary to define the console inputs before calling the method ---- 
 		systemInMock.provideLines(code, testPizza.getCode(), testPizza.getNom(), testPizza.getCateg().name(), df.format(testPizza.getPrix()), "99");
 	
-		 menu.execute(pizzaDao, scanner);
+		 mod.execute(pizzaDao, new Scanner(System.in));
 		
 		 assertThat(pizzaDao.getPizzas()).contains(testPizza);
 		 assertThat(pizzaDao.getPizzas()).doesNotContain(mar);

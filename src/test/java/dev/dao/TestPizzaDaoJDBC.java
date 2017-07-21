@@ -25,6 +25,17 @@ public class TestPizzaDaoJDBC {
 		this.dao = new PizzaDaoMemo("org.h2.Driver", "jdbc:h2:mem:test; DB8CLOSE_DELAY=-1", "sa", "");
 	}*/
 	
+	
+	/**
+	 * Tester la connexion
+	 * @Test
+	 * @throws Exception
+	 
+	public void testConnection() throws Exception {
+	    assertThat(connection.isValid(0)).isEqualTo(true);
+	}
+	*/
+	
 	@Test
 	public void test() throws ClassNotFoundException, SQLException {
 		Class.forName("org.h2.Driver");
