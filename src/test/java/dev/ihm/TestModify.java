@@ -56,7 +56,7 @@ public class TestModify {
 		 
 		String code = "MAR";
 		//It is necessary to define the console inputs before calling the method ---- 
-		systemInMock.provideLines(code, testPizza.getCode(), testPizza.getNom(), testPizza.getCateg().name(), df.format(testPizza.getPrix()));
+		systemInMock.provideLines(code, testPizza.getCode(), testPizza.getNom(), testPizza.getCateg().name(), df.format(testPizza.getPrix()), "99");
 	
 		 menu.execute(pizzaDao, scanner);
 		

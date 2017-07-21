@@ -55,7 +55,7 @@ public class TestNouvellePizzaOptionMenu {
 	 
 		 //when(calculService.additionner(expression)).thenReturn(35);
 		 //It is necessary to define the console inputs before calling the method () )
-		systemInMock.provideLines(testPizza.getCode(), testPizza.getNom(), "VIANDE" ,df.format(testPizza.getPrix()));
+		systemInMock.provideLines(testPizza.getCode(), testPizza.getNom(), "VIANDE" ,df.format(testPizza.getPrix()), "99");
 		menu.execute (pizzaDao, scanner);
 		
 		

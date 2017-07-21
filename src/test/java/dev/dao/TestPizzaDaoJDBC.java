@@ -14,6 +14,17 @@ import org.junit.Test;
 
 public class TestPizzaDaoJDBC {
 
+/**	
+ 	private PizzaDaoMemo dao;
+	private Connection conn;
+	
+	@Before
+	public void setUp() throws ClassNotFoundException, SQLException {
+		this conn = generateConnectionWithData();
+		this.conn.close();
+		this.dao = new PizzaDaoMemo("org.h2.Driver", "jdbc:h2:mem:test; DB8CLOSE_DELAY=-1", "sa", "");
+	}*/
+	
 	@Test
 	public void test() throws ClassNotFoundException, SQLException {
 		Class.forName("org.h2.Driver");

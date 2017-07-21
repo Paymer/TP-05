@@ -86,60 +86,58 @@ public class PizzaDaoJDBC implements IPizzaDao {
 	@Override
 	public void saveNewPizza(Pizza pizza) throws SavePizzaException {
 
-		try{
-		Class.forName("org.h2.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306:pizzeria-paula", "root", "");
-		
-		PreparedStatement addPizza = conn.prepareStatement("INSERT INTO Pizzas (NAME, CODE, TYPE, PRICE) VALUES (?, ?, ?, ?)"); 
-		addPizza.setString(1, pizza.getNom());
-		addPizza.setString(2, pizza.getCode());
-		addPizza.setString(3, pizza.getCateg().toString());
-		addPizza.setDouble(4, pizza.getPrix());
-		addPizza.executeUpdate();
-		conn.close();
-	}catch (ClassNotFoundException | SQLException e) {
-		throw new SavePizzaException("qdsfqsdf");
-	}
-		}
-		
-
-	@Override
-	public void updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException {
-		try{
+		try {
 			Class.forName("org.h2.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306:pizzeria-paula", "root", "");
-			
-			PreparedStatement addPizza = conn.prepareStatement("INSERT INTO Pizzas (NAME, CODE, TYPE, PRICE) VALUES (?, ?, ?, ?)"); 
+
+			PreparedStatement addPizza = conn
+					.prepareStatement("INSERT INTO Pizzas (NAME, CODE, TYPE, PRICE) VALUES (?, ?, ?, ?)");
 			addPizza.setString(1, pizza.getNom());
 			addPizza.setString(2, pizza.getCode());
 			addPizza.setString(3, pizza.getCateg().toString());
 			addPizza.setDouble(4, pizza.getPrix());
-			addPizza.executeUpdate();
+		
+
+			/**
+			 * We don't know if the code is repeated, or already exists ...
+			 */
+			int lineAffected = addPizza.executeUpdate();
+			if (lineAffected != 1) {
+				conn.rollback(); // We return the table to the initial state
+				throw new SavePizzaException("Addition not performed: (lines moddified != 1) ");
+				
+			}
 			conn.close();
-			
-			
-			
-			PreparedStatement updatePizza = conn.prepareStatement("UPDATE PIZZA SET PRICE=20.0 WHERE ID=? AND PIZZA_NAME=?"); 
-			updatePizza.setInt(1,1);
+
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new SavePizzaException("Addition not performed: (check the class or the sql)" + e.getMessage(), e);
+		}
+	}
+
+	@Override
+	public void updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException {
+		try {
+			Class.forName("org.h2.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306:pizzeria-paula", "root", "");
+
+			PreparedStatement updatePizza = conn
+					.prepareStatement("UPDATE PIZZA SET NAME=?, CODE=?, TYPE=?, PRICE=?  WHERE CODE=?");
 			updatePizza.setString(1, pizza.getNom());
 			updatePizza.setString(2, pizza.getCode());
 			updatePizza.setString(3, pizza.getCateg().toString());
 			updatePizza.setDouble(4, pizza.getPrix());
+			updatePizza.setString(5, codePizza);
 			updatePizza.executeUpdate();
 			conn.close();
-			
-			
-			
-			
-			
-			
-		}catch (ClassNotFoundException | SQLException e) {
-			throw new UpdatePizzaException("sqdfdjklfhq");
+
+		} catch (ClassNotFoundException | SQLException e) {
+			/**
+			 * Asi es como poner las excepciones!!!
+			 */
+			throw new UpdatePizzaException("Update not performed: (check the class or the sql)" + e.getMessage(), e);
 		}
 
-		}
-
-	
+	}
 
 	@Override
 	public void deletePizza(String codePizza) throws DeletePizzaException {

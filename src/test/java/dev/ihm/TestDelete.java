@@ -57,7 +57,7 @@ public class TestDelete {
 	 public void testExecute () {
 		 
 		 //It is necessary to define the console inputs before calling the method
-		systemInMock.provideLines(mar.getCode());
+		systemInMock.provideLines(mar.getCode(), "99");
 		Scanner scanner = new Scanner (System.in);
 	
 		 menu.execute(pizzaDao, scanner);
