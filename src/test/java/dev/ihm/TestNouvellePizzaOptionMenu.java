@@ -19,14 +19,14 @@ import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 
 import dev.dao.CategoriePizza;
 import dev.dao.Pizza;
-import dev.dao.PizzaDao;
+import dev.dao.PizzaDaoMemo;
 import dev.ihm.menu.option.NouvellePizzaOptionMenu;
 
 public class TestNouvellePizzaOptionMenu {
 
 	Scanner scanner = new Scanner (System.in);
 	NouvellePizzaOptionMenu menu = new NouvellePizzaOptionMenu();
- 	private PizzaDao pizzaDao;
+ 	private PizzaDaoMemo pizzaDao;
 	private Pizza testPizza, mar;
 	List<Pizza> pizzas;
 
@@ -39,7 +39,7 @@ public class TestNouvellePizzaOptionMenu {
 
 @Before
 	public void setUp() {
-		pizzaDao = new PizzaDao();
+		pizzaDao = new PizzaDaoMemo();
 		pizzaDao.init();
 		testPizza = new Pizza("ESP", "Espartana", 20.5, CategoriePizza.VIANDE);
 		pizzas = pizzaDao.getPizzas();

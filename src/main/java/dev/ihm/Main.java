@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 import org.slf4j.LoggerFactory;
 
-import dev.dao.PizzaDao;
+import dev.dao.IPizzaDao;
+import dev.dao.PizzaDaoMemo;
 import dev.ihm.menu.Menu;
 
 /**
@@ -21,7 +22,7 @@ public class Main {
 		 */
 		
 		
-		PizzaDao dao = new PizzaDao();
+		IPizzaDao dao = new PizzaDaoMemo();
 		dao.init();
 		
 		/** we introduce in the () of the try 

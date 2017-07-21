@@ -1,14 +1,18 @@
 package dev.dao;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import dev.exception.DeletePizzaException;
 import dev.exception.SavePizzaException;
 import dev.exception.UpdatePizzaException;
 
-public class PizzaDao implements IPizzaDao {
+public class PizzaDaoMemo implements IPizzaDao {
 	
+	
+	
+
 	
 
 	private List<Pizza> pizzas = new ArrayList<>();
@@ -18,6 +22,7 @@ public class PizzaDao implements IPizzaDao {
 	 * @return 
 	 */
 	public void init() {
+		
 		pizzas.add(new Pizza(0, "PEP", "Peperoni", 12.5, CategoriePizza.VIANDE));
 		pizzas.add(new Pizza(1, "MAR", "Margherita", 14, CategoriePizza.VIANDE));
 		pizzas.add(new Pizza(2, "REI", "La Reine", 11.5, CategoriePizza.VIANDE));

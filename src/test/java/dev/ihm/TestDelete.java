@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 
 import dev.dao.CategoriePizza;
 import dev.dao.Pizza;
-import dev.dao.PizzaDao;
-import dev.dao.PizzaDaoTest;
+import dev.dao.PizzaDaoMemo;
+import dev.dao.PizzaDaoMemoTest;
 import dev.ihm.menu.Menu;
 import dev.ihm.menu.option.Delete;
 
@@ -31,7 +31,7 @@ public class TestDelete {
 
 	
 	Delete menu = new Delete();
- 	private PizzaDao pizzaDao;
+ 	private PizzaDaoMemo pizzaDao;
 	private Pizza mar;
 	List<Pizza> pizzas;
 
@@ -46,7 +46,7 @@ public class TestDelete {
 	public void setUp() {
 		
 	
-		pizzaDao = new PizzaDao();
+		pizzaDao = new PizzaDaoMemo();
 		pizzaDao.init();
 		mar = new Pizza(1, "MAR", "Margherita", 14, CategoriePizza.VIANDE);
 		pizzas = pizzaDao.getPizzas();

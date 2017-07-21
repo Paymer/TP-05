@@ -3,8 +3,9 @@ package dev.ihm.menu.option;
 import java.util.List;
 import java.util.Scanner;
 
+import dev.dao.IPizzaDao;
 import dev.dao.Pizza;
-import dev.dao.PizzaDao;
+import dev.dao.PizzaDaoMemo;
 import dev.ihm.utils.ConsoleLogger;
 
 public class ListerPizzasOptionMenu implements OptionMenu {
@@ -16,7 +17,7 @@ public class ListerPizzasOptionMenu implements OptionMenu {
 	}
 
 	@Override
-	public void execute(PizzaDao dao, Scanner scanner) {
+	public void execute(IPizzaDao dao, Scanner scanner) {
 		List<Pizza> pizzas = dao.getPizzas();
 		int i = 0;
 		while (i < pizzas.size()) {

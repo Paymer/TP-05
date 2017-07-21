@@ -2,7 +2,8 @@ package dev.ihm.menu.option;
 
 import java.util.Scanner;
 
-import dev.dao.PizzaDao;
+import dev.dao.IPizzaDao;
+import dev.dao.PizzaDaoMemo;
 import dev.exception.DeletePizzaException;
 import dev.ihm.utils.ConsoleLogger;
 
@@ -15,7 +16,7 @@ public class Delete implements OptionMenu {
 	}
 
 	@Override
-	public void execute(PizzaDao dao, Scanner scanner) {
+	public void execute(IPizzaDao dao, Scanner scanner) {
 		
 		co.console("Veuillez saisir le code de la pizza a eliminer:");
 		co.console("99 pour abandonner");

@@ -3,8 +3,9 @@ package dev.ihm.menu.option;
 import java.util.Scanner;
 
 import dev.dao.CategoriePizza;
+import dev.dao.IPizzaDao;
 import dev.dao.Pizza;
-import dev.dao.PizzaDao;
+import dev.dao.PizzaDaoMemo;
 import dev.exception.SavePizzaException;
 import dev.ihm.utils.ConsoleLogger;
 
@@ -17,7 +18,7 @@ public class NouvellePizzaOptionMenu implements OptionMenu {
 	}
 
 	@Override
-	public void execute(PizzaDao dao, Scanner scanner) {
+	public void execute(IPizzaDao dao, Scanner scanner) {
 
 		Scanner scann = new Scanner(System.in);
 		co.console("Veuillez saisir le code");

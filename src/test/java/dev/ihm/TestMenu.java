@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 
 import dev.dao.CategoriePizza;
 import dev.dao.Pizza;
-import dev.dao.PizzaDao;
-import dev.dao.PizzaDaoTest;
+import dev.dao.PizzaDaoMemo;
+import dev.dao.PizzaDaoMemoTest;
 import dev.ihm.menu.Menu;
 
 import org.junit.Before;
@@ -30,10 +30,10 @@ import java.util.Scanner;
 public class TestMenu {
 
 	
-	private static final Logger LOG = LoggerFactory.getLogger(PizzaDaoTest.class);
+	private static final Logger LOG = LoggerFactory.getLogger(PizzaDaoMemoTest.class);
 	
 	Scanner scanner = new Scanner (System.in);
-	 	private PizzaDao pizzaDao;
+	 	private PizzaDaoMemo pizzaDao;
 	 	Menu menu = new Menu(pizzaDao, scanner);
 		List<Pizza> pizzas;
 	
@@ -46,7 +46,7 @@ public class TestMenu {
 	
 	@Before
 		public void setUp() {
-			pizzaDao = new PizzaDao();
+			pizzaDao = new PizzaDaoMemo();
 			pizzaDao.init();
 			pizzas = pizzaDao.getPizzas();
 		}

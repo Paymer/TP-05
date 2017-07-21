@@ -17,21 +17,21 @@ import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
 
-import dev.dao.PizzaDao;
+import dev.dao.PizzaDaoMemo;
 import dev.exception.DeletePizzaException;
 import dev.exception.SavePizzaException;
 import dev.exception.UpdatePizzaException;
 import dev.dao.Pizza;
 
-public class PizzaDaoTest {
-	private static final Logger LOG = LoggerFactory.getLogger(PizzaDaoTest.class);
+public class PizzaDaoMemoTest {
+	private static final Logger LOG = LoggerFactory.getLogger(PizzaDaoMemoTest.class);
 
-	private PizzaDao pizzaDao;
+	private PizzaDaoMemo pizzaDao;
 	private Pizza testPizza, mar;
 	
 	@Before
 	public void setUp() {
-		pizzaDao = new PizzaDao();
+		pizzaDao = new PizzaDaoMemo();
 		pizzaDao.init();
 		testPizza = new Pizza(8, "ESP", "Espartana", 20.5, CategoriePizza.VIANDE);
 		mar = new Pizza(1, "MAR", "Margherita", 14, CategoriePizza.VIANDE);
@@ -89,8 +89,8 @@ public class PizzaDaoTest {
 	@Test
 	public void testCheckList() {
 
-		assertThat(pizzaDao.checkList(mar.code) != null);
-		assertThat(pizzaDao.checkList(testPizza.code) == null);
+		assertThat(!(pizzaDao.checkList(mar.code).equals(null)));
+		assertThat(pizzaDao.checkList(testPizza.code).equals(null));
 
 	}
 	

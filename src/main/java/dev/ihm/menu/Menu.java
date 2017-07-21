@@ -2,7 +2,8 @@ package dev.ihm.menu;
 
 import java.util.Scanner;
 
-import dev.dao.PizzaDao;
+import dev.dao.IPizzaDao;
+import dev.dao.PizzaDaoMemo;
 import dev.ihm.menu.option.Delete;
 import dev.ihm.menu.option.ListerPizzasOptionMenu;
 import dev.ihm.menu.option.Modify;
@@ -20,9 +21,9 @@ public class Menu {
 
 
 	private Scanner scanner;
-	private PizzaDao dao;
+	private IPizzaDao dao;
 
-	public Menu(PizzaDao dao, Scanner scanner) {
+	public Menu(IPizzaDao dao, Scanner scanner) {
 		this.scanner = scanner;
 		this.dao = dao;
 	}
