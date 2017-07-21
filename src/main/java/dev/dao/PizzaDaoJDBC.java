@@ -1,7 +1,7 @@
 package dev.dao;
 
-import static java.sql.DriverManager.*;
-import static org.assertj.core.api.Assertions.assertThat;
+
+
 
 import java.sql.*;
 
