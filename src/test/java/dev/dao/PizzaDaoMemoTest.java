@@ -33,8 +33,8 @@ public class PizzaDaoMemoTest {
 	public void setUp() {
 		pizzaDao = new PizzaDaoMemo();
 		pizzaDao.init();
-		testPizza = new Pizza(8, "ESP", "Espartana", 20.5, CategoriePizza.VIANDE);
-		mar = new Pizza(1, "MAR", "Margherita", 14, CategoriePizza.VIANDE);
+		testPizza = new Pizza("ESP", "Espartana", 20.5, CategoriePizza.VIANDE);
+		mar = new Pizza("MAR", "Margherita", 14, CategoriePizza.VIANDE);
 	}
 
 	@Test

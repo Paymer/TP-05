@@ -3,7 +3,6 @@ package dev.ihm.menu;
 import java.util.Scanner;
 
 import dev.dao.IPizzaDao;
-import dev.dao.PizzaDaoMemo;
 import dev.ihm.menu.option.Delete;
 import dev.ihm.menu.option.ListerPizzasOptionMenu;
 import dev.ihm.menu.option.Modify;
@@ -74,33 +73,33 @@ public class Menu {
 
 			case (1): // ListerPizzasOptionMenu of Pizzas
 
-				co.app(" Choose to List ");
+				co.console(" Choose to List ");
 				list.execute(dao, scanner);
 
 				break;
 
 			case (2):// NouvellePizzaOptionMenu a new Pizza
 
-				co.app(" Choose to Add ");
+				co.console(" Choose to Add ");
 				add.execute(dao, scanner);
 
 				break;
 
 			case (3): // Correct the information of one pizza
 
-				co.app(" Choose to Modify ");
+				co.console(" Choose to Modify ");
 				modify.execute(dao, scanner);
 
 				break;
 
 			case (4):// Delete a Pizza from the list
 
-				co.app(" Choose to Delete ");
+				co.console(" Choose to Delete ");
 				delete.execute(dao, scanner);
 
 				break;
 			case (99):
-				co.app("System Finalized");
+				co.console("System Finalized");
 				break;
 			default:
 				co.console("Code not found");

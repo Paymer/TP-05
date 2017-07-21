@@ -3,8 +3,6 @@ package dev.ihm.menu.option;
 import java.util.Scanner;
 
 import dev.dao.IPizzaDao;
-import dev.dao.PizzaDaoMemo;
-
 
 public interface OptionMenu {
 

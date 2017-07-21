@@ -2,6 +2,7 @@ package dev.dao;
 
 import java.lang.reflect.Field;
 
+import dev.dao.utils.DaoLogger;
 import dev.ihm.utils.ConsoleLogger;
 
 public class Pizza {
@@ -13,8 +14,7 @@ public class Pizza {
 		this.categ = categ;
 	}
 
-	@ToString
-	int id;
+	
 	@ToString
 	String code;
 	@ToString
@@ -24,24 +24,17 @@ public class Pizza {
 	@ToString
 	CategoriePizza categ;
 
-	ConsoleLogger co = new ConsoleLogger();
+	DaoLogger co = new DaoLogger();
 	/* Inicializacion del metodo */
 
-	public Pizza(int id, String code, String nom, double prix, CategoriePizza categ) {
-		this.id = id;
-		this.code = code;
-		this.nom = nom;
-		this.prix = prix;
-		this.categ = categ;
-	}
-
 	public Pizza(String code, String nom, double prix, CategoriePizza categ) {
-
+		
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
 		this.categ = categ;
 	}
+
 
 	// Metodos Get y Set
 
@@ -70,13 +63,7 @@ public class Pizza {
 		return true;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 
 	public String getCode() {
 		return code;
@@ -122,7 +109,7 @@ public class Pizza {
 				}
 			}
 		} catch (Exception e) {
-			co.console("Une erreur s'est produite " + e.getMessage());
+			co.app("Une erreur s'est produite " + e.getMessage());
 			return "";
 		}
 		return chaine.toString();

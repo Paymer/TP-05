@@ -5,7 +5,6 @@ import java.util.Scanner;
 import dev.dao.CategoriePizza;
 import dev.dao.IPizzaDao;
 import dev.dao.Pizza;
-import dev.dao.PizzaDaoMemo;
 import dev.exception.SavePizzaException;
 import dev.ihm.utils.ConsoleLogger;
 
@@ -20,13 +19,13 @@ public class NouvellePizzaOptionMenu implements OptionMenu {
 	@Override
 	public void execute(IPizzaDao dao, Scanner scanner) {
 
-		Scanner scann = new Scanner(System.in);
+		
 		co.console("Veuillez saisir le code");
-		String code = scann.next();
+		String code = scanner.next();
 		co.console("Veuillez saisir le nom (sans espace)");
-		String nom = scann.next();
+		String nom = scanner.next();
 		co.console("Veuillez saisir la categorie");
-		String cat = scann.next();
+		String cat = scanner.next();
 		CategoriePizza categ = CategoriePizza.valueOf(cat);
 	
 		co.console("Veuillez saisir le prix");
@@ -43,14 +42,14 @@ public class NouvellePizzaOptionMenu implements OptionMenu {
 		
 		
 		//if (scann.hasNextDouble()) {
-			prix = scann.nextDouble();
+			prix = scanner.nextDouble();
 
 			try {
 				dao.saveNewPizza(new Pizza(code, nom, prix, categ));
-				co.app("Added new Pizza");
+				co.console("Added new Pizza");
 			} catch (SavePizzaException e) {
 				// in the file the e.message will appear twice
-				co.app(e.getMessage(), e);
+				co.console(e.getMessage(), e);
 				co.console(e.getMessage());
 			//}
 

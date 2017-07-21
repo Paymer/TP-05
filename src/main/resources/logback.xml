@@ -36,10 +36,17 @@
 
 
 
+<!-- the errors generated in the ihm will go to ihm.exceptions file, the messages generated in ihm will be displayed
+in the ihm file and in the console,all the messages generated in dao will go to the dao file-->
+
 <!-- politique de log pour les classes du package dev.ihm  et dev.dao-->
 
 	<logger name="dev.ihm" level="INFO">
 		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<logger name="dev.ihm.exception" level="INFO">
+		<appender-ref ref="FILE_IHM" />
 	</logger>
 
 	<logger name="dev.dao" level="INFO">

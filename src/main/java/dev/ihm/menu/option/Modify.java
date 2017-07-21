@@ -5,7 +5,6 @@ import java.util.Scanner;
 import dev.dao.CategoriePizza;
 import dev.dao.IPizzaDao;
 import dev.dao.Pizza;
-import dev.dao.PizzaDaoMemo;
 import dev.exception.UpdatePizzaException;
 import dev.ihm.utils.ConsoleLogger;
 
@@ -56,11 +55,11 @@ public class Modify implements OptionMenu {
 			// call the method dao.update
 			try {
 				dao.updatePizza(oldCode, pizza);
-				co.app(" Modification done ");
+				co.console(" Modification done ");
 			} catch (UpdatePizzaException e) {
 				// in case the code does not exist it throws an exception
 				// in the file the e.message will appear twice
-				co.app(e.getMessage(), e);
+				co.console(e.getMessage(), e);
 				co.console(e.getMessage());
 
 			}

@@ -1,0 +1,22 @@
+20:33:28.854 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
+20:33:28.855 [main] INFO  dev.ihm - 1. Lister les pizzas
+20:33:28.855 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
+20:33:28.855 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
+20:33:28.855 [main] INFO  dev.ihm - 4. Supprimer une pizza
+20:33:28.856 [main] INFO  dev.ihm - 99. Sortir
+20:33:41.630 [main] INFO  dev.ihm -  Choose to List 
+20:33:41.654 [main] INFO  dev.ihm -  PEP Peperoni 12.5 VIANDE
+20:33:41.654 [main] INFO  dev.ihm -  MAR Margherita 14.0 VIANDE
+20:33:41.654 [main] INFO  dev.ihm -  REI La Reine 11.5 VIANDE
+20:33:41.654 [main] INFO  dev.ihm -  FRO La 4 fromages 12.0 SANS_VIANDE
+20:33:41.654 [main] INFO  dev.ihm -  CAN La Cannibale 12.5 VIANDE
+20:33:41.655 [main] INFO  dev.ihm -  SAV La savoyarde 13.0 POISSON
+20:33:41.655 [main] INFO  dev.ihm -  ORI L'orientale 13.5 SANS_VIANDE
+20:33:41.655 [main] INFO  dev.ihm -  IND L'indienne 14.0 SANS_VIANDE
+20:33:41.655 [main] INFO  dev.ihm -  List done 
+20:33:41.655 [main] INFO  dev.ihm - ***** Pizzeria Administration *****
+20:33:41.655 [main] INFO  dev.ihm - 1. Lister les pizzas
+20:33:41.655 [main] INFO  dev.ihm - 2. Ajouter une nouvelle pizza
+20:33:41.656 [main] INFO  dev.ihm - 3. Mettre à jour une pizza
+20:33:41.656 [main] INFO  dev.ihm - 4. Supprimer une pizza
+20:33:41.656 [main] INFO  dev.ihm - 99. Sortir

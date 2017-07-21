@@ -23,14 +23,14 @@ public class PizzaDaoMemo implements IPizzaDao {
 	 */
 	public void init() {
 		
-		pizzas.add(new Pizza(0, "PEP", "Peperoni", 12.5, CategoriePizza.VIANDE));
-		pizzas.add(new Pizza(1, "MAR", "Margherita", 14, CategoriePizza.VIANDE));
-		pizzas.add(new Pizza(2, "REI", "La Reine", 11.5, CategoriePizza.VIANDE));
-		pizzas.add(new Pizza(3, "FRO", "La 4 fromages", 12, CategoriePizza.SANS_VIANDE));
-		pizzas.add(new Pizza(4, "CAN", "La Cannibale", 12.5, CategoriePizza.VIANDE));
-		pizzas.add(new Pizza(5, "SAV", "La savoyarde", 13.0, CategoriePizza.POISSON));
-		pizzas.add(new Pizza(6, "ORI", "L'orientale", 13.5, CategoriePizza.SANS_VIANDE));
-		pizzas.add(new Pizza(7, "IND", "L'indienne", 14, CategoriePizza.SANS_VIANDE));
+		pizzas.add(new Pizza("PEP", "Peperoni", 12.5, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("MAR", "Margherita", 14, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("REI", "La Reine", 11.5, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("FRO", "La 4 fromages", 12, CategoriePizza.SANS_VIANDE));
+		pizzas.add(new Pizza("CAN", "La Cannibale", 12.5, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("SAV", "La savoyarde", 13.0, CategoriePizza.POISSON));
+		pizzas.add(new Pizza("ORI", "L'orientale", 13.5, CategoriePizza.SANS_VIANDE));
+		pizzas.add(new Pizza("IND", "L'indienne", 14, CategoriePizza.SANS_VIANDE));
 	}
 
 	/** Setters and Getters
@@ -49,10 +49,6 @@ public class PizzaDaoMemo implements IPizzaDao {
 	}
 
 
-	
-	
-	
-	
 	
 	/** Adds a new Pizza to the Menu
 	 * if it already exists throw an exception
@@ -79,7 +75,6 @@ public class PizzaDaoMemo implements IPizzaDao {
 			throw new SavePizzaException("This code: " + pizza.code + " already exists.");
 		} else {
 			pizzas.add(pizza);
-
 		}
 		
 	}
@@ -93,9 +88,9 @@ public class PizzaDaoMemo implements IPizzaDao {
 		Pizza a = checkList(codePizza);
 		Pizza b = checkList(pizza.code);
 
-		if (a != null && b == null) {
+		if (a != null && (b == null ||  a.getCode().equals(codePizza)) ) {
 			a.setPizza(pizza.code, pizza.nom, pizza.prix, pizza.categ);
-		} else if (a != null) {
+		} else if (a != null && !a.getCode().equals(codePizza)) {
 			throw new UpdatePizzaException("The new code : " + pizza.code + " already exists");
 		} else {
 			throw new UpdatePizzaException("The code : " + pizza.code + " not found");
