@@ -9,11 +9,7 @@ import dev.exception.SavePizzaException;
 import dev.exception.UpdatePizzaException;
 
 public class PizzaDaoMemo implements IPizzaDao {
-	
-	
-	
 
-	
 
 	private List<Pizza> pizzas = new ArrayList<>();
 	/**
@@ -48,7 +44,6 @@ public class PizzaDaoMemo implements IPizzaDao {
 		return new ArrayList<>(pizzas);
 	}
 
-
 	
 	/** Adds a new Pizza to the Menu
 	 * if it already exists throw an exception
@@ -62,16 +57,12 @@ public class PizzaDaoMemo implements IPizzaDao {
 			.filter(p -> p.getCode().equals(pizza.getCode()))
 			.findAny()
 			.orElseThrow(() -> new SavePizzaException("Erreur : Le code de la pizza existe déjà. Pizza non sauvée."));
-	 * 
-	 * 
-	 * 
+	
 	 */
 	@Override
 	public void saveNewPizza(Pizza pizza) throws SavePizzaException {
 
-		Pizza a = checkList(pizza.code);
-
-		if (a != null) {
+		if (checkList(pizza.code) == true) {
 			throw new SavePizzaException("This code: " + pizza.code + " already exists.");
 		} else {
 			pizzas.add(pizza);
@@ -84,16 +75,16 @@ public class PizzaDaoMemo implements IPizzaDao {
 	 */
 	@Override
 	public void updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException {
-		// It returns the position of the code searched
-		Pizza a = checkList(codePizza);
-		Pizza b = checkList(pizza.code);
-
-		if (a != null && (b == null ||  a.getCode().equals(codePizza)) ) {
-			a.setPizza(pizza.code, pizza.nom, pizza.prix, pizza.categ);
-		} else if (a != null && !a.getCode().equals(codePizza)) {
+	
+		if (checkList(codePizza) == true && (checkList(pizza.code) == false ||  pizza.getCode().equals(codePizza)) ) {
+			
+			int a = searchPizza(codePizza);
+			pizzas.set(a, pizza);
+			
+		} else if (checkList(codePizza) == true && !pizza.getCode().equals(codePizza)) {
 			throw new UpdatePizzaException("The new code : " + pizza.code + " already exists");
 		} else {
-			throw new UpdatePizzaException("The code : " + pizza.code + " not found");
+			throw new UpdatePizzaException("The code : " + codePizza + " not found");
 		}
 
 	
@@ -106,10 +97,9 @@ public class PizzaDaoMemo implements IPizzaDao {
 	 */
 	@Override
 	public void deletePizza(String codePizza) throws DeletePizzaException {
-		
-		Pizza a = checkList(codePizza);
 
-		if (a != null) {
+		if (checkList(codePizza) == true) {
+			int a = searchPizza(codePizza);
 			pizzas.remove(a);
 
 		} else {
@@ -119,27 +109,42 @@ public class PizzaDaoMemo implements IPizzaDao {
 	}
 
 
-	
 	/** It returns the position of the code searched
 	 * It searches in the table the position of the code
 	 *  Does it already exist?
 	 *  Does not exist?
 	 */
-	protected Pizza checkList(String code) {
+	protected boolean checkList(String code) {
 
 		/*
 		 * "pizza" actua como el propio contador el programa va a recorrer toda
 		 * la tabla hasta encontrar el codigo o llegar a la ultima posicion de
 		 * la lista.
 		 */
+		
+		boolean b = false; //code not found
 		for (Pizza p : pizzas) {
 
 			if (p.getCode().equals(code)) {
-				return p;
+				b = true; // code found
 			}
 		}
 
-		return null;
+		return b;
 
 	}
+
+
+	protected int searchPizza (String code){
+	
+		for (Pizza p : pizzas) {
+
+		if (p.getCode().equals(code)) {
+			return pizzas.indexOf(p);
+		}
+		}
+ 	return 0;
+}
+
+
 }

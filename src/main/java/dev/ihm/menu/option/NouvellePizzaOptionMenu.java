@@ -33,30 +33,28 @@ public class NouvellePizzaOptionMenu implements OptionMenu {
 		co.console("Veuillez saisir le prix");
 		double prix;
 
-		//	scann.next();
-		//while (!scann.hasNextDouble()) {	
-		//	co.console("Sorry, couldn't understand you! Try it again!");
-		//	// * THE FIRST TIME IT PRINTS IT TWO TIMES! NOT CORRECT! SCANNER
-						// BUG!!!*//
-		//	scann.next();
-		//}
-		
-		
-		
-		//if (scann.hasNextDouble()) {
-			prix = scanner.nextDouble();
-
+		boolean b = false;
+		do{
+			prix = 0;
+			String string = scanner.next();
 			try {
-				dao.saveNewPizza(new Pizza(code, nom, prix, categ));
+				prix = Double.parseDouble(string);
+				
+				if (prix>10.0){
+					dao.saveNewPizza(new Pizza(code, nom, prix, categ));
 				co.console("Added new Pizza");
-			} catch (SavePizzaException e) {
+				b = true;}
+			}catch (SavePizzaException e){
 				// in the file the e.message will appear twice
+				co.console("Sorry, Introduce a valid value");
 				co.console(e.getMessage(), e);
 				co.console(e.getMessage());
-			//}
+			}
+			
+		}while (b == false);
+		
 
 		}
 
 	}
 
-}
