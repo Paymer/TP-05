@@ -60,7 +60,7 @@ public class Menu {
 			afficher();
 			a = scanner.nextInt();
 			//the hash Map is used to get the actions we need
-			options.get(a).execute(dao, scanner);
+			if (a!=99) {options.get(a).execute(dao, scanner);}
 		}while (a!= 99);
 
 		
