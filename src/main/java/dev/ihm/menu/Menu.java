@@ -15,6 +15,14 @@ import dev.ihm.utils.ConsoleLogger;
 public class Menu {
 
 	ConsoleLogger co = new ConsoleLogger();
+	
+	private Scanner scanner;
+	private IPizzaDao dao;
+	
+	public Menu(IPizzaDao dao, Scanner scanner) {
+		this.scanner = scanner;
+		this.dao = dao;
+	}
 
 	private Map<Integer, OptionMenu> options = new HashMap<>();
 	
@@ -25,20 +33,7 @@ public class Menu {
 		options.put(3, new Modify());
 		options.put(4, new Delete());
 	}
-	
-	
 
-
-
-	private Scanner scanner;
-	private IPizzaDao dao;
-
-	public Menu(IPizzaDao dao, Scanner scanner) {
-		this.scanner = scanner;
-		this.dao = dao;
-	}
-
-	
 	public void afficher() {
 
 		co.console("***** Pizzeria Administration *****");
@@ -60,21 +55,21 @@ public class Menu {
 			afficher();
 			a = scanner.nextInt();
 			//the hash Map is used to get the actions we need
-			if (a!=99) {options.get(a).execute(dao, scanner);}
+	
+			 if (a > 0 && a < 5 ) {options.get(a).execute(dao, scanner);}
+			
+			
 		}while (a!= 99);
 
 		
 	}
 
-	
 	/**
 	 * @param options
 	 */
 	public void setOptions(Map<Integer, OptionMenu> options) {
 		this.options = options;
 	}
-	
-	
 	
 	/**
 	 * @return the actions

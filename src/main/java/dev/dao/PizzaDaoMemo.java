@@ -17,6 +17,7 @@ public class PizzaDaoMemo implements IPizzaDao {
 	 * Puede aue nos interese empezar desde otra lista
 	 * @return 
 	 */
+	
 	public void init() {
 		
 		pizzas.add(new Pizza("PEP", "Peperoni", 12.5, CategoriePizza.VIANDE));

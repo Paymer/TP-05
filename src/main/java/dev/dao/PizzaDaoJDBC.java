@@ -128,6 +128,16 @@ public class PizzaDaoJDBC implements IPizzaDao {
 			updatePizza.setDouble(4, pizza.getPrix());
 			updatePizza.setString(5, codePizza);
 			updatePizza.executeUpdate();
+			
+			
+			
+			
+			int lineAffected = updatePizza.executeUpdate();
+			if (lineAffected != 1) {
+				conn.rollback(); // We return the table to the initial state
+				throw new UpdatePizzaException("Code not found");
+				
+			}
 			conn.close();
 
 		} catch (ClassNotFoundException | SQLException e) {
@@ -137,18 +147,42 @@ public class PizzaDaoJDBC implements IPizzaDao {
 			throw new UpdatePizzaException("Update not performed: (check the class or the sql)" + e.getMessage(), e);
 		}
 
+		
+
 	}
 
 	@Override
 	public void deletePizza(String codePizza) throws DeletePizzaException {
 		// TODO Auto-generated method stub
+		try {
+			Class.forName("org.h2.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306:pizzeria-paula", "root", "");
+			// Esto del delete no se si es correcto!!!
+			PreparedStatement deletePizza = conn
+					.prepareStatement("DELETE PIZZA WHERE CODE=?");
+			deletePizza.setString(1, codePizza);
+			deletePizza.executeUpdate();
+			conn.close();
 
+			int lineAffected = deletePizza.executeUpdate();
+			if (lineAffected != 1) {
+				conn.rollback(); // We return the table to the initial state
+				throw new DeletePizzaException("Code not found");
+				
+			}
+			conn.close();
+
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new DeletePizzaException(e.getMessage(), e);
+		}
+
+		
 	}
 
 	@Override
 	public List<Pizza> getPizzas() {
 		// TODO Auto-generated method stub
 		return null;
-	};
+	}
 
 }
