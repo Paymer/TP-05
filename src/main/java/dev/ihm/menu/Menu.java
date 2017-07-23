@@ -1,5 +1,7 @@
 package dev.ihm.menu;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import dev.dao.IPizzaDao;
@@ -7,16 +9,25 @@ import dev.ihm.menu.option.Delete;
 import dev.ihm.menu.option.ListerPizzasOptionMenu;
 import dev.ihm.menu.option.Modify;
 import dev.ihm.menu.option.NouvellePizzaOptionMenu;
+import dev.ihm.menu.option.OptionMenu;
 import dev.ihm.utils.ConsoleLogger;
 
 public class Menu {
 
 	ConsoleLogger co = new ConsoleLogger();
 
-	ListerPizzasOptionMenu list = new ListerPizzasOptionMenu();
-	NouvellePizzaOptionMenu add = new NouvellePizzaOptionMenu();
-	Modify modify = new Modify();
-	Delete delete = new Delete();
+	private Map<Integer, OptionMenu> options = new HashMap<>();
+	
+	//It is necessary to get activate the options in the hash map
+	private void initOpt() {
+		options.put(1, new ListerPizzasOptionMenu());
+		options.put(2, new NouvellePizzaOptionMenu());
+		options.put(3, new Modify());
+		options.put(4, new Delete());
+	}
+	
+	
+
 
 
 	private Scanner scanner;
@@ -31,86 +42,45 @@ public class Menu {
 	public void afficher() {
 
 		co.console("***** Pizzeria Administration *****");
+		//This allows to go to all the options in the menu
+		options.forEach((numero, option) -> co.console(numero+"."+option.getLibelle()));
 
-		co.console("1. " + list.getLibelle());
-		co.console("2. " + add.getLibelle());
-		co.console("3. " + modify.getLibelle());
-		co.console("4. " + delete.getLibelle());
 		co.console("99. Sortir");
 
 	}
 
 	
 	public void manage() {
-/**
- * public void demarrer() {
-		
-		
-		int saisie = NUMERO_OPTION_SORTIE;
-		
-		// Afficher le menu tant qu'on ne sort pas (ie : response = 99)
-		do {
-			// afficher menu
-			LOG.info(titre);
-			actions.forEach((numero, option) -> LOG.info(numero + ". " + option.getLibelle()));
+		//It is necessary to initialize the options before using them.
+		initOpt();
 
-			saisie = this.scanner.nextInt();
-			
-			actions.get(saisie).execute();
-		} while (saisie != NUMERO_OPTION_SORTIE);
-		
-	}
- */
-		
-		afficher();
-
-		
-		int a = this.scanner.nextInt();
-
-		while (a != 99) {
-
-			switch (a) {
-
-			case (1): // ListerPizzasOptionMenu of Pizzas
-
-				co.console(" Choose to List ");
-				list.execute(dao, scanner);
-
-				break;
-
-			case (2):// NouvellePizzaOptionMenu a new Pizza
-
-				co.console(" Choose to Add ");
-				add.execute(dao, scanner);
-
-				break;
-
-			case (3): // Correct the information of one pizza
-
-				co.console(" Choose to Modify ");
-				modify.execute(dao, scanner);
-
-				break;
-
-			case (4):// Delete a Pizza from the list
-
-				co.console(" Choose to Delete ");
-				delete.execute(dao, scanner);
-
-				break;
-			case (99):
-				co.console("System Finalized");
-				break;
-			default:
-				co.console("Code not found");
-			}
-
+		//It will do the actions choose until 99 is introduced through the console
+		int a;
+		do{
 			afficher();
-
 			a = scanner.nextInt();
+			//the hash Map is used to get the actions we need
+			options.get(a).execute(dao, scanner);
+		}while (a!= 99);
 
-		}
+		
 	}
 
+	
+	/**
+	 * @param options
+	 */
+	public void setOptions(Map<Integer, OptionMenu> options) {
+		this.options = options;
+	}
+	
+	
+	
+	/**
+	 * @return the actions
+	 */
+	public Map<Integer, OptionMenu> getOptions() {
+		return options;
+	}
 	
 }

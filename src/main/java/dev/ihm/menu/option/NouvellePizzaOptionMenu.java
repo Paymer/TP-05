@@ -2,6 +2,7 @@ package dev.ihm.menu.option;
 
 import java.util.Scanner;
 
+
 import dev.dao.CategoriePizza;
 import dev.dao.IPizzaDao;
 import dev.dao.Pizza;
@@ -10,6 +11,7 @@ import dev.ihm.utils.ConsoleLogger;
 
 public class NouvellePizzaOptionMenu implements OptionMenu {
 	ConsoleLogger co = new ConsoleLogger();
+	
 
 	@Override
 	public String getLibelle() {
