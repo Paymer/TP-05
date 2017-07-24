@@ -4,7 +4,7 @@ package dev.dao;
 
 
 import java.sql.*;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import dev.exception.DeletePizzaException;
@@ -23,20 +23,23 @@ public class PizzaDaoJDBC implements IPizzaDao {
 	public void init() throws PizzaException {
 
 		try {
-			Class.forName("org.h2.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 
 			/**
 			 * It is necessary to introduce "mem" instead of another thing if we
 			 * want the table to be erased when the test finishes The database
 			 * is found in a local host
 			 */
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306:pizzeria-paula", "root", "");
-
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pizzeria-paula", "root", "");
+			//it has to be set to false to avoid it commiting after every action
+			conn.setAutoCommit(false);
 			/**
 			 * Exporting all the data from the database
 			 */
-			PreparedStatement statement = conn.prepareStatement("SELECT * FROM pizza");
+			PreparedStatement statement = conn.prepareStatement("SELECT * FROM pizza WHERE ACTIVE = ?");
+			statement.setBoolean(1, true);
 			ResultSet resultats = statement.executeQuery();
+
 
 			/**
 			 * Printing all the data
@@ -50,48 +53,28 @@ public class PizzaDaoJDBC implements IPizzaDao {
 
 				System.out.println("[id=" + id + " name=" + name + " type=" + type + " price=" + price + "]");
 			}
-
+			
+			statement.close();
 			conn.close();
+
+			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new PizzaException("afdsfgsg");
+			throw new PizzaException("afdsfgsg",e);
 		}
 	}
 
-	/**
-	 * @Override public List<Pizza> getPizzas() { // Change that method
-	 * 
-	 * 
-	 *           PreparedStatement selectPizza = conn.prepareStatement("SELECT
-	 *           *FROM Pizzas WHERE CODE=?"); selectPizza.setString(1,"REG");
-	 *           ResultSet resultat = selectPizza.executeQuery();
-	 * 
-	 *           resultat.next(); //while(resultat.next()) { // Retrieve by
-	 *           column name int id = resultat.getInt("id"); String code =
-	 *           resultat.getString("code"); String name =
-	 *           resultat.getString("name"); String type =
-	 *           resultat.getString("type"); double price =
-	 *           resultat.getDouble("price");
-	 * 
-	 * 
-	 *           // Display values System.out.print("ID: " + id);
-	 *           System.out.print(", code: " + code); System.out.print(", name:
-	 *           " + name); System.out.print(", type: " + type);
-	 *           System.out.print(", price: " + price); //}
-	 * 
-	 * 
-	 * 
-	 *           return null; }
-	 */
+
 
 	@Override
 	public void saveNewPizza(Pizza pizza) throws SavePizzaException {
 
 		try {
-			Class.forName("org.h2.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306:pizzeria-paula", "root", "");
-
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pizzeria-paula", "root", "");
+			conn.setAutoCommit(false);
+			
 			PreparedStatement addPizza = conn
-					.prepareStatement("INSERT INTO Pizzas (NAME, CODE, TYPE, PRICE) VALUES (?, ?, ?, ?)");
+					.prepareStatement("INSERT INTO Pizza (NAME, CODE, TYPE, PRICE) VALUES (?, ?, ?, ?)");
 			addPizza.setString(1, pizza.getNom());
 			addPizza.setString(2, pizza.getCode());
 			addPizza.setString(3, pizza.getCateg().toString());
@@ -107,6 +90,7 @@ public class PizzaDaoJDBC implements IPizzaDao {
 				throw new SavePizzaException("Addition not performed: (lines moddified != 1) ");
 				
 			}
+			conn.commit();
 			conn.close();
 
 		} catch (ClassNotFoundException | SQLException e) {
@@ -117,9 +101,10 @@ public class PizzaDaoJDBC implements IPizzaDao {
 	@Override
 	public void updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException {
 		try {
-			Class.forName("org.h2.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306:pizzeria-paula", "root", "");
-
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pizzeria-paula", "root", "");
+			conn.setAutoCommit(false);
+			
 			PreparedStatement updatePizza = conn
 					.prepareStatement("UPDATE PIZZA SET NAME=?, CODE=?, TYPE=?, PRICE=?  WHERE CODE=?");
 			updatePizza.setString(1, pizza.getNom());
@@ -129,15 +114,13 @@ public class PizzaDaoJDBC implements IPizzaDao {
 			updatePizza.setString(5, codePizza);
 			updatePizza.executeUpdate();
 			
-			
-			
-			
 			int lineAffected = updatePizza.executeUpdate();
 			if (lineAffected != 1) {
 				conn.rollback(); // We return the table to the initial state
 				throw new UpdatePizzaException("Code not found");
 				
 			}
+			conn.commit();
 			conn.close();
 
 		} catch (ClassNotFoundException | SQLException e) {
@@ -146,23 +129,24 @@ public class PizzaDaoJDBC implements IPizzaDao {
 			 */
 			throw new UpdatePizzaException("Update not performed: (check the class or the sql)" + e.getMessage(), e);
 		}
-
 		
-
 	}
 
 	@Override
 	public void deletePizza(String codePizza) throws DeletePizzaException {
-		// TODO Auto-generated method stub
+		
 		try {
-			Class.forName("org.h2.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306:pizzeria-paula", "root", "");
-			// Esto del delete no se si es correcto!!!
-			PreparedStatement deletePizza = conn
-					.prepareStatement("DELETE PIZZA WHERE CODE=?");
-			deletePizza.setString(1, codePizza);
-			deletePizza.executeUpdate();
-			conn.close();
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pizzeria-paula", "root", "");
+			conn.setAutoCommit(false);
+		
+			
+			PreparedStatement deletePizza = conn.prepareStatement("UPDATE PIZZA SET ACTIVE=? WHERE CODE=?");
+			deletePizza.setString(2, codePizza);
+			deletePizza.setBoolean(1, false);
+			
+		
+			
 
 			int lineAffected = deletePizza.executeUpdate();
 			if (lineAffected != 1) {
@@ -170,19 +154,59 @@ public class PizzaDaoJDBC implements IPizzaDao {
 				throw new DeletePizzaException("Code not found");
 				
 			}
+			conn.commit();
 			conn.close();
 
 		} catch (ClassNotFoundException | SQLException e) {
 			throw new DeletePizzaException(e.getMessage(), e);
 		}
-
 		
 	}
 
 	@Override
 	public List<Pizza> getPizzas() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Pizza> pizzas = new ArrayList<>();
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			/**
+			 * It is necessary to introduce "mem" instead of another thing if we
+			 * want the table to be erased when the test finishes The database
+			 * is found in a local host
+			 */
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pizzeria-paula", "root", "");
+			//it has to be set to false to avoid it commiting after every action
+			conn.setAutoCommit(false);
+			/**
+			 * Exporting all the data from the database
+			 */
+			PreparedStatement statement = conn.prepareStatement("SELECT * FROM pizza WHERE ACTIVE = ?");
+			statement.setBoolean(1, true);
+			ResultSet resultats = statement.executeQuery();
+
+			/**
+			 * Printing all the data
+			 */
+			while (resultats.next()) {
+				Pizza pizza = new Pizza ();
+				//Integer id = resultats.getInt("ID");
+				pizza.setNom(resultats.getString("NAME"));
+				pizza.setCode(resultats.getString("CODE"));
+				pizza.setCateg(CategoriePizza.valueOf(resultats.getString("TYPE")));
+				pizza.setPrix(resultats.getDouble("PRICE"));
+				
+				pizzas.add(pizza);
+			
+			}
+			statement.close ();
+			conn.close();
+			return pizzas;
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new PizzaException("afdsfgsg");
+		}
+	
 	}
+
 
 }

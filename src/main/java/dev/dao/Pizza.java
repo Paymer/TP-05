@@ -38,6 +38,10 @@ public class Pizza {
 
 	// Metodos Get y Set
 
+	public Pizza() {
+		
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

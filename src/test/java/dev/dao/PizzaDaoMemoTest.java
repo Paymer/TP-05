@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
 
-import dev.dao.PizzaDaoMemo;
+import dev.dao.IPizzaDao;
 import dev.exception.DeletePizzaException;
 import dev.exception.SavePizzaException;
 import dev.exception.UpdatePizzaException;
@@ -88,8 +88,8 @@ public class PizzaDaoMemoTest {
 
 	@Test
 	public void testCheckList() {
-		assertThat(pizzaDao.checkList(mar.code)).isNotNull();	
-		assertThat(pizzaDao.checkList(testPizza.code)).isNull();
+		assertThat(pizzaDao.checkList(mar.code) == true);	
+		assertThat(pizzaDao.checkList(testPizza.code) == false);
 
 	}
 	

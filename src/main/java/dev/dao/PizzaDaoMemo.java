@@ -7,6 +7,7 @@ import java.util.List;
 import dev.exception.DeletePizzaException;
 import dev.exception.SavePizzaException;
 import dev.exception.UpdatePizzaException;
+import dev.dao.CategoriePizza;
 
 public class PizzaDaoMemo implements IPizzaDao {
 
