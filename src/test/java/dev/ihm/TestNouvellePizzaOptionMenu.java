@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -24,8 +23,8 @@ import dev.ihm.menu.option.NouvellePizzaOptionMenu;
 
 public class TestNouvellePizzaOptionMenu {
 
-	Scanner scanner = new Scanner (System.in);
-	NouvellePizzaOptionMenu menu = new NouvellePizzaOptionMenu();
+	
+	NouvellePizzaOptionMenu add = new NouvellePizzaOptionMenu();
  	private PizzaDaoMemo pizzaDao;
 	private Pizza testPizza;
 
@@ -46,21 +45,19 @@ public class TestNouvellePizzaOptionMenu {
 	}
 	
 	
-/** @Test
+ @Test
 	 public void testExecute () {
-	 
-	 NumberFormat nf = NumberFormat.getNumberInstance(Locale.FRANCE);
-		//DecimalFormat df = (DecimalFormat)nf;
-		//df.format(testPizza.getPrix())
-	 
+	 	Scanner scanner = new Scanner (System.in);
 		 //when(calculService.additionner(expression)).thenReturn(35);
 		 //It is necessary to define the console inputs before calling the method () )
-		systemInMock.provideLines("ESP", "Espartana", "VIANDE", "15,5" , "99");
-		menu.execute (pizzaDao, scanner);
+		systemInMock.provideLines("ESP", "Espartana", "VIANDE", "15.5" , "99");
 		
+		add.execute (pizzaDao, scanner);
+		
+		 
 		 assertThat(pizzaDao.getPizzas()).contains(testPizza);
 		
 
-	}*/
+	}
 	
 }

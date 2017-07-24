@@ -5,7 +5,6 @@ import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emp
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
