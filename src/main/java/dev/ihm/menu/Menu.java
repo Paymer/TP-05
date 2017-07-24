@@ -14,7 +14,7 @@ import dev.ihm.utils.ConsoleLogger;
 
 public class Menu {
 
-	ConsoleLogger co = new ConsoleLogger();
+
 	
 	private Scanner scanner;
 	private IPizzaDao dao;
@@ -27,6 +27,7 @@ public class Menu {
 	private Map<Integer, OptionMenu> options = new HashMap<>();
 	
 	//It is necessary to get activate the options in the hash map
+	
 	private void initOpt() {
 		options.put(1, new ListerPizzasOptionMenu());
 		options.put(2, new NouvellePizzaOptionMenu());
@@ -35,8 +36,14 @@ public class Menu {
 	}
 
 	public void afficher() {
-
+	
+		//It is necessary to initialize the options before using them.
+		this.initOpt();
+		ConsoleLogger co = new ConsoleLogger();
+		
+		
 		co.console("***** Pizzeria Administration *****");
+		
 		//This allows to go to all the options in the menu
 		options.forEach((numero, option) -> co.console(numero+"."+option.getLibelle()));
 
@@ -46,8 +53,8 @@ public class Menu {
 
 	
 	public void manage() {
-		//It is necessary to initialize the options before using them.
-		initOpt();
+		
+		
 
 		//It will do the actions choose until 99 is introduced through the console
 		int a;

@@ -58,14 +58,14 @@ public class TestMenu {
 		menu.manage();
 
 		String logConsole = systemOutRule.getLog();
-		assertThat(logConsole).containsOnlyOnce("0 PEP Peperoni 12.5 VIANDE");
-		assertThat(logConsole).containsOnlyOnce("1 MAR Margherita 14.0 VIANDE");
-		assertThat(logConsole).containsOnlyOnce("2 REI La Reine 11.5 VIANDE");
-		assertThat(logConsole).containsOnlyOnce("3 FRO La 4 fromages 12.0 SANS_VIANDE");
-		assertThat(logConsole).containsOnlyOnce("4 CAN La Cannibale 12.5 VIANDE");
-		assertThat(logConsole).containsOnlyOnce("5 SAV La savoyarde 13.0 POISSON");
-		assertThat(logConsole).containsOnlyOnce("6 ORI L'orientale 13.5 SANS_VIANDE");
-		assertThat(logConsole).containsOnlyOnce("7 IND L'indienne 14.0 SANS_VIANDE");
+		assertThat(logConsole).containsOnlyOnce("PEP Peperoni 12.5 VIANDE");
+		assertThat(logConsole).containsOnlyOnce("MAR Margherita 14.0 VIANDE");
+		assertThat(logConsole).containsOnlyOnce("REI La Reine 11.5 VIANDE");
+		assertThat(logConsole).containsOnlyOnce("FRO La 4 fromages 12.0 SANS_VIANDE");
+		assertThat(logConsole).containsOnlyOnce("CAN La Cannibale 12.5 VIANDE");
+		assertThat(logConsole).containsOnlyOnce("SAV La savoyarde 13.0 POISSON");
+		assertThat(logConsole).containsOnlyOnce("ORI L'orientale 13.5 SANS_VIANDE");
+		assertThat(logConsole).containsOnlyOnce("IND L'indienne 14.0 SANS_VIANDE");
 
 	}
 
@@ -74,15 +74,15 @@ public class TestMenu {
 
 		// It is necessary to define the console inputs before calling the
 		// method
-
+		
 		menu.afficher();
 
 		String logConsole = systemOutRule.getLog();
 		assertThat(logConsole).containsOnlyOnce("***** Pizzeria Administration *****");
-		assertThat(logConsole).containsOnlyOnce("1. Lister les pizzas");
-		assertThat(logConsole).containsOnlyOnce("2. Ajouter une nouvelle pizza");
-		assertThat(logConsole).containsOnlyOnce("3. Mettre à jour une pizza");
-		assertThat(logConsole).containsOnlyOnce("4. Supprimer une pizza");
+		assertThat(logConsole).containsOnlyOnce("1.Lister les pizzas");
+		assertThat(logConsole).containsOnlyOnce("2.Ajouter une nouvelle pizza");
+		assertThat(logConsole).containsOnlyOnce("3.Mettre à jour une pizza");
+		assertThat(logConsole).containsOnlyOnce("4.Supprimer une pizza");
 		assertThat(logConsole).containsOnlyOnce("99. Sortir");
 
 	}

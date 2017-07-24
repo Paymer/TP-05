@@ -54,9 +54,9 @@ public class Main {
 		 */
 		try (Scanner scanner = new Scanner (System.in)){
 
-			//IPizzaDao dao = new PizzaDaoMemo();
+			IPizzaDao dao = new PizzaDaoMemo();
 			//IPizzaDao dao = new PizzaDaoJDBC();
-			IPizzaDao dao = new PizzaDaoAPI();
+			//IPizzaDao dao = new PizzaDaoAPI();
 			dao.init();
 			
 			Menu menu = new Menu(dao, scanner);
