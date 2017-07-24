@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import dev.dao.IPizzaDao;
 import dev.dao.Pizza;
-import dev.dao.PizzaDaoMemo;
 import dev.ihm.utils.ConsoleLogger;
 
 public class ListerPizzasOptionMenu implements OptionMenu {
@@ -24,7 +23,7 @@ public class ListerPizzasOptionMenu implements OptionMenu {
 			co.console(pizzas.get(i).toString());
 			i++;
 		}
-		co.app(" List done ");
+		co.console(" List done ");
 	}
 
 }

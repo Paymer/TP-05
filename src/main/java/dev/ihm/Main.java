@@ -15,7 +15,7 @@ import dev.ihm.menu.Menu;
 public class Main {
 	public static void main(String[] args) {
 		
-		LoggerFactory.getLogger("dev.dao").info("System Initialized");
+		LoggerFactory.getLogger("dev.ihm").info("System Initialized");
 		/** we have to initialize it once
 		 * if I initialize this in the method main
 		 * it is not necessary to do it in all the classes

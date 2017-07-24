@@ -3,7 +3,6 @@ package dev.ihm.menu.option;
 import java.util.Scanner;
 
 import dev.dao.IPizzaDao;
-import dev.dao.PizzaDaoMemo;
 import dev.exception.DeletePizzaException;
 import dev.ihm.utils.ConsoleLogger;
 

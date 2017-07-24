@@ -1,0 +1,6 @@
+target
+.classpath
+.settings
+.project
+dao.log
+console.log

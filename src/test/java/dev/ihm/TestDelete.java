@@ -45,7 +45,7 @@ public class TestDelete {
 	public void setUp() {
 		pizzaDao = new PizzaDaoMemo();
 		pizzaDao.init();
-		mar = new Pizza(1, "MAR", "Margherita", 14, CategoriePizza.VIANDE);
+		mar = new Pizza("MAR", "Margherita", 14, CategoriePizza.VIANDE);
 	}
 
 	@Test
