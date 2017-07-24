@@ -2,9 +2,21 @@ package dev.dao;
 
 import java.lang.reflect.Field;
 
-import dev.dao.utils.DaoLogger;
-import dev.ihm.utils.ConsoleLogger;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
+import dev.dao.utils.DaoLogger;
+
+
+@Entity
+@Table (name = "pizza")
 public class Pizza {
 	public CategoriePizza getCateg() {
 		return categ;
@@ -13,17 +25,22 @@ public class Pizza {
 	public void setCateg(CategoriePizza categ) {
 		this.categ = categ;
 	}
-
 	
-	@ToString
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	int id;
+	@Column (name = "CODE")
 	String code;
-	@ToString
+	@Column(name = "NAME")
 	String nom;
-	@ToString
+	@Column(name = "PRICE")
 	double prix;
-	@ToString
+	@Column(name = "TYPE")
+	@Enumerated(EnumType.STRING)
 	CategoriePizza categ;
-
+	@Column(name = "ACTIVE")
+	Boolean valide;
+	@Transient
 	DaoLogger co = new DaoLogger();
 	/* Inicializacion del metodo */
 
@@ -33,14 +50,17 @@ public class Pizza {
 		this.nom = nom;
 		this.prix = prix;
 		this.categ = categ;
+		this.valide = true;
 	}
 
-
-	// Metodos Get y Set
-
+// this method is super necessary in the API case	
 	public Pizza() {
 		
 	}
+
+	// Metodos Get y Set
+
+
 
 	@Override
 	public int hashCode() {
@@ -65,6 +85,16 @@ public class Pizza {
 		} else if (!code.equals(other.code))
 			return false;
 		return true;
+	}
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	
@@ -93,14 +123,32 @@ public class Pizza {
 		this.prix = prix;
 	}
 
+	public void setValide(boolean valide) {
+		this.valide = valide;
+	}
+	public Boolean getValide() {
+		return valide;
+	}
+
+	
+	
 	public void setPizza(String code, String nom, double prix, CategoriePizza categ) {
 		this.nom = nom;
 		this.code = code;
 		this.prix = prix;
 		this.categ = categ;
+		
 	}
 
+	@Override
+	public String toString() {
+		return  code + " " + nom + " " + prix + " " + categ;
+	}
+	
+	
+
 	// Metodo To String
+	/*
 	@Override
 	public String toString() {
 		StringBuilder chaine = new StringBuilder();
@@ -118,5 +166,8 @@ public class Pizza {
 		}
 		return chaine.toString();
 	}
+	*/
+	
+	
 
 }
