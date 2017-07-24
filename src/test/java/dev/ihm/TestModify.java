@@ -53,12 +53,13 @@ public class TestModify {
 		NumberFormat nf = NumberFormat.getNumberInstance(Locale.FRANCE);
 		DecimalFormat df = (DecimalFormat)nf;
 		
+		Scanner scanner = new Scanner (System.in);
 		 
 		String code = "MAR";
 		//It is necessary to define the console inputs before calling the method ---- 
 		systemInMock.provideLines(code, testPizza.getCode(), testPizza.getNom(), testPizza.getCateg().name(), df.format(testPizza.getPrix()), "99");
 	
-		 mod.execute(pizzaDao, new Scanner(System.in));
+		 mod.execute(pizzaDao, scanner);
 		
 		 assertThat(pizzaDao.getPizzas()).contains(testPizza);
 		 assertThat(pizzaDao.getPizzas()).doesNotContain(mar);
