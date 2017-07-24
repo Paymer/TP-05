@@ -58,8 +58,6 @@ public class TestNouvellePizzaOptionMenu {
 		systemInMock.provideLines(testPizza.getCode(), testPizza.getNom(), "VIANDE" ,df.format(testPizza.getPrix()), "99");
 		menu.execute (pizzaDao, scanner);
 		
-		
-		 String logConsole = systemOutRule.getLog();
 		 assertThat(pizzaDao.getPizzas()).contains(testPizza);
 		
 
