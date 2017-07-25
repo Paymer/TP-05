@@ -41,12 +41,6 @@ public class Main {
 		initMemory();*/
 		
 		
-		
-		
-		
-		
-		
-		
 		/** we introduce in the () of the try 
 		 * all the variables that will be closed
 		 * automatically once the try finalizes, 
@@ -54,9 +48,9 @@ public class Main {
 		 */
 		try (Scanner scanner = new Scanner (System.in)){
 
-			IPizzaDao dao = new PizzaDaoMemo();
+			//IPizzaDao dao = new PizzaDaoMemo();
 			//IPizzaDao dao = new PizzaDaoJDBC();
-			//IPizzaDao dao = new PizzaDaoAPI();
+			IPizzaDao dao = new PizzaDaoAPI();
 			dao.init();
 			
 			Menu menu = new Menu(dao, scanner);

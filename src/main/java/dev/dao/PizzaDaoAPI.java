@@ -1,6 +1,6 @@
 package dev.dao;
 
-import java.util.ArrayList;
+
 
 import java.util.List;
 
@@ -20,16 +20,19 @@ import dev.ihm.utils.ConsoleLogger;
 public class PizzaDaoAPI implements IPizzaDao{
 	
 
+	// etape 1 - Créer l'usine à session (EntityManager) => EntityManagerFactory
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("PizzaDaoAPI-jpa-unit");
+	
+	
+	// etape 2 - création d'une session => EntityManager
+	EntityManager em1 = emf.createEntityManager();
+	
+	
 	@Override
 	public List<Pizza> getPizzas() {
 	
-		// etape 1 - Créer l'usine à session (EntityManager) => EntityManagerFactory
-				EntityManagerFactory emf = Persistence.createEntityManagerFactory("PizzaDaoAPI-jpa-unit");
-				
-				
-				// etape 2 - création d'une session => EntityManager
-				EntityManager em1 = emf.createEntityManager();
 				em1.getTransaction().begin();
+				
 				
 				// etape 3 - je communique avec la base de données
 				//*Pizza es el nombre de la clase!!!
@@ -42,13 +45,8 @@ public class PizzaDaoAPI implements IPizzaDao{
 	@Override
 	public void saveNewPizza(Pizza pizza) throws SavePizzaException {
 		
-		StringBuilder chaine = new StringBuilder();
-
-		// etape 1 - Créer l'usine à session (EntityManager) => EntityManagerFactory
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("PizzaDaoAPI-jpa-unit");
 		
-		// etape 2 - création d'une session => EntityManager
-		EntityManager em1 = emf.createEntityManager();
+		
 		em1.getTransaction().begin();
 		
 		// etape 3 - je communique avec la base de données
@@ -64,19 +62,16 @@ public class PizzaDaoAPI implements IPizzaDao{
 			throw new SavePizzaException ("The code choosen already exists");
 		}
 
-		em1.close();
-
-		emf.close();
+	
 				
 	}
 
 	@Override
 	public void updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException {
 		// etape 1 - Créer l'usine à session (EntityManager) => EntityManagerFactory
-	try {	EntityManagerFactory emf = Persistence.createEntityManagerFactory("PizzaDaoAPI-jpa-unit");
+	try {	
 		
-		// etape 2 - création d'une session => EntityManager
-		EntityManager em1 = emf.createEntityManager();
+		
 		em1.getTransaction().begin();
 		
 		// etape 3 - je communique avec la base de données
@@ -98,8 +93,7 @@ public class PizzaDaoAPI implements IPizzaDao{
 
 		}
 		em1.getTransaction().commit();
-		em1.close();
-		emf.close();
+		
 		
 	}catch ( NoResultException e){
 		throw new UpdatePizzaException("Pizzacode not found" + e.getMessage(), e);
@@ -112,11 +106,11 @@ public class PizzaDaoAPI implements IPizzaDao{
 	@Override
 	public void deletePizza(String codePizza) throws DeletePizzaException {
 		
-		// etape 1 - Créer l'usine à session (EntityManager) => EntityManagerFactory
-		try {	EntityManagerFactory emf = Persistence.createEntityManagerFactory("PizzaDaoAPI-jpa-unit");
+		
+		try {	
 			
 			// etape 2 - création d'une session => EntityManager
-			EntityManager em1 = emf.createEntityManager();
+			
 			em1.getTransaction().begin();
 			
 			// etape 3 - je communique avec la base de données
@@ -136,8 +130,7 @@ public class PizzaDaoAPI implements IPizzaDao{
 			}
 			
 			em1.getTransaction().commit();
-			em1.close();
-			emf.close();
+			
 		}catch (NoResultException e){
 			throw new DeletePizzaException("Pizzacode not found" + e.getMessage(), e);
 		}
@@ -148,25 +141,28 @@ public class PizzaDaoAPI implements IPizzaDao{
 	public void init() throws PizzaException {
 		ConsoleLogger co = new ConsoleLogger();
 	try {
-		// etape 1 - Créer l'usine à session (EntityManager) => EntityManagerFactory
-	// The name must be the same as the one that appears in the persistence file!!!
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("PizzaDaoAPI-jpa-unit");
+		
+	
 
-		// etape 2 - création d'une session => EntityManager
-		EntityManager em1 = emf.createEntityManager();
 		em1.getTransaction().begin();
 		
 		// etape 3 - je communique avec la base de données
 		TypedQuery<Pizza> query = em1.createQuery("select p from Pizza p where p.valide = true", Pizza.class);
 		co.console(query.getResultList().toString());
 
-		//etqpe 4 - je ferme tous les usines
-		em1.close();
-		emf.close();
+
 		
 	}catch (IllegalArgumentException e){
 	throw new PizzaException("empty list" + e.getMessage(), e);
 	}
 	}
 
+	
+	
+	//etape 4 - je ferme tous les usines
+	 {
+		 em1.close();
+		 emf.close();
+		 }
+	
 }

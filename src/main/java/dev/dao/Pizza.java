@@ -1,6 +1,6 @@
 package dev.dao;
 
-import java.lang.reflect.Field;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +9,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -18,16 +21,11 @@ import dev.dao.utils.DaoLogger;
 @Entity
 @Table (name = "pizza")
 public class Pizza {
-	public CategoriePizza getCateg() {
-		return categ;
-	}
 
-	public void setCateg(CategoriePizza categ) {
-		this.categ = categ;
-	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@ManyToMany
 	int id;
 	@Column (name = "CODE")
 	String code;
@@ -40,26 +38,11 @@ public class Pizza {
 	CategoriePizza categ;
 	@Column(name = "ACTIVE")
 	Boolean valide;
+	@Column(name = "URL_image")
+	String url;
 	@Transient
 	DaoLogger co = new DaoLogger();
-	/* Inicializacion del metodo */
-
-	public Pizza(String code, String nom, double prix, CategoriePizza categ) {
-		
-		this.code = code;
-		this.nom = nom;
-		this.prix = prix;
-		this.categ = categ;
-		this.valide = true;
-	}
-
-// this method is super necessary in the API case	
-	public Pizza() {
-		
-	}
-
-	// Metodos Get y Set
-
+	
 
 
 	@Override
@@ -87,6 +70,45 @@ public class Pizza {
 		return true;
 	}
 	
+
+
+	@Override
+	public String toString() {
+		return  code + " " + nom + " " + prix + " " + categ;
+	}
+
+	
+	
+	
+	/* Inicializacion del metodo */
+
+	// this method is super necessary in the API case	
+		public Pizza() {
+			
+		}
+	
+	public Pizza(String code, String nom, double prix, CategoriePizza categ) {
+		
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		this.categ = categ;
+		this.valide = true;
+		this.url ="";
+	}
+	
+	public void setPizza(String code, String nom, double prix, CategoriePizza categ) {
+		this.nom = nom;
+		this.code = code;
+		this.prix = prix;
+		this.categ = categ;
+
+	}
+	
+
+	
+	
+	// Getters and Setters
 	
 	
 	public int getId() {
@@ -96,8 +118,6 @@ public class Pizza {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	
 
 	public String getCode() {
 		return code;
@@ -123,50 +143,40 @@ public class Pizza {
 		this.prix = prix;
 	}
 
-	public void setValide(boolean valide) {
-		this.valide = valide;
+	
+	
+	public CategoriePizza getCateg() {
+		return categ;
 	}
+
+	public void setCateg(CategoriePizza categ) {
+		this.categ = categ;
+	}
+	
+	
 	public Boolean getValide() {
 		return valide;
 	}
 
-	
-	
-	public void setPizza(String code, String nom, double prix, CategoriePizza categ) {
-		this.nom = nom;
-		this.code = code;
-		this.prix = prix;
-		this.categ = categ;
-		
+	public void setValide(Boolean valide) {
+		this.valide = valide;
 	}
 
-	@Override
-	public String toString() {
-		return  code + " " + nom + " " + prix + " " + categ;
+	public String getUrl() {
+		return url;
 	}
-	
-	
 
-	// Metodo To String
-	/*
-	@Override
-	public String toString() {
-		StringBuilder chaine = new StringBuilder();
-		try {
-			for (Field field : this.getClass().getDeclaredFields()) {
-				ToString annotation = field.getAnnotation(ToString.class);
-				if (annotation != null) {
-
-					chaine.append(" ").append(field.get(this).toString());
-				}
-			}
-		} catch (Exception e) {
-			co.app("Une erreur s'est produite " + e.getMessage());
-			return "";
-		}
-		return chaine.toString();
+	public void setUrl(String url) {
+		this.url = url;
 	}
-	*/
+
+	public DaoLogger getCo() {
+		return co;
+	}
+
+	public void setCo(DaoLogger co) {
+		this.co = co;
+	}
 	
 	
 
