@@ -42,7 +42,7 @@ public class TestModify {
 	public void setUp() {
 		pizzaDao = new PizzaDaoMemo();
 		pizzaDao.init();
-		testPizza = new Pizza("ESP", "Espartana", 20.5, CategoriePizza.VIANDE);
+		testPizza = new Pizza("ESP", "Espartana", 20, CategoriePizza.VIANDE);
 		
 	}
  
@@ -50,14 +50,15 @@ public class TestModify {
 	
 	@Test
 	 public void testExecute () {
-		NumberFormat nf = NumberFormat.getNumberInstance(Locale.FRANCE);
-		DecimalFormat df = (DecimalFormat)nf;
-		
+		//NumberFormat nf = NumberFormat.getNumberInstance(Locale.FRANCE);
+		//DecimalFormat df = (DecimalFormat)nf;
+		//df.format(testPizza.getPrix())
+		//Double.toString(testPizza.getPrix()) 
 		Scanner scanner = new Scanner (System.in);
 		 
 		String code = "MAR";
 		//It is necessary to define the console inputs before calling the method ---- 
-		systemInMock.provideLines(code, testPizza.getCode(), testPizza.getNom(), testPizza.getCateg().name(), df.format(testPizza.getPrix()), "99");
+		systemInMock.provideLines(code, testPizza.getCode(), testPizza.getNom(),"VIANDE", "20" , "99");
 	
 		 mod.execute(pizzaDao, scanner);
 		
