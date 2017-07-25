@@ -3,13 +3,13 @@ package dev.ihm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import dev.dao.CategoriePizza;
-import dev.dao.IPizzaDao;
-import dev.dao.Pizza;
-import dev.dao.PizzaDaoMemo;
 import dev.dao.PizzaDaoMemoTest;
-import dev.ihm.menu.Menu;
-import dev.ihm.menu.option.Delete;
+import pizzeria.central.CategoriePizza;
+import pizzeria.central.Pizza;
+import pizzeria.pizzeria_admin.dao.IPizzaDao;
+import pizzeria.pizzeria_admin.dao.PizzaDaoMemo;
+import pizzeria.pizzeria_admin.ihm.menu.MenuAdmin;
+import pizzeria.pizzeria_admin.ihm.menu.option.Delete;
 
 import org.junit.Before;
 import org.junit.Rule;

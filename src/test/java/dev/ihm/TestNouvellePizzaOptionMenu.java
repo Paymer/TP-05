@@ -16,10 +16,10 @@ import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 
-import dev.dao.CategoriePizza;
-import dev.dao.Pizza;
-import dev.dao.PizzaDaoMemo;
-import dev.ihm.menu.option.NouvellePizzaOptionMenu;
+import pizzeria.central.CategoriePizza;
+import pizzeria.central.Pizza;
+import pizzeria.pizzeria_admin.dao.PizzaDaoMemo;
+import pizzeria.pizzeria_admin.ihm.menu.option.NouvellePizzaOptionMenu;
 
 public class TestNouvellePizzaOptionMenu {
 

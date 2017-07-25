@@ -17,11 +17,13 @@ import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
 
-import dev.dao.IPizzaDao;
-import dev.exception.DeletePizzaException;
-import dev.exception.SavePizzaException;
-import dev.exception.UpdatePizzaException;
-import dev.dao.Pizza;
+import pizzeria.central.CategoriePizza;
+import pizzeria.central.Pizza;
+import pizzeria.pizzeria_admin.dao.IPizzaDao;
+import pizzeria.pizzeria_admin.dao.PizzaDaoMemo;
+import pizzeria.pizzeria_admin.dao.exception.DeletePizzaException;
+import pizzeria.pizzeria_admin.dao.exception.SavePizzaException;
+import pizzeria.pizzeria_admin.dao.exception.UpdatePizzaException;
 
 public class PizzaDaoMemoTest {
 	private static final Logger LOG = LoggerFactory.getLogger(PizzaDaoMemoTest.class);
@@ -62,7 +64,7 @@ public class PizzaDaoMemoTest {
 	public void testUpdatePizza() throws UpdatePizzaException {
 		
 		
-		pizzaDao.updatePizza(mar.code, testPizza);
+		pizzaDao.updatePizza(mar.getCode(), testPizza);
 
 		List<Pizza> toutesLesPizzas = pizzaDao.getPizzas();
 		
@@ -76,7 +78,7 @@ public class PizzaDaoMemoTest {
 		
 	
 		
-		pizzaDao.deletePizza(mar.code);
+		pizzaDao.deletePizza(mar.getCode());
 
 		List<Pizza> toutesLesPizzas = pizzaDao.getPizzas();
 		
@@ -88,8 +90,8 @@ public class PizzaDaoMemoTest {
 
 	@Test
 	public void testCheckList() {
-		assertThat(pizzaDao.checkList(mar.code) == true);	
-		assertThat(pizzaDao.checkList(testPizza.code) == false);
+		assertThat(pizzaDao.checkList(mar.getCode()) == true);	
+		assertThat(pizzaDao.checkList(testPizza.getCode()) == false);
 
 	}
 	

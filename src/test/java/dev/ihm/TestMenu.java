@@ -3,11 +3,11 @@ package dev.ihm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import dev.dao.CategoriePizza;
-import dev.dao.Pizza;
-import dev.dao.PizzaDaoMemo;
 import dev.dao.PizzaDaoMemoTest;
-import dev.ihm.menu.Menu;
+import pizzeria.central.CategoriePizza;
+import pizzeria.central.Pizza;
+import pizzeria.pizzeria_admin.dao.PizzaDaoMemo;
+import pizzeria.pizzeria_admin.ihm.menu.MenuAdmin;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -23,14 +23,13 @@ import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
 
-import dev.dao.Pizza;
 import java.util.Scanner;
 
 public class TestMenu {
 
 	private static final Logger LOG = LoggerFactory.getLogger(PizzaDaoMemoTest.class);
 	
-	private Menu menu;
+	private MenuAdmin menu;
 	// This rule allows to define what is going to be introduced throw the
 	// console while the test
 	@Rule
@@ -44,7 +43,7 @@ public class TestMenu {
 		// TODO mettre ici le mock
 		PizzaDaoMemo pizzaDao = new PizzaDaoMemo();
 		pizzaDao.init();
-		menu = new Menu(pizzaDao, new Scanner(System.in));
+		menu = new MenuAdmin(pizzaDao, new Scanner(System.in));
 
 	}
 
