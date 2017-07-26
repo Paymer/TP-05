@@ -4,10 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import pizzeria.central.Menu;
 import pizzeria.pizzeria_admin.dao.IPizzaDao;
 import pizzeria.pizzeria_admin.dao.PizzaDaoAPI;
 import pizzeria.pizzeria_client.dao.client.IClientDao;
-import pizzeria.pizzeria_client.dao.commandes.CommandesDaoMemo;
+import pizzeria.pizzeria_client.dao.commandes.CommandesDaoAPI;
 import pizzeria.pizzeria_client.dao.commandes.ICommandesDao;
 import pizzeria.pizzeria_client.ihm.menu.option.Commander;
 import pizzeria.pizzeria_client.ihm.menu.option.Connection;
@@ -16,7 +17,7 @@ import pizzeria.pizzeria_client.ihm.menu.option.Lister;
 import pizzeria.pizzeria_client.ihm.menu.option.OptionMenuClient;
 import pizzeria.pizzeria_client.ihm.utils.ClientConsole;
 
-public class SecondMenuClient {
+public class SecondMenuClient implements Menu {
 
 	
 	private Scanner scanner;
@@ -32,11 +33,11 @@ public class SecondMenuClient {
 	}
 
 
-	private Map<Integer, OptionMenuClient> options = new HashMap<>();
+	Map<Integer, OptionMenuClient> options = new HashMap<>();
 	
 	//It is necessary to get activate the options in the hash map
 	
-	private void initOpt() {
+	public void initOpt() {
 		options.put(1, new Commander());
 		options.put(2, new Lister());
 	

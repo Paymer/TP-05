@@ -2,8 +2,6 @@ package pizzeria.pizzeria_admin.dao;
 
 
 
-import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
-
 import java.util.List;
 
 import javax.persistence.EntityManager;

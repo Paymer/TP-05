@@ -32,7 +32,7 @@ public class Connection implements OptionMenuClient {
 			
 			Client client = new Client();
 			
-			client = clDao.getclient(mail, psswd); //search for the client
+			client = (Client)clDao.searchClient(mail, psswd); //search for the client
 			
 		SecondMenuClient menu2 = new SecondMenuClient(com, client, scanner);
 		menu2.manage();

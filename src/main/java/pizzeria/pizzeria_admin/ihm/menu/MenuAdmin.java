@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import pizzeria.central.Menu;
 import pizzeria.pizzeria_admin.dao.IPizzaDao;
 import pizzeria.pizzeria_admin.ihm.menu.option.Delete;
 import pizzeria.pizzeria_admin.ihm.menu.option.ListerPizzasOptionMenu;
@@ -12,7 +13,7 @@ import pizzeria.pizzeria_admin.ihm.menu.option.NouvellePizzaOptionMenu;
 import pizzeria.pizzeria_admin.ihm.menu.option.OptionMenuAdmin;
 import pizzeria.pizzeria_admin.ihm.utils.ConsoleLogger;
 
-public class MenuAdmin {
+public class MenuAdmin implements Menu {
 
 
 	
@@ -26,9 +27,9 @@ public class MenuAdmin {
 
 	private Map<Integer, OptionMenuAdmin> options = new HashMap<>();
 	
-	//It is necessary to get activate the options in the hash map
+	 //It is necessary to get activate the options in the hash map
 	
-	private void initOpt() {
+	public void initOpt() {
 		options.put(1, new ListerPizzasOptionMenu());
 		options.put(2, new NouvellePizzaOptionMenu());
 		options.put(3, new Modify());

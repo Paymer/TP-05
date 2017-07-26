@@ -71,7 +71,16 @@ public class Commande {
 	}
 	
 	
-	/*Getters and Setteres*/
+public Commande (int num, LocalDateTime date, Client client,List<Pizza> list){
+	this.numeroCommande = num;
+	this.dateCommande = date;
+	this.client = client;
+	this.pizza = list;
+	
+		
+	}
+	
+	/*Getters and Setters*/
 	
 	public int getId() {
 		return id;
