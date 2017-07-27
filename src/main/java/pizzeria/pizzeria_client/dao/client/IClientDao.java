@@ -30,6 +30,10 @@ public interface IClientDao {
 		 * in case there is need for the API
 		 */
 	}
+
+
+
+	Client getClient(String mail, String psswd);
 	
 	
 	

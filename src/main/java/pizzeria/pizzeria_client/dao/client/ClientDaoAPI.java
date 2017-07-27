@@ -52,12 +52,12 @@ public class ClientDaoAPI implements IClientDao{
 	@Override
 	public void add (Client cl) throws AddException {
 		
-				// etape 2 - création d'une session => EntityManager
+				
 				EntityManager save = emf.createEntityManager();
 				save.getTransaction().begin();
 				
 				
-				// etape 3 - je communique avec la base de données
+				
 				TypedQuery<Client> query2 = save.createQuery("select c from Client c where c.mail =:mail", Client.class)
 						.setParameter("mail", cl.getMail());
 				
@@ -79,11 +79,53 @@ public class ClientDaoAPI implements IClientDao{
 
 	@Override
 	public boolean check(String mail, String psswd) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		
+		EntityManager check = emf.createEntityManager();
+		check.getTransaction().begin();
+		
+		
+		
+		TypedQuery<Client> query2 = check.createQuery("select c from Client c where c.password=:password", Client.class)
+				.setParameter("mail", mail);
+		
+		boolean exists = false;
+		exists= query2.getResultList().isEmpty();
+		//true:the client does not exist
+		//false: the client already exist
+		
+		check.close();
+
+		
+		return exists;
 	}
 
 
+	
+
+	public Client getClient(String mail, String psswd) {
+		
+		
+		EntityManager getClient = emf.createEntityManager();
+		getClient.getTransaction().begin();
+		
+		
+		
+		TypedQuery<Client> query2 = getClient.createQuery("select c from Client c where c.mail=:Email c.password=:password", Client.class)
+				.setParameter("Email", mail)
+				.setParameter("password", psswd);
+		
+		Client client = new Client ();
+		client= query2.getSingleResult();
+		
+		getClient.close();
+
+		
+		return client;
+	}
+
+	
+	
 	
 	public void close() {
 		emf.close();

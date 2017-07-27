@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import pizzeria.pizzeria_client.dao.client.Client;
 import pizzeria.pizzeria_client.dao.client.IClientDao;
-import pizzeria.pizzeria_client.dao.commandes.ICommandesDao;
 import pizzeria.pizzeria_client.ihm.menu.SecondMenuClient;
 import pizzeria.pizzeria_client.ihm.utils.ClientConsole;
 
@@ -28,11 +27,13 @@ public class Connection implements OptionMenuClient {
 		
 		
 		
-		if (clDao.check(mail, psswd)){
+		if (!((IClientDao) clDao).check(mail, psswd)){
+			//true:the client does not exist
+			//false: the client already exist
 			
 			Client client = new Client();
 			
-			client = (Client)clDao.searchClient(mail, psswd); //search for the client
+			client = ((IClientDao) clDao).getClient(mail, psswd); //search for the client
 			
 		SecondMenuClient menu2 = new SecondMenuClient(com, client, scanner);
 		menu2.manage();

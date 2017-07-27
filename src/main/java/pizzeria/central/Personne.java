@@ -17,6 +17,7 @@ public abstract class Personne  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected int id;
+	
 	@Column (name = "nom")
 	protected String nom;
 	@Column (name = "prenom")
@@ -37,7 +38,12 @@ public abstract class Personne  {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	
 }

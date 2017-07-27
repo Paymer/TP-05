@@ -11,7 +11,6 @@ import javax.persistence.TypedQuery;
 
 import pizzeria.central.Pizza;
 import pizzeria.pizzeria_admin.dao.PizzaDaoAPI;
-import pizzeria.pizzeria_admin.ihm.utils.ConsoleLogger;
 import pizzeria.pizzeria_client.dao.client.Client;
 import pizzeria.pizzeria_client.dao.exceptions.AddException;
 
@@ -19,12 +18,12 @@ import pizzeria.pizzeria_client.dao.exceptions.AddException;
 public class CommandesDaoAPI implements ICommandesDao {
 
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("CommandeDaoAPI-jpa-unit");
-	private List<Commande> com = new ArrayList<>();
+
 	
 
 	@Override
 	public void init() throws AddException {
-		ConsoleLogger co = new ConsoleLogger();
+		
 
 		try {
 						EntityManager init = emf.createEntityManager();
@@ -68,28 +67,34 @@ public class CommandesDaoAPI implements ICommandesDao {
 			save.close();
 			}
 	
+	public List<Commande> getList(Client clDao) {
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
+		List<Commande> com = new ArrayList<>();
 		
-	
+		// etape 2 - création d'une session => EntityManager
+		EntityManager getList = emf.createEntityManager();
+		getList.getTransaction().begin();
+				
+				
+				// etape 3 - je communique avec la base de données
+				
+				TypedQuery<Commande> query = getList.createQuery("select c from Commande c where c.client_id =:id", Commande.class)
+						.setParameter("id", clDao.getId());
+				com = query.getResultList();
+				//etape 4 - je ferme tous les usines
+				
+				 getList.close();
+				 
+				 return com;
+				
+			
+	}
+
 	public void close() {
 		emf.close();
 	}
+
+	
 	
 	
 	

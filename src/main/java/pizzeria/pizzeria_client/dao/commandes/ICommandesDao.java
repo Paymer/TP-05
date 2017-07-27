@@ -1,6 +1,9 @@
 package pizzeria.pizzeria_client.dao.commandes;
 
 
+import java.util.List;
+
+import pizzeria.pizzeria_client.dao.client.Client;
 import pizzeria.pizzeria_client.dao.exceptions.AddException;
 
 public interface ICommandesDao {
@@ -26,6 +29,10 @@ public interface ICommandesDao {
 		 */
 
 		}
+
+
+
+	List<Commande> getList(Client clDao);
 	
 
 }

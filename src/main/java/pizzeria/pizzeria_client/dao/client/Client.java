@@ -10,7 +10,7 @@ import pizzeria.central.Personne;
 @Table (name = "Client")
 public class Client extends Personne {
 	
-	@Column (name = "mail")	
+	@Column (name = "mail")
 	String mail;
 	
 	@Column (name = "password")

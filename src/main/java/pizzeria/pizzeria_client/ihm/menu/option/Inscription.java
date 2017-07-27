@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import pizzeria.pizzeria_client.dao.client.Client;
 import pizzeria.pizzeria_client.dao.client.IClientDao;
-import pizzeria.pizzeria_client.dao.commandes.ICommandesDao;
+import pizzeria.pizzeria_client.dao.exceptions.AddException;
 import pizzeria.pizzeria_client.ihm.utils.ClientConsole;
 
 public class Inscription implements OptionMenuClient {
@@ -30,7 +30,12 @@ public class Inscription implements OptionMenuClient {
 		co.console("Introduir password");
 		cl.setPsswd(scanner.nextLine());
 		
-		clDao.add(cl);
+		try {
+			((IClientDao) clDao).add(cl);
+		} catch (AddException e) {
+			
+			e.printStackTrace();
+		}
 		
 	}
 

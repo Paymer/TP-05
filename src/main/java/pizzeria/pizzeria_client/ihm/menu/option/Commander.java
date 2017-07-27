@@ -1,9 +1,7 @@
 package pizzeria.pizzeria_client.ihm.menu.option;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,9 +11,7 @@ import pizzeria.pizzeria_admin.dao.IPizzaDao;
 import pizzeria.pizzeria_admin.dao.PizzaDaoAPI;
 import pizzeria.pizzeria_client.dao.Statut;
 import pizzeria.pizzeria_client.dao.client.Client;
-import pizzeria.pizzeria_client.dao.client.IClientDao;
 import pizzeria.pizzeria_client.dao.commandes.Commande;
-import pizzeria.pizzeria_client.dao.commandes.ICommandesDao;
 import pizzeria.pizzeria_client.ihm.utils.ClientConsole;
 
 public class Commander implements OptionMenuClient {
@@ -30,9 +26,6 @@ public class Commander implements OptionMenuClient {
 	public void execute(Object com, Object clDao, Scanner scanner) {
 		ClientConsole co = new ClientConsole();
 		Commande commande = new Commande ();
-		
-		
-
 		
 		commande.setClient((Client) clDao);
 		commande.setDateCommande(LocalDateTime.now());
@@ -51,26 +44,52 @@ public class Commander implements OptionMenuClient {
 		co.console("Pizzas List");
 		co.console(list2.toString());
 		co.console("introduce the id of the pizza of you want");
-		co.console("to stop write 'a'");
+		co.console("to stop write 'XXX'");
 		
-		//CAHOS SEARCH HOW TO DO THAT!!!!
-		int c = -1;
-		do{
-			String ch = scanner.nextLine();
+		//("\b[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}\b.")
+		
+		
+		String ch = scanner.nextLine();
+		
+		do {
 			
-			try {c = Integer.parseInt(ch);
-			//it should take all the pizzas 
-			if ( c >= 0 && c < list2.size()){
-			comm.add(list2.get(c));
+			ch = scanner.nextLine();
+			
+			while (!ch.matches("^[A-Z]{3}$") || (!(this.checkCode(ch, list2))) ){
+				co.console("Introduce a valid code please");
 			}
 			
-			}catch{
-				//TODO in case it is not possible to transform the string into a integer
-			}
 			
-		}while (c != 'a');
-		
+			comm.add(this.searchPizza(ch, list2));
+			
+			
+			
+		}while (!ch.equals("XXX"));
 		
 	}
+	
+	
+	public boolean checkCode (String code, List<Pizza> pizzas){
+	
+		boolean exists = false;
+		for (Pizza p : pizzas) {
 
+			if (p.getCode().equals(code)) {
+				 exists = true;
+			}}
+		return exists;
+	}
+
+	public Pizza searchPizza (String code, List<Pizza> pizzas){
+		Pizza pizza= new Pizza ();
+
+		for (Pizza p : pizzas) {
+
+			if (p.getCode().equals(code)) {
+				 pizza = p;
+			}}
+		return pizza;
+	}
+	
+	
 }
