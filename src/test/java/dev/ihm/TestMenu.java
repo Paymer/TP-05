@@ -6,8 +6,8 @@ import org.slf4j.LoggerFactory;
 import dev.dao.PizzaDaoMemoTest;
 import pizzeria.central.CategoriePizza;
 import pizzeria.central.Pizza;
-import pizzeria.pizzeria_admin.dao.PizzaDaoMemo;
-import pizzeria.pizzeria_admin.ihm.menu.MenuAdmin;
+import pizzeria.dao.pizzadao.PizzaDaoMemo;
+import pizzeria.ihm.menu.MenuAdmin;
 
 import org.junit.Before;
 import org.junit.Rule;

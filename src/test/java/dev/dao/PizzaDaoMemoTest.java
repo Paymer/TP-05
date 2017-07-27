@@ -19,11 +19,11 @@ import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
 
 import pizzeria.central.CategoriePizza;
 import pizzeria.central.Pizza;
-import pizzeria.pizzeria_admin.dao.IPizzaDao;
-import pizzeria.pizzeria_admin.dao.PizzaDaoMemo;
-import pizzeria.pizzeria_admin.dao.exception.DeletePizzaException;
-import pizzeria.pizzeria_admin.dao.exception.SavePizzaException;
-import pizzeria.pizzeria_admin.dao.exception.UpdatePizzaException;
+import pizzeria.dao.exception.DeletePizzaException;
+import pizzeria.dao.exception.SavePizzaException;
+import pizzeria.dao.exception.UpdatePizzaException;
+import pizzeria.dao.pizzadao.IPizzaDao;
+import pizzeria.dao.pizzadao.PizzaDaoMemo;
 
 public class PizzaDaoMemoTest {
 	private static final Logger LOG = LoggerFactory.getLogger(PizzaDaoMemoTest.class);

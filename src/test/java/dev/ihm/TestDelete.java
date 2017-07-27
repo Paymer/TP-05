@@ -6,10 +6,10 @@ import org.slf4j.LoggerFactory;
 import dev.dao.PizzaDaoMemoTest;
 import pizzeria.central.CategoriePizza;
 import pizzeria.central.Pizza;
-import pizzeria.pizzeria_admin.dao.IPizzaDao;
-import pizzeria.pizzeria_admin.dao.PizzaDaoMemo;
-import pizzeria.pizzeria_admin.ihm.menu.MenuAdmin;
-import pizzeria.pizzeria_admin.ihm.menu.option.Delete;
+import pizzeria.dao.pizzadao.IPizzaDao;
+import pizzeria.dao.pizzadao.PizzaDaoMemo;
+import pizzeria.ihm.menu.MenuAdmin;
+import pizzeria.ihm.menu.option.Delete;
 
 import org.junit.Before;
 import org.junit.Rule;

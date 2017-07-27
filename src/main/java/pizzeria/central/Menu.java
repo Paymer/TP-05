@@ -1,8 +1,5 @@
 package pizzeria.central;
 
-import java.util.Map;
-
-import pizzeria.pizzeria_client.ihm.menu.option.OptionMenuClient;
 
 public interface Menu {
 

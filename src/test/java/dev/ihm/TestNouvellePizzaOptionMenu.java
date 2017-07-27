@@ -18,8 +18,8 @@ import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 
 import pizzeria.central.CategoriePizza;
 import pizzeria.central.Pizza;
-import pizzeria.pizzeria_admin.dao.PizzaDaoMemo;
-import pizzeria.pizzeria_admin.ihm.menu.option.NouvellePizzaOptionMenu;
+import pizzeria.dao.pizzadao.PizzaDaoMemo;
+import pizzeria.ihm.menu.option.NouvellePizzaOptionMenu;
 
 public class TestNouvellePizzaOptionMenu {
 

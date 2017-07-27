@@ -1,21 +1,14 @@
 package pizzeria.pizzeria_admin;
 
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Scanner;
 
 import org.slf4j.LoggerFactory;
 
-import pizzeria.pizzeria_admin.dao.IPizzaDao;
-import pizzeria.pizzeria_admin.dao.PizzaDaoAPI;
-import pizzeria.pizzeria_admin.dao.PizzaDaoJDBC;
-import pizzeria.pizzeria_admin.dao.PizzaDaoMemo;
-import pizzeria.pizzeria_admin.ihm.menu.MenuAdmin;
-import pizzeria.pizzeria_admin.ihm.menu.option.Delete;
-import pizzeria.pizzeria_admin.ihm.menu.option.ListerPizzasOptionMenu;
-import pizzeria.pizzeria_admin.ihm.menu.option.Modify;
-import pizzeria.pizzeria_admin.ihm.menu.option.NouvellePizzaOptionMenu;
-import pizzeria.pizzeria_admin.ihm.menu.option.OptionMenuAdmin;
+import pizzeria.dao.pizzadao.IPizzaDao;
+import pizzeria.dao.pizzadao.PizzaDaoAPI;
+import pizzeria.ihm.menu.MenuAdmin;
+
 
 /**
  * @author Pau-Pau
