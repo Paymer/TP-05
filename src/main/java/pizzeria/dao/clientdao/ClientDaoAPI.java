@@ -17,7 +17,7 @@ public class ClientDaoAPI implements IClientDao{
 	
 
 	// etape 1 - Créer l'usine à session (EntityManager) => EntityManagerFactory
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("ClientDaoAPI-jpa-unit");
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("PizzaDaoAPI-jpa-unit");
 	
 	
 	@Override
@@ -87,13 +87,21 @@ public class ClientDaoAPI implements IClientDao{
 		
 		
 		
-		TypedQuery<Client> query2 = check.createQuery("select c from Client c where c.password=:password", Client.class)
+		TypedQuery<Client> query2 = check.createQuery("select c from Client c where c.mail=:mail", Client.class)
 				.setParameter("mail", mail);
 		
 		boolean exists = false;
 		exists= query2.getResultList().isEmpty();
 		//true:the client does not exist
 		//false: the client already exist
+		
+		//now it is necessary to check the password
+	
+			if (!exists && !query2.getSingleResult().getPsswd().equals(psswd)){
+				exists = true;
+			}
+		
+		
 		
 		check.close();
 
@@ -104,7 +112,7 @@ public class ClientDaoAPI implements IClientDao{
 
 	
 
-	public Client getClient(String mail, String psswd) {
+	public Client getClient(String mail) {
 		
 		
 		EntityManager getClient = emf.createEntityManager();
@@ -112,12 +120,12 @@ public class ClientDaoAPI implements IClientDao{
 		
 		
 		
-		TypedQuery<Client> query2 = getClient.createQuery("select c from Client c where c.mail=:Email c.password=:password", Client.class)
-				.setParameter("Email", mail)
-				.setParameter("password", psswd);
+		TypedQuery<Client> query2 = getClient.createQuery("select c from Client c where c.mail=:Email", Client.class)
+				.setParameter("Email", mail);
 		
 		Client client = new Client ();
 		client= query2.getSingleResult();
+		
 		
 		getClient.close();
 
@@ -125,7 +133,6 @@ public class ClientDaoAPI implements IClientDao{
 		return client;
 	}
 
-	
 	
 	
 	public void close() {

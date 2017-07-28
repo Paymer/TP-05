@@ -18,7 +18,7 @@ import pizzeria.dao.pizzadao.PizzaDaoAPI;
 
 public class CommandesDaoAPI implements ICommandesDao {
 
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("CommandeDaoAPI-jpa-unit");
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("PizzaDaoAPI-jpa-unit");
 
 	
 
@@ -39,8 +39,7 @@ public class CommandesDaoAPI implements ICommandesDao {
 						while (a<=5){
 						TypedQuery<Client> queryClient = init.createQuery("select c from Client c where c.id =:ID", Client.class)
 						.setParameter("ID", a);
-						Client cl = queryClient.getSingleResult();
-						this.add(new Commande(a,LocalDateTime.now(),cl,pizza));
+						this.add(new Commande(a,LocalDateTime.now(),queryClient.getSingleResult(),pizza));
 						}
 						
 						
@@ -90,6 +89,12 @@ public class CommandesDaoAPI implements ICommandesDao {
 				
 			
 	}
+	
+	
+	
+
+
+
 
 	public void close() {
 		emf.close();

@@ -34,8 +34,10 @@ public interface IClientDao {
 
 
 
-	Client getClient(String mail, String psswd);
+	Client getClient(String mail);
 	
+	
+
 	
 	
 }

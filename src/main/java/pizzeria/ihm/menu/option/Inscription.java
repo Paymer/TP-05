@@ -20,13 +20,16 @@ public class Inscription implements OptionMenuClient {
 		
 		ClientConsole co = new ClientConsole();
 		Client cl = new Client();
-		
+		scanner.nextLine();
 		co.console("Introduir nom");
 		cl.setNom(scanner.nextLine());
+		
 		co.console("Introduir prenom");
 		cl.setPrenom(scanner.nextLine());
+		
 		co.console("Introduir mail");
 		cl.setMail(scanner.nextLine());
+		
 		co.console("Introduir password");
 		cl.setPsswd(scanner.nextLine());
 		

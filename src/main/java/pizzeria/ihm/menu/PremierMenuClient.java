@@ -67,7 +67,7 @@ public class PremierMenuClient implements Menu {
 			a = scanner.nextInt();
 			//the hash Map is used to get the actions we need
 	
-			 if (a > 0 && a < 2 ) {options.get(a).execute(comDao, clDao, scanner);}
+			 if (a > 0 && a < 3 ) {options.get(a).execute(comDao, clDao, scanner);}
 			 
 		}while (a!= 99);
 		

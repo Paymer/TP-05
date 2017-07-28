@@ -23,6 +23,7 @@ public class SecondMenuClient implements Menu {
 		this.scanner = scanner2;
 		this.comDao = com;
 		this.user = cl; 
+		
 	}
 
 
@@ -66,8 +67,8 @@ public class SecondMenuClient implements Menu {
 			
 			a = scanner.nextInt();
 			//the hash Map is used to get the actions we need
-	
-			 if (a > 0 && a < 2 ) {options.get(a).execute(comDao, user, scanner);}
+		
+			 if (a > 0 && a < 3 ) {options.get(a).execute(comDao, user, scanner);}
 			 
 		}while (a!= 99);
 

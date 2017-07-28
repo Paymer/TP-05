@@ -3,10 +3,10 @@
 	<persistence-unit name="PizzaDaoAPI-jpa-unit" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>pizzeria.central.Pizza</class>
-		<class>pizzeria.pizzeria_client.dao.client.Client</class>
-		<class>pizzeria.pizzeria_client.dao.commandes.Commande</class>
-		<class>pizzeria.pizzeria_client.dao.Livreur</class>
 		<class>pizzeria.central.Personne</class>
+		<class>pizzeria.central.Client</class>
+		<class>pizzeria.central.Commande</class>
+		<class>pizzeria.central.Livreur</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/usuario1"/>
 			<property name="javax.persistence.jdbc.user" value="usuario1"/>

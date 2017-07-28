@@ -19,21 +19,30 @@ public class Connection implements OptionMenuClient {
 	public void execute(Object com, Object clDao, Scanner scanner) {
 		
 		ClientConsole co = new ClientConsole();
-		String psswd, mail;
+		 
+		String mail;
+		
+		scanner.nextLine();
+		
 		co.console("Introduir mail");
-		mail = (scanner.nextLine());
+		mail = scanner.nextLine();
+		
+		
+		
+		String password;
+		
 		co.console("Introduir password");
-		psswd = (scanner.nextLine());
+		password = scanner.nextLine();
 		
 		
 		
-		if (!((IClientDao) clDao).check(mail, psswd)){
+		if (!((IClientDao) clDao).check(mail, password)){
 			//true:the client does not exist
 			//false: the client already exist
 			
 			Client client = new Client();
 			
-			client = ((IClientDao) clDao).getClient(mail, psswd); //search for the client
+			client = ((IClientDao) clDao).getClient(mail); //search for the client
 			
 		SecondMenuClient menu2 = new SecondMenuClient(com, client, scanner);
 		menu2.manage();

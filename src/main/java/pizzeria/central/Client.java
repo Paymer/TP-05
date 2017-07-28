@@ -12,7 +12,7 @@ public class Client extends Personne {
 	String mail;
 	
 	@Column (name = "password")
-	String psswd;
+	String password;
 
 /* Inicializacion del metodo */
 	
@@ -24,7 +24,7 @@ public Client (String nom, String prenom, String mail, String password){
 	super.nom = nom;
 	super.prenom = prenom;
 	this.mail = mail;
-	this.psswd = password;
+	this.password = password;
 		
 	}
 	
@@ -38,10 +38,10 @@ public void setMail(String mail) {
 	this.mail = mail;
 }
 public String getPsswd() {
-	return psswd;
+	return password;
 }
 public void setPsswd(String psswd) {
-	this.psswd = psswd;
+	this.password = psswd;
 }
 
 
