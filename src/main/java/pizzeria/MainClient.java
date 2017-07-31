@@ -36,6 +36,7 @@ public class MainClient {
 			com.close();
 			
 		} catch (AddException e) {
+			
 			AdminConsole co = new AdminConsole();
 			co.console("initialization failed");
 			

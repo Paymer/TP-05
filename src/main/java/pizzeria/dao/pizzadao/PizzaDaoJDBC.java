@@ -9,9 +9,8 @@ import java.util.List;
 
 import pizzeria.central.CategoriePizza;
 import pizzeria.central.Pizza;
+import pizzeria.dao.exception.AddException;
 import pizzeria.dao.exception.DeletePizzaException;
-import pizzeria.dao.exception.PizzaException;
-import pizzeria.dao.exception.SavePizzaException;
 import pizzeria.dao.exception.UpdatePizzaException;
 
 public class PizzaDaoJDBC implements IPizzaDao {
@@ -22,7 +21,7 @@ public class PizzaDaoJDBC implements IPizzaDao {
 	 * 
 	 */
 
-	public void init() throws PizzaException {
+	public void init() throws AddException {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -61,14 +60,14 @@ public class PizzaDaoJDBC implements IPizzaDao {
 
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new PizzaException("afdsfgsg",e);
+			throw new AddException("Pizza initialization exception :afdsfgsg",e);
 		}
 	}
 
 
 
 	@Override
-	public void saveNewPizza(Pizza pizza) throws SavePizzaException {
+	public void saveNewPizza(Pizza pizza) throws AddException {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -89,14 +88,14 @@ public class PizzaDaoJDBC implements IPizzaDao {
 			int lineAffected = addPizza.executeUpdate();
 			if (lineAffected != 1) {
 				conn.rollback(); // We return the table to the initial state
-				throw new SavePizzaException("Addition not performed: (lines moddified != 1) ");
+				throw new AddException("Pizza: Addition not performed: (lines moddified != 1) ");
 				
 			}
 			conn.commit();
 			conn.close();
 
 		} catch (ClassNotFoundException | SQLException e) {
-			throw new SavePizzaException("Addition not performed: (check the class or the sql)" + e.getMessage(), e);
+			throw new AddException("Pizza: Addition not performed: (check the class or the sql)" + e.getMessage(), e);
 		}
 	}
 
@@ -191,7 +190,6 @@ public class PizzaDaoJDBC implements IPizzaDao {
 			 */
 			while (resultats.next()) {
 				Pizza pizza = new Pizza ();
-				//Integer id = resultats.getInt("ID");
 				pizza.setNom(resultats.getString("NAME"));
 				pizza.setCode(resultats.getString("CODE"));
 				pizza.setCateg(CategoriePizza.valueOf(resultats.getString("TYPE")));
@@ -204,9 +202,8 @@ public class PizzaDaoJDBC implements IPizzaDao {
 			conn.close();
 			return pizzas;
 			
-		} catch (ClassNotFoundException | SQLException e) {
-			throw new PizzaException("afdsfgsg");
-		}
+		} catch (ClassNotFoundException | SQLException e) {}
+		return pizzas;
 	
 	}
 

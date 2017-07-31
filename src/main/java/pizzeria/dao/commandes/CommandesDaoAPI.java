@@ -1,7 +1,6 @@
 package pizzeria.dao.commandes;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -30,10 +29,10 @@ public class CommandesDaoAPI implements ICommandesDao {
 						EntityManager init = emf.createEntityManager();
 						init.getTransaction().begin();
 						
-						List<Pizza> pizza = new ArrayList<>();
+						
 						PizzaDaoAPI pidao = new PizzaDaoAPI();
 						pidao.init();
-						pizza =pidao.getPizzas();
+						List<Pizza> pizza =pidao.getPizzas();
 						
 						int a = 0;
 						while (a<=5){
@@ -69,7 +68,7 @@ public class CommandesDaoAPI implements ICommandesDao {
 	
 	public List<Commande> getList(Client clDao) {
 	
-		List<Commande> com = new ArrayList<>();
+	
 		
 		// etape 2 - création d'une session => EntityManager
 		EntityManager getList = emf.createEntityManager();
@@ -80,7 +79,7 @@ public class CommandesDaoAPI implements ICommandesDao {
 				
 				TypedQuery<Commande> query = getList.createQuery("select c from Commande c where c.client_id =:id", Commande.class)
 						.setParameter("id", clDao.getId());
-				com = query.getResultList();
+				List<Commande> com = query.getResultList();
 				//etape 4 - je ferme tous les usines
 				
 				 getList.close();
@@ -95,7 +94,7 @@ public class CommandesDaoAPI implements ICommandesDao {
 
 
 
-
+@Override
 	public void close() {
 		emf.close();
 	}

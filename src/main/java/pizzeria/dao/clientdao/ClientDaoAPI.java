@@ -29,13 +29,13 @@ public class ClientDaoAPI implements IClientDao{
 					// etape 2 - création d'une session => EntityManager
 					EntityManager init = emf.createEntityManager();
 					init.getTransaction().begin();
-		
+					String ps = "usuario";
 					
-					this.add(new Client("Jules", "Verne","aaa@gmail.com", "usuario"));
-					this.add(new Client("Marie", "Curie","bbb@gmail.com", "usuario"));
-					this.add(new Client("Isaac", "Newton","ccc@gmail.com", "usuario"));
-					this.add(new Client("Isaac", "Asimov","ddd@gmail.com", "usuario"));
-					this.add(new Client("Nicholas", "Tesla","eee@gmail.com", "usuario"));
+					this.add(new Client("Jules", "Verne","aaa@gmail.com", ps));
+					this.add(new Client("Marie", "Curie","bbb@gmail.com", ps));
+					this.add(new Client("Isaac", "Newton","ccc@gmail.com", ps));
+					this.add(new Client("Isaac", "Asimov","ddd@gmail.com", ps));
+					this.add(new Client("Nicholas", "Tesla","eee@gmail.com", ps));
 					
 					
 		// etape 3 - je communique avec la base de données
@@ -123,8 +123,8 @@ public class ClientDaoAPI implements IClientDao{
 		TypedQuery<Client> query2 = getClient.createQuery("select c from Client c where c.mail=:Email", Client.class)
 				.setParameter("Email", mail);
 		
-		Client client = new Client ();
-		client= query2.getSingleResult();
+		Client client = query2.getSingleResult();
+		
 		
 		
 		getClient.close();
@@ -134,7 +134,7 @@ public class ClientDaoAPI implements IClientDao{
 	}
 
 	
-	
+	@Override
 	public void close() {
 		emf.close();
 	}

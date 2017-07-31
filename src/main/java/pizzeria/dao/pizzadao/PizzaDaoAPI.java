@@ -12,9 +12,8 @@ import javax.persistence.TypedQuery;
 
 import pizzeria.central.CategoriePizza;
 import pizzeria.central.Pizza;
+import pizzeria.dao.exception.AddException;
 import pizzeria.dao.exception.DeletePizzaException;
-import pizzeria.dao.exception.PizzaException;
-import pizzeria.dao.exception.SavePizzaException;
 import pizzeria.dao.exception.UpdatePizzaException;
 import pizzeria.ihm.utils.AdminConsole;
 
@@ -25,7 +24,7 @@ public class PizzaDaoAPI implements IPizzaDao{
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("PizzaDaoAPI-jpa-unit");
 	
 	@Override
-	public void init() throws PizzaException {
+	public void init() throws AddException {
 		AdminConsole co = new AdminConsole();
 
 	try {
@@ -51,13 +50,13 @@ public class PizzaDaoAPI implements IPizzaDao{
 	
 
 		
-	}catch (IllegalArgumentException | SavePizzaException e){
-	throw new PizzaException("empty list" + e.getMessage(), e);
+	}catch (IllegalArgumentException | AddException e){
+	throw new AddException("Pizza:empty list" + e.getMessage(), e);
 	}
 	}
 
 	@Override
-	public void saveNewPizza(Pizza pizza) throws SavePizzaException {
+	public void saveNewPizza(Pizza pizza) throws AddException {
 		
 		
 		
@@ -76,7 +75,7 @@ public class PizzaDaoAPI implements IPizzaDao{
 			save.getTransaction().commit();
 		}
 		else {
-			throw new SavePizzaException ("The code choosen already exists");
+			throw new AddException ("Pizza: The code choosen already exists");
 		}
 
 	

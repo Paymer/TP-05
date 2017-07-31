@@ -10,6 +10,7 @@ import pizzeria.central.Client;
 import pizzeria.central.Commande;
 import pizzeria.central.Pizza;
 import pizzeria.central.Statut;
+import pizzeria.dao.exception.AddException;
 import pizzeria.dao.pizzadao.IPizzaDao;
 import pizzeria.dao.pizzadao.PizzaDaoAPI;
 import pizzeria.ihm.utils.ClientConsole;
@@ -36,10 +37,13 @@ public class Commander implements OptionMenuClient {
 		List<Pizza> comm = new ArrayList<>();
 	
 		IPizzaDao list = new PizzaDaoAPI();
-		list.init();
 		
-		List<Pizza> list2 = new ArrayList<>();
-		list2 = list.getPizzas();
+		try {
+			list.init();
+		} catch (AddException e) {}
+		
+		List<Pizza> list2 = list.getPizzas();
+		
 		
 		co.console("Pizzas List");
 		co.console(list2.toString());
@@ -49,7 +53,8 @@ public class Commander implements OptionMenuClient {
 		//("\b[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}\b.")
 		
 		
-		String ch = scanner.nextLine();
+		String ch;
+		scanner.nextLine();
 		
 		do {
 			

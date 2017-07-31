@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import dev.dao.PizzaDaoMemoTest;
 import pizzeria.central.CategoriePizza;
 import pizzeria.central.Pizza;
+import pizzeria.dao.exception.AddException;
 import pizzeria.dao.pizzadao.IPizzaDao;
 import pizzeria.dao.pizzadao.PizzaDaoMemo;
 import pizzeria.ihm.menu.MenuAdmin;
@@ -44,7 +45,11 @@ public class TestDelete {
 	@Before
 	public void setUp() {
 		pizzaDao = new PizzaDaoMemo();
-		pizzaDao.init();
+		try {
+			pizzaDao.init();
+		} catch (AddException e) {
+			
+		}
 		mar = new Pizza("MAR", "Margherita", 14, CategoriePizza.VIANDE);
 	}
 

@@ -4,9 +4,8 @@ package pizzeria.dao.pizzadao;
 import java.util.List;
 
 import pizzeria.central.Pizza;
+import pizzeria.dao.exception.AddException;
 import pizzeria.dao.exception.DeletePizzaException;
-import pizzeria.dao.exception.PizzaException;
-import pizzeria.dao.exception.SavePizzaException;
 import pizzeria.dao.exception.UpdatePizzaException;
 
 public interface IPizzaDao {
@@ -17,13 +16,13 @@ public interface IPizzaDao {
 	
 	
 	
-	void init() throws PizzaException;
+	void init() throws AddException;
 	/**
 	 * Initializes the list of pizzas/db
 	 */
 	
 	
-	void saveNewPizza (Pizza pizza) throws SavePizzaException;
+	void saveNewPizza (Pizza pizza) throws AddException;
 	/**
 	 * This method adds a Pizza to the menu/list
 	 * @param codePizza

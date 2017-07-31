@@ -19,6 +19,7 @@ import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.*;
 
 import pizzeria.central.CategoriePizza;
 import pizzeria.central.Pizza;
+import pizzeria.dao.exception.AddException;
 import pizzeria.dao.exception.DeletePizzaException;
 import pizzeria.dao.exception.SavePizzaException;
 import pizzeria.dao.exception.UpdatePizzaException;
@@ -53,7 +54,12 @@ public class PizzaDaoMemoTest {
 
 		
 
-		pizzaDao.saveNewPizza(testPizza);
+		try {
+			pizzaDao.saveNewPizza(testPizza);
+		} catch (AddException e) {
+	
+			e.printStackTrace();
+		}
 
 		List<Pizza> toutesLesPizzas = pizzaDao.getPizzas();
 

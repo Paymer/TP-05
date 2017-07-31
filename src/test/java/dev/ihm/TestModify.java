@@ -16,6 +16,7 @@ import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 
 import pizzeria.central.CategoriePizza;
 import pizzeria.central.Pizza;
+import pizzeria.dao.exception.AddException;
 import pizzeria.dao.pizzadao.IPizzaDao;
 import pizzeria.dao.pizzadao.PizzaDaoMemo;
 import pizzeria.ihm.menu.option.Modify;
@@ -41,7 +42,11 @@ public class TestModify {
  @Before
 	public void setUp() {
 		pizzaDao = new PizzaDaoMemo();
-		pizzaDao.init();
+		try {
+			pizzaDao.init();
+		} catch (AddException e) {
+			
+		}
 		testPizza = new Pizza("ESP", "Espartana", 20, CategoriePizza.VIANDE);
 		
 	}

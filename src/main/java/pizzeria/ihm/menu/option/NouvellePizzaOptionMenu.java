@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import pizzeria.central.CategoriePizza;
 import pizzeria.central.Pizza;
-import pizzeria.dao.exception.SavePizzaException;
+import pizzeria.dao.exception.AddException;
 import pizzeria.dao.pizzadao.IPizzaDao;
 import pizzeria.ihm.utils.AdminConsole;
 
@@ -43,14 +43,14 @@ public class NouvellePizzaOptionMenu implements OptionMenuAdmin {
 					dao.saveNewPizza(new Pizza(code, nom, prix, categ));
 				co.console("Added new Pizza");
 				b = true;}
-			}catch (SavePizzaException e){
+			}catch (AddException e){
 				// in the file the e.message will appear twice
 				co.console("Sorry, Introduce a valid value");
 				co.console(e.getMessage(), e);
 				co.console(e.getMessage());
 			}
 			
-		}while (b == false);
+		}while (!b);
 		
 
 		}

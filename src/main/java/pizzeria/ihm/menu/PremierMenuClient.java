@@ -71,9 +71,7 @@ public class PremierMenuClient implements Menu {
 			 
 		}while (a!= 99);
 		
-		
 	
-
 	}
 
 	

@@ -6,8 +6,8 @@ import java.util.List;
 
 import pizzeria.central.CategoriePizza;
 import pizzeria.central.Pizza;
+import pizzeria.dao.exception.AddException;
 import pizzeria.dao.exception.DeletePizzaException;
-import pizzeria.dao.exception.SavePizzaException;
 import pizzeria.dao.exception.UpdatePizzaException;
 
 public class PizzaDaoMemo implements IPizzaDao {
@@ -63,10 +63,10 @@ public class PizzaDaoMemo implements IPizzaDao {
 	
 	 */
 	@Override
-	public void saveNewPizza(Pizza pizza) throws SavePizzaException {
+	public void saveNewPizza(Pizza pizza) throws AddException {
 
-		if (checkList(pizza.getCode()) == true) {
-			throw new SavePizzaException("This code: " + pizza.getCode() + " already exists.");
+		if (checkList(pizza.getCode())) {
+			throw new AddException("This code: " + pizza.getCode() + " already exists.");
 		} else {
 			pizzas.add(pizza);
 		}
@@ -79,12 +79,12 @@ public class PizzaDaoMemo implements IPizzaDao {
 	@Override
 	public void updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException {
 	
-		if (checkList(codePizza) == true && (checkList(pizza.getCode()) == false ||  pizza.getCode().equals(codePizza)) ) {
+		if (checkList(codePizza) && !(checkList(pizza.getCode()) ||  pizza.getCode().equals(codePizza)) ) {
 			
 			int a = searchPizza(codePizza);
 			pizzas.set(a, pizza);
 			
-		} else if (checkList(codePizza) == true && !pizza.getCode().equals(codePizza)) {
+		} else if (checkList(codePizza) && !pizza.getCode().equals(codePizza)) {
 			throw new UpdatePizzaException("The new code : " + pizza.getCode() + " already exists");
 		} else {
 			throw new UpdatePizzaException("The code : " + codePizza + " not found");
@@ -101,7 +101,7 @@ public class PizzaDaoMemo implements IPizzaDao {
 	@Override
 	public void deletePizza(String codePizza) throws DeletePizzaException {
 
-		if (checkList(codePizza) == true) {
+		if (checkList(codePizza)) {
 			int a = searchPizza(codePizza);
 			pizzas.remove(a);
 
