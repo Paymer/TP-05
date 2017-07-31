@@ -1,9 +1,10 @@
 package pizzeria.dao.clientdao;
 
 import pizzeria.central.Client;
+import pizzeria.dao.IDao;
 import pizzeria.dao.exception.AddException;
 
-public interface IClientDao {
+public interface IClientDao extends IDao {
 
 	/**
 	 * will gave initial values to the clients list
