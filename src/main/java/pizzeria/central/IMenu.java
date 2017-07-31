@@ -16,6 +16,8 @@ public interface IMenu {
 	   * Method that manages the options available and call the necessary classes
 	   */
 	  void manage();
+	
+	 
 	  
 	  /**
 	   * Necessary methods for the hashmaps

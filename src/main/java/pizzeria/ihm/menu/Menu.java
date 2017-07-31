@@ -34,8 +34,8 @@ public class Menu implements IMenu {
 	
 	}
 
-	
-	public void afficher(String title) {
+	@Override
+	public void afficher() {
 	/**
 	 * This method allows to see the all the options
 	 */
@@ -44,7 +44,7 @@ public class Menu implements IMenu {
 		
 		ClientConsole co = new ClientConsole();
 		
-		co.console(title);
+		co.console("***** Pizzeria Client *****");
 		//This allows to go to all the options in the menu
 		options.forEach((numero, option) -> co.console(numero+"."+option.getLibelle()));
 		co.console("99. Sortir");
@@ -59,7 +59,7 @@ public class Menu implements IMenu {
 		//It will do the actions choose until 99 is introduced through the console
 		int a;
 		do{
-			afficher("***** Pizzeria Client *****");
+			afficher();
 			
 			a = scanner.nextInt();
 			//the hash Map is used to get the actions we need
