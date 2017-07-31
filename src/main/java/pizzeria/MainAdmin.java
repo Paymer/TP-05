@@ -25,8 +25,6 @@ public class MainAdmin {
 
 			IPizzaDao dao = new PizzaDaoAPI();
 			
-			/**IPizzaDao dao = new PizzaDaoMemo();
-			*IPizzaDao dao = new PizzaDaoJDBC();*/
 			dao.init();
 			
 			MenuAdmin menu = new MenuAdmin(dao, scanner);
