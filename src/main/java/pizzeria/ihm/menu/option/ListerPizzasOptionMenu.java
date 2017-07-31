@@ -15,6 +15,10 @@ public class ListerPizzasOptionMenu implements OptionMenuAdmin {
 		return ("Lister les pizzas");
 	}
 
+	
+
+
+
 	@Override
 	public void execute(IPizzaDao dao, Scanner scanner) {
 		List<Pizza> pizzas = dao.getPizzas();
@@ -24,6 +28,7 @@ public class ListerPizzasOptionMenu implements OptionMenuAdmin {
 			i++;
 		}
 		co.console(" List done ");
+		
 	}
 
 }

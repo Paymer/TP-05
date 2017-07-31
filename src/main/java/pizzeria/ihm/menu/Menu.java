@@ -4,30 +4,28 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import pizzeria.central.IMenu;
 import pizzeria.ihm.menu.option.Commander;
 import pizzeria.ihm.menu.option.Lister;
 import pizzeria.ihm.menu.option.OptionMenuClient;
 import pizzeria.ihm.utils.ClientConsole;
 
-public class Menu {
+public class Menu implements IMenu {
 
 	
-	private Scanner scanner;
-	Object list; // list of commandes/pizzas
-	Object user; //the client
+	protected Scanner scanner;
+	Object list; // list of commandes/commandesDao/
+	Object user; //the client/clDao/IpizzaDao
 	Map<Integer, OptionMenuClient> options = new HashMap<>();
 
 	
-	public Menu (Object cl, Object com, Scanner scanner2) {
+	public Menu (Object clpz, Object com, Scanner scanner2) {
 		this.scanner = scanner2;
 		this.list = com;
-		this.user = cl; 
+		this.user = clpz; 
 		
 	}
 
-
-	
-	
 	//It is necessary to get activate the options in the hash map
 	//no se como ponerlo para que hereden
 	public void initOpt() {
@@ -37,8 +35,7 @@ public class Menu {
 	}
 
 	
-	
-	public void afficher() {
+	public void afficher(String title) {
 	/**
 	 * This method allows to see the all the options
 	 */
@@ -47,7 +44,7 @@ public class Menu {
 		
 		ClientConsole co = new ClientConsole();
 		
-		co.console("***** Pizzeria Client *****");
+		co.console(title);
 		//This allows to go to all the options in the menu
 		options.forEach((numero, option) -> co.console(numero+"."+option.getLibelle()));
 		co.console("99. Sortir");
@@ -62,7 +59,7 @@ public class Menu {
 		//It will do the actions choose until 99 is introduced through the console
 		int a;
 		do{
-			afficher();
+			afficher("***** Pizzeria Client *****");
 			
 			a = scanner.nextInt();
 			//the hash Map is used to get the actions we need
