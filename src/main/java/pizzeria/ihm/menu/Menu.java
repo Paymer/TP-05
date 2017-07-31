@@ -4,40 +4,40 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import pizzeria.central.IMenu;
-import pizzeria.dao.clientdao.IClientDao;
-import pizzeria.dao.commandes.ICommandesDao;
-import pizzeria.ihm.menu.option.Connection;
-import pizzeria.ihm.menu.option.Inscription;
+import pizzeria.ihm.menu.option.Commander;
+import pizzeria.ihm.menu.option.Lister;
 import pizzeria.ihm.menu.option.OptionMenuClient;
 import pizzeria.ihm.utils.ClientConsole;
 
-public class PremierMenuClient implements IMenu {
+public class Menu {
 
 	
 	private Scanner scanner;
-	ICommandesDao comDao;
-	IClientDao clDao;
+	Object list; // list of commandes/pizzas
+	Object user; //the client
+	Map<Integer, OptionMenuClient> options = new HashMap<>();
+
 	
-	public PremierMenuClient(IClientDao cl, ICommandesDao com, Scanner scanner) {
-		this.scanner = scanner;
-		this.comDao = com;
-		this.clDao = cl;
-		
+	public Menu (Object cl, Object com, Scanner scanner2) {
+		this.scanner = scanner2;
+		this.list = com;
+		this.user = cl; 
 		
 	}
 
-	Map<Integer, OptionMenuClient> options = new HashMap<>();
+
+	
 	
 	//It is necessary to get activate the options in the hash map
-	
+	//no se como ponerlo para que hereden
 	public void initOpt() {
-		options.put(1, new Inscription());
-		options.put(2, new Connection());
+		options.put(1, new Commander());
+		options.put(2, new Lister());
 	
 	}
 
-
+	
+	
 	public void afficher() {
 	/**
 	 * This method allows to see the all the options
@@ -56,9 +56,9 @@ public class PremierMenuClient implements IMenu {
 
 	
 	public void manage() {
+
 		
 		
-		//FIRST MENU
 		//It will do the actions choose until 99 is introduced through the console
 		int a;
 		do{
@@ -66,12 +66,11 @@ public class PremierMenuClient implements IMenu {
 			
 			a = scanner.nextInt();
 			//the hash Map is used to get the actions we need
-	
-			 if (a > 0 && a < 3 ) {options.get(a).execute(comDao, clDao, scanner);}
+		
+			 if (a > 0 && a < 3 ) {options.get(a).execute(list, user, scanner);}
 			 
 		}while (a!= 99);
-		
-	
+
 	}
 
 	

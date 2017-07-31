@@ -1,14 +1,11 @@
 package pizzeria.central;
 
+public interface IMenu {
 
-public interface Menu {
-
-	
 	/**
 	 * Initializes the options of the class map
 	 */
-	void initOpt();
-	
+	public void initOpt();
 	/**
 	 * It allows to see all the options of the menu
 	 */

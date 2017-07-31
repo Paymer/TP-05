@@ -4,12 +4,11 @@ package pizzeria.dao.pizzadao;
 import java.util.List;
 
 import pizzeria.central.Pizza;
-import pizzeria.dao.IDao;
 import pizzeria.dao.exception.AddException;
 import pizzeria.dao.exception.DeletePizzaException;
 import pizzeria.dao.exception.UpdatePizzaException;
 
-public interface IPizzaDao extends IDao {
+public interface IPizzaDao {
 
 	List<Pizza> getPizzas();
 	

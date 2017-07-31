@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import pizzeria.central.Menu;
+import pizzeria.central.IMenu;
 import pizzeria.ihm.menu.option.Commander;
 import pizzeria.ihm.menu.option.Lister;
 import pizzeria.ihm.menu.option.OptionMenuClient;
 import pizzeria.ihm.utils.ClientConsole;
 
-public class SecondMenuClient implements Menu {
+public class SecondMenuClient implements IMenu {
 
 	
 	private Scanner scanner;

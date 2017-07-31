@@ -5,10 +5,9 @@ import java.util.List;
 
 import pizzeria.central.Client;
 import pizzeria.central.Commande;
-import pizzeria.dao.IDao;
 import pizzeria.dao.exception.AddException;
 
-public interface ICommandesDao extends IDao {
+public interface ICommandesDao {
 	
 	/**
 	 * will gave initial values to the clients list

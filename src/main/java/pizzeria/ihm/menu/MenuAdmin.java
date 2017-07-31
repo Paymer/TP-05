@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import pizzeria.central.Menu;
+import pizzeria.central.IMenu;
 import pizzeria.dao.pizzadao.IPizzaDao;
 import pizzeria.ihm.menu.option.Delete;
 import pizzeria.ihm.menu.option.ListerPizzasOptionMenu;
@@ -13,7 +13,7 @@ import pizzeria.ihm.menu.option.NouvellePizzaOptionMenu;
 import pizzeria.ihm.menu.option.OptionMenuAdmin;
 import pizzeria.ihm.utils.AdminConsole;
 
-public class MenuAdmin implements Menu {
+public class MenuAdmin implements IMenu {
 
 
 	
