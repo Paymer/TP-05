@@ -23,6 +23,8 @@ public class PizzaDaoAPI implements IPizzaDao{
 	// etape 1 - Créer l'usine à session (EntityManager) => EntityManagerFactory
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("PizzaDaoAPI-jpa-unit");
 	
+	
+	@Override
 	public void init() throws AddException {
 		AdminConsole co = new AdminConsole();
 
@@ -54,6 +56,7 @@ public class PizzaDaoAPI implements IPizzaDao{
 	}
 	}
 
+	@Override
 	public void saveNewPizza(Pizza pizza) throws AddException {
 		
 		
@@ -84,7 +87,7 @@ public class PizzaDaoAPI implements IPizzaDao{
 			 
 	}
 
-	
+	@Override
 	public void updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException {
 		
 	try {	
@@ -162,7 +165,7 @@ public class PizzaDaoAPI implements IPizzaDao{
 			
 	}
 
-	
+	@Override
 	public List<Pizza> getPizzas() {
 	
 		
@@ -185,7 +188,7 @@ public class PizzaDaoAPI implements IPizzaDao{
 			
 	}
 
-
+	@Override
 	public void close() {
 		emf.close();
 	}

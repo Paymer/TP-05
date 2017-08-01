@@ -40,9 +40,9 @@ public class Connection implements OptionMenuClient {
 			//true:the client does not exist
 			//false: the client already exist
 			
-			Client client = new Client();
+			Client client = ((IClientDao) clDao).getClient(mail); //search for the client
 			
-			client = ((IClientDao) clDao).getClient(mail); //search for the client
+			
 			
 		SecondMenuClient menu2 = new SecondMenuClient(com, client, scanner);
 		menu2.manage();

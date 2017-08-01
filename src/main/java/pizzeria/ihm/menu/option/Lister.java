@@ -1,7 +1,7 @@
 package pizzeria.ihm.menu.option;
 
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,9 +24,8 @@ public class Lister implements OptionMenuClient {
 		
 		// cldao is the user/client
 		
-				List<Commande> commande = new ArrayList<>();
+				List<Commande> commande = ((CommandesDaoAPI) com).getList((Client)clDao); //It takes the commands made by the user
 				
-				commande = ((CommandesDaoAPI) com).getList((Client)clDao); //It takes the commands made by the user
 				
 				commande.toString();
 		

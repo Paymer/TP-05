@@ -18,7 +18,7 @@ public class PremierMenuClient extends Menu {
 	}
 
 	//It is necessary to get activate the options in the hash map
-	
+	@Override
 	public void initOpt() {
 		options.put(1, new Inscription());
 		options.put(2, new Connection());

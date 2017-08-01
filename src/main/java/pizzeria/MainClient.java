@@ -24,10 +24,10 @@ public class MainClient {
 		try (Scanner scanner = new Scanner (System.in)){
 			
 			IClientDao cl = new  ClientDaoAPI();
-			
-			ICommandesDao com = new CommandesDaoAPI();
 			cl.init();
 			
+			ICommandesDao com = new CommandesDaoAPI();
+			//com.init();
 			
 			PremierMenuClient menu = new PremierMenuClient(cl, com, scanner);
 			menu.manage();

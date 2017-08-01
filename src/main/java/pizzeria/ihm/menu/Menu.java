@@ -10,7 +10,7 @@ import pizzeria.ihm.menu.option.Lister;
 import pizzeria.ihm.menu.option.OptionMenuClient;
 import pizzeria.ihm.utils.ClientConsole;
 
-public class Menu implements IMenu {
+public abstract class Menu implements IMenu {
 
 	
 	protected Scanner scanner;
