@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import pizzeria.central.CategoriePizza;
@@ -21,7 +20,14 @@ public class PizzaDaoAPI implements IPizzaDao{
 	
 
 	// etape 1 - Créer l'usine à session (EntityManager) => EntityManagerFactory
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("PizzaDaoAPI-jpa-unit");
+	
+	
+	EntityManagerFactory emf;
+	
+	public PizzaDaoAPI(EntityManagerFactory emf) {
+		super();
+		this.emf = emf;
+	}
 	
 	
 	@Override

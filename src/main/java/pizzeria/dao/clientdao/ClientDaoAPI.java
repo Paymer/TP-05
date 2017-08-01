@@ -4,7 +4,6 @@ package pizzeria.dao.clientdao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import pizzeria.central.Client;
@@ -17,9 +16,14 @@ public class ClientDaoAPI implements IClientDao{
 	
 
 	// etape 1 - Créer l'usine à session (EntityManager) => EntityManagerFactory
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("PizzaDaoAPI-jpa-unit");
+	EntityManagerFactory emf;
 	
-	
+	public ClientDaoAPI(EntityManagerFactory emf) {
+		super();
+		this.emf = emf;
+	}
+
+
 	@Override
 	public void init() throws AddException {
 		AdminConsole co = new AdminConsole();

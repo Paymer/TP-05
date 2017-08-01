@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.persistence.Persistence;
+
 import pizzeria.central.Client;
 import pizzeria.central.Commande;
 import pizzeria.central.Pizza;
@@ -36,7 +38,7 @@ public class Commander implements OptionMenuClient {
 
 		List<Pizza> comm = new ArrayList<>();
 	
-		IPizzaDao list = new PizzaDaoAPI();
+		IPizzaDao list = new PizzaDaoAPI(Persistence.createEntityManagerFactory("PizzaDaoAPI-jpa-unit"));
 		
 		try {
 			list.init();

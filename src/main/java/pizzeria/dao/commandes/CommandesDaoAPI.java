@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import pizzeria.central.Client;
@@ -17,8 +16,15 @@ import pizzeria.dao.pizzadao.PizzaDaoAPI;
 
 public class CommandesDaoAPI implements ICommandesDao {
 
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("PizzaDaoAPI-jpa-unit");
-
+	
+	
+	// etape 1 - Créer l'usine à session (EntityManager) => EntityManagerFactory
+		EntityManagerFactory emf;
+		
+		public CommandesDaoAPI(EntityManagerFactory emf) {
+			super();
+			this.emf = emf;
+		}
 	
 
 	@Override
@@ -30,15 +36,16 @@ public class CommandesDaoAPI implements ICommandesDao {
 						init.getTransaction().begin();
 						
 						
-						PizzaDaoAPI pidao = new PizzaDaoAPI();
+						PizzaDaoAPI pidao = new PizzaDaoAPI(emf);
 						pidao.init();
 						List<Pizza> pizza =pidao.getPizzas();
 						
 						int a = 0;
 						while (a<=5){
-						TypedQuery<Client> queryClient = init.createQuery("select c from Client c where c.id =:ID", Client.class)
-						.setParameter("ID", a);
-						this.add(new Commande(a,LocalDateTime.now(),queryClient.getSingleResult(),pizza));
+						//TypedQuery<Client> queryClient = init.createQuery("select c from Client c where c.id =:ID", Client.class)
+						//.setParameter("ID", a);
+						//this.add(a,new Commande(LocalDateTime.now(),queryClient.getSingleResult(),pizza));
+							a++;
 						}
 						
 						

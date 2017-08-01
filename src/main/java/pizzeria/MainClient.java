@@ -2,6 +2,9 @@ package pizzeria;
 
 import java.util.Scanner;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import org.slf4j.LoggerFactory;
 
 import pizzeria.dao.clientdao.ClientDaoAPI;
@@ -22,18 +25,19 @@ public class MainClient {
 				
 		
 		try (Scanner scanner = new Scanner (System.in)){
-			
-			IClientDao cl = new  ClientDaoAPI();
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("PizzaDaoAPI-jpa-unit");
+			IClientDao cl = new  ClientDaoAPI(emf);
 			cl.init();
 			
-			ICommandesDao com = new CommandesDaoAPI();
-			//com.init();
+			ICommandesDao com = new CommandesDaoAPI(emf);
+			com.init();
 			
 			PremierMenuClient menu = new PremierMenuClient(cl, com, scanner);
 			menu.manage();
 			LoggerFactory.getLogger("dev.dao").info("System Finalized");
 			cl.close();
 			com.close();
+			emf.close();
 			
 		} catch (AddException e) {
 			
